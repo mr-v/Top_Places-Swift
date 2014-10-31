@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // initialize storyboard only if no tests are running
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabController = storyboard.instantiateInitialViewController() as TopPlacesTableViewController
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = tabController
-        AppBuilder().buildAppWithRootViewController(tabController)
+        object_setClass(storyboard, InjectableStoryboard.self)
+        storyboard.injector = AppBuilder()
 
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let rootViewController = storyboard.instantiateInitialViewController() as UIViewController
+        window!.rootViewController = rootViewController
         window!.makeKeyAndVisible()
         return true
     }
 }
-

@@ -7,7 +7,7 @@
         <!--Top Places Table View Controller-->
         <scene sceneID="sTg-fX-24w">
             <objects>
-                <tableViewController id="PZm-cg-oXY" customClass="TopPlacesTableViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TopPlaces" id="PZm-cg-oXY" customClass="TopPlacesTableViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ogf-X3-BP4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

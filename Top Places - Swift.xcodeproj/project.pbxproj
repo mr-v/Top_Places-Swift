@@ -20,6 +20,7 @@
 		EA7833831A02AD7900028F5F /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = EA7833821A02AD7900028F5F /* testdata.json */; };
 		EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
 		EA7833861A02B30E00028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
+		EA7F0DBE1A03FCC100613D80 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */; };
 		EAD8078D1A02C06C00D82A3C /* FlickrAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */; };
 		EAD8078F1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078E1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift */; };
 		EAD807911A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */; };
@@ -64,6 +65,7 @@
 		EA7833801A025B9D00028F5F /* FlickrAppNetworkAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrAppNetworkAdapterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7833821A02AD7900028F5F /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = SOURCE_ROOT; };
 		EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = FlickrTopPlacesNetworkAdapter.swift; path = Flickr/FlickrTopPlacesNetworkAdapter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryboardExtension.swift; path = UI/UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrAppTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAD8078E1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = FlickrTopPlacesViewModel.swift; path = Flickr/FlickrTopPlacesViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrTopPlacesViewModelTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -168,6 +170,7 @@
 				EA5E68711A0223280004CCEC /* LaunchScreen.xib */,
 				EA5E686C1A0223280004CCEC /* Main.storyboard */,
 				EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */,
+				EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			files = (
 				EA5E68891A0226C90004CCEC /* TopPlacesTableViewController.swift in Sources */,
 				EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */,
+				EA7F0DBE1A03FCC100613D80 /* UIStoryboardExtension.swift in Sources */,
 				EAD8078F1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift in Sources */,
 				EAD807BB1A03A7DC00D82A3C /* AppBuilder.swift in Sources */,
 				EA7833771A022B7A00028F5F /* FlickrService.swift in Sources */,
@@ -611,6 +615,7 @@
 				EAD807B31A02DCF000D82A3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

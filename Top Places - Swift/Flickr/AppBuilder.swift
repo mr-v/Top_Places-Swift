@@ -8,14 +8,27 @@
 
 import Foundation
 
-class AppBuilder {
+class AppBuilder: UIStoryboardInjector {
 
-    func buildAppWithRootViewController(controller: TopPlacesTableViewController) {
-        let app = FlickrApp()
-        let topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
+    let app: FlickrApp
+    let service: FlickrService
+    let topPlacesViewModel: FlickrTopPlacesViewModel
+
+    override init() {
+        app = FlickrApp()
+        topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
         app.topPlacesPorts.append(topPlacesViewModel)
-        controller.dataSource = topPlacesViewModel
-        controller.flickrService = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
-        app.topPlacesPorts.append(controller)
+        service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
+        super.init()
+        setupViewControllerDependencies()
+    }
+
+    private func setupViewControllerDependencies() {
+        controllerDependencies["TopPlaces"] =  { [unowned self] in
+            let vc = $0 as TopPlacesTableViewController
+            vc.dataSource = self.topPlacesViewModel
+            vc.flickrService = self.service
+            self.app.topPlacesPorts.append(vc)
+        }
     }
 }
