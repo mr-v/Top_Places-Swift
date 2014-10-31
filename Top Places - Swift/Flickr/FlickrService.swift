@@ -10,7 +10,7 @@ import Foundation
 
 class FlickrService {
     let RESTEndpoint = "https://api.flickr.com/services/rest/"
-    let APIExplorerKey: String = "b29652ee79093658d4cb106f88470ae0"
+    let APIExplorerKey: String = "8bac83dae148d108bd0ac45ca6fd07c3"
     var standardParameters: String { return "format=json&nojsoncallback=1&api_key=\(APIExplorerKey)" }
     let urlSession: NSURLSession
     let adapter: FlickrAppNetworkAdapter
