@@ -19,7 +19,7 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
         app.topPlaces = makeTestTopPlaces()
 
         let result = viewModel.sectionToName
-        XCTAssertEqual(NSOrderedSet(array: ["Brazil", "Canada", "United Kingdom"]), result)
+        XCTAssertEqual(["Brazil", "Canada", "United Kingdom"], result)
     }
 
     // MARK: - data source

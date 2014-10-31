@@ -28,6 +28,7 @@
 		EAD807B71A02DD4A00D82A3C /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833761A022B7A00028F5F /* FlickrService.swift */; };
 		EAD807B81A02DDB400D82A3C /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
 		EAD807B91A02DDFC00D82A3C /* FlickrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78337C1A02534D00028F5F /* FlickrApp.swift */; };
+		EAD807BB1A03A7DC00D82A3C /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		EAD807AC1A02DCF000D82A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD807B41A02DD1300D82A3C /* Top Places - Async Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places - Async Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EAD807B51A02DD1300D82A3C /* FlickrServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrServiceTests.swift; sourceTree = "<group>"; };
+		EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppBuilder.swift; path = Flickr/AppBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				EA7833751A022B6700028F5F /* Flickr */,
 				EA5E688A1A0226D50004CCEC /* UI */,
 				EA5E68681A0223280004CCEC /* AppDelegate.swift */,
+				EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */,
 				EA5E68661A0223270004CCEC /* Supporting Files */,
 			);
 			path = "Top Places - Swift";
@@ -332,6 +335,7 @@
 				EA5E68891A0226C90004CCEC /* TopPlacesTableViewController.swift in Sources */,
 				EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */,
 				EAD8078F1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift in Sources */,
+				EAD807BB1A03A7DC00D82A3C /* AppBuilder.swift in Sources */,
 				EA7833771A022B7A00028F5F /* FlickrService.swift in Sources */,
 				EA5E68691A0223280004CCEC /* AppDelegate.swift in Sources */,
 				EA78337D1A02534D00028F5F /* FlickrApp.swift in Sources */,

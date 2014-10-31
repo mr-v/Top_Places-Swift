@@ -11,7 +11,7 @@ import UIKit
 class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppPort {
     let reuseId = "PlaceCell"
     let app: FlickrApp
-    var sectionToName: NSOrderedSet!
+    var sectionToName: [String]!
 
     init(app: FlickrApp) {
         self.app = app
@@ -51,14 +51,14 @@ class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppPort {
     private func updateSectionToName() {
         var countries = app.topPlaces.keys.array
         countries.sort(<)
-        sectionToName = countries.reduce(NSMutableOrderedSet()) {
-            mapping, country in
-            mapping.addObject(country)
+        sectionToName = countries.reduce([]) {
+            (var mapping, country) in
+            mapping.append(country)
             return mapping
         }
     }
 
     private func countryForSection(section: Int) -> String {
-        return sectionToName.objectAtIndex(section) as String
+        return sectionToName[section]
     }
 }
