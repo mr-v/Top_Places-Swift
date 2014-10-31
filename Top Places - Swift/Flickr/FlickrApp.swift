@@ -13,22 +13,44 @@ struct FlickrPlace {
     let description: String
 }
 
-protocol FlickrAppPort {
-    func topPlacesUpdated()
+struct FlickrPhoto {
+    let title: String
+    let description: String
+}
+
+protocol FlickrAppTopPlacesPort {
+    func didUpdateTopPlaces()
+}
+
+protocol FlickrAppPlacePhotosPort {
+    func didUpdatePhotosForPlace(placeId: String)
 }
 
 class FlickrApp {
     var topPlaces: Dictionary<String, [FlickrPlace]> {
         didSet {
-            for port in ports {
-                port.topPlacesUpdated()
+            for port in topPlacesPorts {
+                port.didUpdateTopPlaces()
             }
         }
     }
-    var ports: [FlickrAppPort]
+    private(set) var photos: [String: [FlickrPhoto]]
+    var topPlacesPorts: [FlickrAppTopPlacesPort]
+    var photosPorts: [String: [FlickrAppPlacePhotosPort]]
 
-    init(port: FlickrAppPort? = nil) {
+    init() {
         topPlaces = [String: [FlickrPlace]]()
-        self.ports = port != nil ? [port!] : []
+        photos = [String: [FlickrPhoto]]()
+        topPlacesPorts = []
+        photosPorts = [String: [FlickrAppPlacePhotosPort]]()
+    }
+
+    func setPhotosForPlace(placeId: String, photos: [FlickrPhoto]) {
+        self.photos[placeId] = photos
+        if let photoPorts = photosPorts[placeId] {
+            for port in photoPorts {
+                port.didUpdatePhotosForPlace(placeId)
+            }
+        }
     }
 }

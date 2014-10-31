@@ -12,6 +12,7 @@ class FlickrAppNetworkAdapter {
 
     enum FlickrResponseKey: String {
         case Content = "_content"
+        case PhotoDescription = "description._content"
     }
 
     private let app: FlickrApp
@@ -20,7 +21,7 @@ class FlickrAppNetworkAdapter {
         self.app = app
     }
 
-    func updateWithJSONObject(json: NSDictionary){
+    func updateTopPlacesWithJSONObject(json: NSDictionary) {
         let places = json.valueForKeyPath("places.place") as [NSDictionary]
         var result = [String: [FlickrPlace]]()
         for place in places {
@@ -33,6 +34,26 @@ class FlickrAppNetworkAdapter {
             result[country] = placesInCountry
         }
         app.topPlaces = result
+    }
+
+    func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
+        let photos = json.valueForKeyPath("photos.photo") as [NSDictionary]
+        var result = [FlickrPhoto]()
+        for photo in photos {
+            var title = photo["title"] as String
+            var description = photo.valueForKeyPath(FlickrResponseKey.PhotoDescription.rawValue) as String
+            switch (title, description) {
+            case  ("", let d) where !d.isEmpty:
+                title = description
+                description = ""
+            case ("", ""):
+                title = "Unknown"
+            default:
+                false
+            }
+            result.append(FlickrPhoto(title: title, description: description))
+        }
+        app.setPhotosForPlace(placeId, photos: result)
     }
 }
 

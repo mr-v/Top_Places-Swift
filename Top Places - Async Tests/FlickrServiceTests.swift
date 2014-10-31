@@ -23,6 +23,25 @@ class FlickrServiceTests: XCTestCase {
         }
 
         service.fetchTopPlaces()
+
+        waitForExpectationsWithTimeout(10) {
+            error in
+            service.urlSession.invalidateAndCancel()
+        }
+    }
+
+    func test_FetchPhotosFromPlace_SuccessfulRequest_ContainsArraysOfPhoto() {
+        let expectation = expectationWithDescription("photos from place fetched")
+        let service = makeFlickrService {
+            jsonObject in
+            expectation.fulfill()
+            let places = jsonObject.valueForKeyPath("photos.photo") as? [NSDictionary]
+            XCTAssertNotNil(places?)
+        }
+        let placeId = "hP_s5s9VVr5Qcg"
+
+        service.fetchPhotosFromPlace(placeId)
+
         waitForExpectationsWithTimeout(10) {
             error in
             service.urlSession.invalidateAndCancel()
@@ -45,7 +64,11 @@ class FlickrServiceTests: XCTestCase {
             super.init(app: FlickrApp())
         }
 
-        override func updateWithJSONObject(json: NSDictionary){
+        override func updateTopPlacesWithJSONObject(json: NSDictionary){
+            updateCallback(json)
+        }
+
+        override func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
             updateCallback(json)
         }
     }

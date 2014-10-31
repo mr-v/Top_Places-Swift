@@ -6,6 +6,11 @@
 //  Copyright (c) 2014 Witold Skibniewski. All rights reserved.
 //
 
+/*
+    for Flickr error codes see:
+        https://www.flickr.com/services/api/flickr.places.getTopPlacesList.html
+*/
+
 import Foundation
 
 class FlickrService {
@@ -24,9 +29,18 @@ class FlickrService {
         let localityPlaceType = "7"
         let topPlacesParameters = "method=flickr.places.getTopPlacesList&place_type_id=\(localityPlaceType)"
         sendRequest(topPlacesParameters) {
-            jsonObject in self.adapter.updateWithJSONObject(jsonObject)
+            jsonObject in self.adapter.updateTopPlacesWithJSONObject(jsonObject)
         }
     }
+
+    func fetchPhotosFromPlace(placeId: String) {
+        let photoLimit = 50
+        let photosParameters = "method=flickr.photos.search&place_id=\(placeId)&per_page=\(photoLimit)&extras=original_format,tags,description,geo,date_upload,owner_name,place_url"
+        sendRequest(photosParameters) {
+            jsonObject in self.adapter.updatePhotosFromPlace(placeId, json: jsonObject)
+        }
+    }
+
 
     private func sendRequest(parameters: String, callback: (jsonObject: NSDictionary) -> ()) {
         let urlString = RESTEndpoint + "?" + parameters + "&" + standardParameters

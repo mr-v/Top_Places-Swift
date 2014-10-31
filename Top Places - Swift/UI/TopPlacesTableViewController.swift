@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopPlacesTableViewController: UITableViewController, FlickrAppPort {
+class TopPlacesTableViewController: UITableViewController, FlickrAppTopPlacesPort {
     var dataSource: FlickrTopPlacesViewModel!
     var flickrService: FlickrService!
 
@@ -24,7 +24,7 @@ class TopPlacesTableViewController: UITableViewController, FlickrAppPort {
         flickrService.fetchTopPlaces()
     }
 
-    func topPlacesUpdated() {
+    func didUpdateTopPlaces() {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }

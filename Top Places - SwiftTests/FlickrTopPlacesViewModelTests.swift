@@ -13,7 +13,7 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
 
     // TODO: - empty
 
-    func test_TopPlacesUpdated_CreatesSectionToNameMapping() {
+    func test_didUpdateTopPlaces_CreatesSectionToNameMapping() {
         let (app, viewModel) = makeViewModel()
 
         app.topPlaces = makeTestTopPlaces()
@@ -56,7 +56,7 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
     private func makeViewModel() -> (FlickrApp, FlickrTopPlacesViewModel) {
         let app = FlickrApp()
         let viewModel = FlickrTopPlacesViewModel(app: app)
-        app.ports.append(viewModel)
+        app.topPlacesPorts.append(viewModel)
         return (app, viewModel)
     }
 

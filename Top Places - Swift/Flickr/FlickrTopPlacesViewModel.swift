@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppPort {
+class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPlacesPort {
     let reuseId = "PlaceCell"
     let app: FlickrApp
     var sectionToName: [String]!
@@ -17,7 +17,7 @@ class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppPort {
         self.app = app
     }
 
-    func topPlacesUpdated() {
+    func didUpdateTopPlaces() {
         updateSectionToName()
     }
 
