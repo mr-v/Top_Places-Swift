@@ -41,7 +41,6 @@ class FlickrService {
         }
     }
 
-
     private func sendRequest(parameters: String, callback: (jsonObject: NSDictionary) -> ()) {
         let urlString = RESTEndpoint + "?" + parameters + "&" + standardParameters
         let url = NSURL(string: urlString)!
@@ -64,7 +63,9 @@ class FlickrService {
 
                 switch httpResponse.statusCode {
                 case 200, 304:
-                    callback(jsonObject: jsonObject)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        callback(jsonObject: jsonObject)
+                    }
                 default:
                     fatalError("")  // TODO: - crash for development purposes, later switch to logging error
                 }
