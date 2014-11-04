@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct FlickrPlace {
+struct FlickrPlace: Equatable {
     let name: String
     let description: String
+    let placeId: String
+}
+
+func ==(lhs: FlickrPlace, rhs: FlickrPlace) -> Bool{
+    return lhs.name == rhs.name && lhs.description == lhs.description
 }
 
 struct FlickrPhoto {
@@ -36,21 +41,19 @@ class FlickrApp {
     }
     private(set) var photos: [String: [FlickrPhoto]]
     var topPlacesPorts: [FlickrAppTopPlacesPort]
-    var photosPorts: [String: [FlickrAppPlacePhotosPort]]
+    var photosPorts: [FlickrAppPlacePhotosPort]
 
     init() {
         topPlaces = [String: [FlickrPlace]]()
         photos = [String: [FlickrPhoto]]()
         topPlacesPorts = []
-        photosPorts = [String: [FlickrAppPlacePhotosPort]]()
+        photosPorts = [FlickrAppPlacePhotosPort]()
     }
 
     func setPhotosForPlace(placeId: String, photos: [FlickrPhoto]) {
         self.photos[placeId] = photos
-        if let photoPorts = photosPorts[placeId] {
-            for port in photoPorts {
-                port.didUpdatePhotosForPlace(placeId)
-            }
+        for port in photosPorts {
+            port.didUpdatePhotosForPlace(placeId)
         }
     }
 }

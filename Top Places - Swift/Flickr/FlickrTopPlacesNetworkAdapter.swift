@@ -29,8 +29,9 @@ class FlickrAppNetworkAdapter {
             let country = components.removeLast()
             let placeName = components.removeAtIndex(0)
             let description = ", ".join(components)
+            let placeId = place["place_id"] as String
             var placesInCountry: [FlickrPlace] = result[country] ?? [FlickrPlace]()
-            placesInCountry.append(FlickrPlace(name: placeName, description: description))
+            placesInCountry.append(FlickrPlace(name: placeName, description: description, placeId: placeId))
             result[country] = placesInCountry
         }
         app.topPlaces = result

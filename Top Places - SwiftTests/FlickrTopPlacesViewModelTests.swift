@@ -51,6 +51,15 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
         XCTAssertEqual("United Kingdom", result)
     }
 
+    func test_PlaceForIndexPath_ReturnsPlace() {
+        let (app, viewModel) = makeViewModel()
+
+        app.topPlaces = makeTestTopPlaces()
+
+        let result = viewModel.placeForIndexPath(NSIndexPath(forRow: 1, inSection: 2))
+        XCTAssertEqual(FlickrPlace(name: "York", description: "England", placeId: "2"), result)
+    }
+
     // MARK: -
 
     private func makeViewModel() -> (FlickrApp, FlickrTopPlacesViewModel) {
@@ -61,8 +70,8 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
     }
 
     private func makeTestTopPlaces() -> Dictionary<String, [FlickrPlace]> {
-        return ["United Kingdom": [FlickrPlace(name: "London", description: "England"), FlickrPlace(name: "York", description: "England")],
-            "Brazil": [FlickrPlace(name: "Rio de Janeiro", description: "Rio de Janeiro")],
-                "Canada": [FlickrPlace(name: "Toronto", description: "Ontario")]]
+        return ["United Kingdom": [FlickrPlace(name: "London", description: "England", placeId: "1"), FlickrPlace(name: "York", description: "England", placeId: "2")],
+            "Brazil": [FlickrPlace(name: "Rio de Janeiro", description: "Rio de Janeiro", placeId: "#")],
+            "Canada": [FlickrPlace(name: "Toronto", description: "Ontario", placeId: "4")]]
     }
 }

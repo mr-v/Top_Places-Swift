@@ -29,13 +29,17 @@ class TopPlacesTableViewController: UITableViewController, FlickrAppTopPlacesPor
         refreshControl?.endRefreshing()
     }
 
-    /*
+    // MARK: - Table View delegate
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowPlacePhotoList", sender: self)
+    }
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let photosViewController = segue.destinationViewController as? PhotosViewController {
+            photosViewController.place = dataSource.placeForIndexPath(tableView.indexPathForSelectedRow()!)
+        }
     }
-    */
 }

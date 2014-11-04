@@ -49,9 +49,17 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
         XCTAssertEqual("England", result.description)
     }
 
+    func test_UpdateTopPlacesWithJSONObject_ExtractsPlaceId() {
+        let (app, adapter) = makeNetworkAdapter()
+
+        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
+
+        let result = app.topPlaces["United Kingdom"]![0]
+        XCTAssertEqual(placeId, result.placeId)
+    }
+
     // MARK: - photos
 
-    let placeId = "hP_s5s9VVr5Qcg"
 
     func test_UpdatePhotosFromPlace_UpdatesPhotos() {
         let (app, adapter) = makeNetworkAdapter()
@@ -89,8 +97,9 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
         XCTAssertEqual("Unknown", photo.title)
     }
 
+    // MARK: - test utilities
 
-    // MARK: - factory methods
+    let placeId = "hP_s5s9VVr5Qcg"
 
     func makeNetworkAdapter() -> (FlickrApp, FlickrAppNetworkAdapter) {
         let app = FlickrApp()
