@@ -24,8 +24,11 @@ class FlickrImageService {
 
         let request = NSURLRequest(URL: url)
         currentTask = imageSession.dataTaskWithRequest(request) {
-            data, urlResponse, error in
+            [weak self] data, urlResponse, error in
             if error != nil {
+                if error.code == NSURLErrorCancelled {
+                    return
+                }
                 fatalError("")  // TODO: add error handling
             }
 
@@ -41,6 +44,7 @@ class FlickrImageService {
                     fatalError("")
                 }
             }
+            self?.currentTask = nil
         }
         currentTask!.resume()
     }
