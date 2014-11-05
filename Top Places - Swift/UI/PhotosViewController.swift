@@ -36,6 +36,12 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     // TODO: handle errror case... - refreshControl, text?
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        performSegueWithIdentifier("ShowImage", sender: self)
+        performSegueWithIdentifier("ShowImage", sender: self)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let imageViewController = segue.destinationViewController as? ImageViewController {
+            imageViewController.photo = dataSource.photoForIndexPath(tableView.indexPathForSelectedRow()!)
+        }
     }
 }

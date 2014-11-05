@@ -54,6 +54,45 @@
             </objects>
             <point key="canvasLocation" x="26" y="-421"/>
         </scene>
+        <!--Image View Controller-->
+        <scene sceneID="LsJ-rp-jKd">
+            <objects>
+                <viewController storyboardIdentifier="Image" id="lBA-Vd-Gq6" customClass="ImageViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cvw-PQ-feB"/>
+                        <viewControllerLayoutGuide type="bottom" id="4rA-Hz-koQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bp9-vF-fUI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="j3I-vq-NU4">
+                                <rect key="frame" x="281" y="281" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPl-fX-sgt" customClass="ImageScrollView" customModule="Top_Places___Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LPl-fX-sgt" firstAttribute="top" secondItem="bp9-vF-fUI" secondAttribute="top" id="ORV-Dw-hhB"/>
+                            <constraint firstItem="j3I-vq-NU4" firstAttribute="centerY" secondItem="bp9-vF-fUI" secondAttribute="centerY" id="WQZ-8U-iUL"/>
+                            <constraint firstAttribute="trailing" secondItem="LPl-fX-sgt" secondAttribute="trailing" id="ZnU-Mk-hbg"/>
+                            <constraint firstItem="LPl-fX-sgt" firstAttribute="leading" secondItem="bp9-vF-fUI" secondAttribute="leading" id="fvt-29-j9W"/>
+                            <constraint firstItem="LPl-fX-sgt" firstAttribute="bottom" secondItem="4rA-Hz-koQ" secondAttribute="top" id="g7C-Jt-olH"/>
+                            <constraint firstAttribute="centerX" secondItem="j3I-vq-NU4" secondAttribute="centerX" id="q5B-FN-nNy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="j3I-vq-NU4" id="H1i-3u-p6O"/>
+                        <outlet property="scrollView" destination="LPl-fX-sgt" id="TOy-n8-7ex"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt1-wh-Cks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1410" y="-426"/>
+        </scene>
         <!--Photos View Controller-->
         <scene sceneID="n3y-84-bV2">
             <objects>
@@ -96,6 +135,9 @@
                             <action selector="fetchPhotosFromPlace" destination="qux-5D-sQJ" eventType="valueChanged" id="4xh-Uh-XPv"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <segue destination="lBA-Vd-Gq6" kind="show" identifier="ShowImage" id="4wT-eE-EI6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnU-IT-rMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

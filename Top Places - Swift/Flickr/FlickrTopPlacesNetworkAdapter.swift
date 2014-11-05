@@ -52,9 +52,16 @@ class FlickrAppNetworkAdapter {
             default:
                 false
             }
-            result.append(FlickrPhoto(title: title, description: description))
+            let photoId = photo["id"] as String
+            result.append(FlickrPhoto(title: title, description: description, photoId: photoId))
         }
         app.setPhotosForPlace(placeId, photos: result)
+    }
+
+    func updatePickedPhotoURL(json: NSDictionary) {
+        let sizes = json.valueForKeyPath("sizes.size") as [NSDictionary]
+        let biggestURLString = sizes.last!["source"] as String
+        app.updatePickedPhotoURL(NSURL(string: biggestURLString)!)
     }
 }
 

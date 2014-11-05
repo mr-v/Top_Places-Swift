@@ -12,6 +12,7 @@ class AppBuilder: UIStoryboardInjector {
 
     let app: FlickrApp
     let service: FlickrService
+    let imageService: FlickrImageService
     let topPlacesViewModel: FlickrTopPlacesViewModel
 
     override init() {
@@ -19,6 +20,7 @@ class AppBuilder: UIStoryboardInjector {
         topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
         app.topPlacesPorts.append(topPlacesViewModel)
         service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
+        imageService = FlickrImageService()
         super.init()
         setupViewControllerDependencies()
     }
@@ -36,6 +38,13 @@ class AppBuilder: UIStoryboardInjector {
             vc.dataSource = FlickrPhotosViewModel(app: self.app)
             vc.flickrService = self.service
             self.app.photosPorts.append(vc)
+        }
+
+        controllerDependencies["Image"] =  { [unowned self] in
+            let vc = $0 as ImageViewController
+            vc.flickrService = self.service
+            vc.imageService = self.imageService
+            self.app.pickedPhotoURLPort = vc
         }
     }
 }

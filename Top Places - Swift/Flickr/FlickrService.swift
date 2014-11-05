@@ -9,6 +9,8 @@
 /*
     for Flickr error codes see:
         https://www.flickr.com/services/api/flickr.places.getTopPlacesList.html
+        https://www.flickr.com/services/api/flickr.photos.search.html
+        https://www.flickr.com/services/api/flickr.photos.getSizes.html
 */
 
 import Foundation
@@ -41,7 +43,16 @@ class FlickrService {
         }
     }
 
-    private func sendRequest(parameters: String, callback: (jsonObject: NSDictionary) -> ()) {
+    func fetchSizesForPhotoId(photoId: String) {
+        let getSizesParameters = "method=flickr.photos.getSizes&photo_id=\(photoId)"
+        sendRequest(getSizesParameters) {
+            jsonObject in
+            self.adapter.updatePickedPhotoURL(jsonObject)
+        }
+    }
+
+
+    func sendRequest(parameters: String, callback: (jsonObject: NSDictionary) -> ()) {
         let urlString = RESTEndpoint + "?" + parameters + "&" + standardParameters
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
@@ -66,6 +77,7 @@ class FlickrService {
                     dispatch_async(dispatch_get_main_queue()) {
                         callback(jsonObject: jsonObject)
                     }
+                    // TODO handle 400, 500 errors
                 default:
                     fatalError("")  // TODO: - crash for development purposes, later switch to logging error
                 }

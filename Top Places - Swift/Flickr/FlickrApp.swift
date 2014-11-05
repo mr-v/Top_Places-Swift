@@ -18,9 +18,14 @@ func ==(lhs: FlickrPlace, rhs: FlickrPlace) -> Bool{
     return lhs.name == rhs.name && lhs.description == lhs.description
 }
 
-struct FlickrPhoto {
+struct FlickrPhoto: Equatable {
     let title: String
     let description: String
+    let photoId: String
+}
+
+func ==(lhs: FlickrPhoto, rhs: FlickrPhoto) -> Bool {
+    return lhs.photoId == rhs.photoId
 }
 
 protocol FlickrAppTopPlacesPort {
@@ -29,6 +34,10 @@ protocol FlickrAppTopPlacesPort {
 
 protocol FlickrAppPlacePhotosPort {
     func didUpdatePhotosForPlace(placeId: String)
+}
+
+protocol FlickrAppPickedPhotoURLPort {
+    func didUpdatePickedPhotoURL(url: NSURL)
 }
 
 class FlickrApp {
@@ -42,6 +51,7 @@ class FlickrApp {
     private(set) var photos: [String: [FlickrPhoto]]
     var topPlacesPorts: [FlickrAppTopPlacesPort]
     var photosPorts: [FlickrAppPlacePhotosPort]
+    var pickedPhotoURLPort: FlickrAppPickedPhotoURLPort?
 
     init() {
         topPlaces = [String: [FlickrPlace]]()
@@ -55,5 +65,9 @@ class FlickrApp {
         for port in photosPorts {
             port.didUpdatePhotosForPlace(placeId)
         }
+    }
+
+    func updatePickedPhotoURL(url: NSURL) {
+        pickedPhotoURLPort?.didUpdatePickedPhotoURL(url)
     }
 }

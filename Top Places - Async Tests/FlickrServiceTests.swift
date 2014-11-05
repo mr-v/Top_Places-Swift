@@ -48,6 +48,24 @@ class FlickrServiceTests: XCTestCase {
         }
     }
 
+    func test_FetchSizesForPhotoId_SuccessfulRequest_ContainsArrayOfSizes() {
+        let expectation = expectationWithDescription("photo sizes fetched")
+        let service = makeFlickrService {
+            jsonObject in
+            expectation.fulfill()
+            let sizes = jsonObject.valueForKeyPath("sizes.size") as? [NSDictionary]
+            XCTAssertNotNil(sizes?)
+        }
+        let placeId = "hP_s5s9VVr5Qcg"
+
+        service.fetchSizesForPhotoId("1418878")
+
+        waitForExpectationsWithTimeout(10) {
+            error in
+            service.urlSession.invalidateAndCancel()
+        }
+    }
+
     // TODO: - test error cases
 
     // MARK: -
@@ -69,6 +87,10 @@ class FlickrServiceTests: XCTestCase {
         }
 
         override func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
+            updateCallback(json)
+        }
+
+        override func updatePickedPhotoURL(json: NSDictionary) {
             updateCallback(json)
         }
     }

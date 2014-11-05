@@ -60,7 +60,6 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
 
     // MARK: - photos
 
-
     func test_UpdatePhotosFromPlace_UpdatesPhotos() {
         let (app, adapter) = makeNetworkAdapter()
         let defaultZeroCount = app.topPlaces.count
@@ -97,6 +96,28 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
         XCTAssertEqual("Unknown", photo.title)
     }
 
+    func test_UpdatePhotosFromPlace_ExtractsPhotoId() {
+        let (app, adapter) = makeNetworkAdapter()
+
+        adapter.updatePhotosFromPlace(placeId, json: stubPhotoSearchJSONObjectWithNoTitleAndNoDescription())
+
+        let photo = app.photos[placeId]!.first!
+        XCTAssertEqual("15487869898", photo.photoId)
+    }
+
+    // MARK: - Sizes
+
+    func test_updatePickedPhotoURL_UpdatesListeningObjectsWithBiggestSizeURL() {
+        let (app, adapter) = makeNetworkAdapter()
+        let urlPort = StubPickedPhotoURL()
+        app.pickedPhotoURLPort = urlPort
+
+        adapter.updatePickedPhotoURL(stubSizesForPhoto())
+
+        XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
+    }
+
+
     // MARK: - test utilities
 
     let placeId = "hP_s5s9VVr5Qcg"
@@ -132,5 +153,25 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
             "photo": [
                 [ "id": "15487869898", "owner": "95012874@N00", "secret": "878261a9b2", "server": "3938", "farm": 4, "title": title, "ispublic": 1, "isfriend": 0, "isfamily": 0,
                     "description": [ "_content": description ]]]]] as NSDictionary
+    }
+
+    func stubSizesForPhoto() -> NSDictionary {
+        return [ "sizes": [ "canblog": 0, "canprint": 0, "candownload": 0,
+            "size": [
+                [ "label": "Square", "width": 75, "height": 75, "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_s.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/sq/", "media": "photo" ],
+                [ "label": "Large Square", "width": "150", "height": "150", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_q.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/q/", "media": "photo" ],
+                [ "label": "Thumbnail", "width": 100, "height": 75, "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_t.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/t/", "media": "photo" ],
+                [ "label": "Small", "width": "240", "height": "180", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/s/", "media": "photo" ],
+                [ "label": "Medium", "width": "500", "height": "375", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/m/", "media": "photo" ],
+                [ "label": "Medium 640", "width": "640", "height": "480", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1", "url": "https://www.flickr.com/photos/bees/1418878/sizes/z/", "media": "photo" ]
+        ] ], "stat": "ok" ]
+    }
+
+    class StubPickedPhotoURL: FlickrAppPickedPhotoURLPort {
+        var url: NSURL!
+
+        func didUpdatePickedPhotoURL(url: NSURL) {
+            self.url = url
+        }
     }
 }

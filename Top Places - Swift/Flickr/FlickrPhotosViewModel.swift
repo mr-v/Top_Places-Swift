@@ -16,6 +16,12 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
         self.app = app
     }
 
+    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+        return app.photos[placeId]![indexPath.row]
+    }
+
+    // MARK: - Data Source
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return app.photos[placeId]?.count ?? 0
     }

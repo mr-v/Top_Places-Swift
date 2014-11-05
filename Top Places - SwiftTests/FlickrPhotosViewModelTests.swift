@@ -22,7 +22,17 @@ class FlickrPhotosViewModelTests: XCTestCase {
         XCTAssertEqual(rowCount, result)
     }
 
-//  MARK: - 
+    func test_PhotoForIndexPath_ReturnsPhoto() {
+        let (app, viewModel) = makeViewModel()
+
+        app.setPhotosForPlace("0", photos: makeTestPhotos())
+
+        let photo = viewModel.photoForIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        XCTAssertEqual(FlickrPhoto(title: "title 0", description: "description 0", photoId: "0"), photo)
+    }
+
+
+//  MARK: -
 
     let rowCount = 5
 
@@ -36,7 +46,7 @@ class FlickrPhotosViewModelTests: XCTestCase {
     private func makeTestPhotos() -> [FlickrPhoto] {
         var list = [FlickrPhoto]()
         for i in 0..<rowCount {
-            list.append(FlickrPhoto(title: "title \(i)", description: "description \(i)"))
+            list.append(FlickrPhoto(title: "title \(i)", description: "description \(i)", photoId: String(i)))
         }
         return list
     }
