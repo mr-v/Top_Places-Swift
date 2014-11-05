@@ -9,7 +9,11 @@
 import UIKit
 
 class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
-    var place: FlickrPlace!
+    var place: FlickrPlace! {
+        didSet {
+            title = place.name
+        }
+    }
     var dataSource: FlickrPhotosViewModel!
     var flickrService: FlickrService!
 
@@ -36,7 +40,16 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     // TODO: handle errror case... - refreshControl, text?
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowImage", sender: self)
         // this way image loading is decoupled from view controller hierarchy changes (embedding in navigation controller, split controller, etc.)
         dataSource.didSelectPhotoAtIndexPath(indexPath)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowImage" {
+            let controller = (segue.destinationViewController as UINavigationController).topViewController
+            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+        }
     }
 }

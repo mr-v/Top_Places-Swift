@@ -117,7 +117,6 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
         XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
     }
 
-
     // MARK: - test utilities
 
     let placeId = "hP_s5s9VVr5Qcg"

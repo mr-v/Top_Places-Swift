@@ -13,14 +13,12 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
         var view = UIImageView()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.addSubview(view)
-
         self.delegate = self
-
         return view
     }()
     override var delegate: UIScrollViewDelegate? {
         set {
-            if newValue !== self {
+            if newValue !== self && newValue != nil {
                 fatalError("can't set a custom delegate for \(NSStringFromClass(ImageScrollView.self))")
             }
             super.delegate = newValue

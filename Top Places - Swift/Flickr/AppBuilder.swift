@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Witold Skibniewski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AppBuilder: UIStoryboardInjector {
 
@@ -14,6 +14,7 @@ class AppBuilder: UIStoryboardInjector {
     let service: FlickrService
     let imageService: FlickrImageService
     let topPlacesViewModel: FlickrTopPlacesViewModel
+    let splitControllerDelegate: FlickrSplitViewControllerDelegate
 
     override init() {
         app = FlickrApp()
@@ -21,6 +22,7 @@ class AppBuilder: UIStoryboardInjector {
         app.topPlacesPorts.append(topPlacesViewModel)
         service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
         imageService = FlickrImageService()
+        splitControllerDelegate = FlickrSplitViewControllerDelegate()
         super.init()
         setupViewControllerDependencies()
     }
@@ -46,6 +48,11 @@ class AppBuilder: UIStoryboardInjector {
             vc.imageService = self.imageService
             self.app.pickedPhotoURLPort = vc
             self.app.currentPhotoPort = vc
+        }
+
+        controllerDependencies["Split"] = { [unowned self] in
+            let vc = $0 as UISplitViewController
+            vc.delegate = self.splitControllerDelegate
         }
     }
 }

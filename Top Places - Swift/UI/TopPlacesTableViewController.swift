@@ -15,6 +15,7 @@ class TopPlacesTableViewController: UITableViewController, FlickrAppTopPlacesPor
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Top Places"
         tableView.dataSource = dataSource
         fetchTopPlaces()
     }
