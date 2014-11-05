@@ -13,6 +13,14 @@ typealias StoryboardIdentifier = String
 
 class UIStoryboardInjector {
     var controllerDependencies = [StoryboardIdentifier: UIViewControllerInjector] ()
+
+    private func injectControllerDependencies(controller: UIViewController, var identifier: String = "") {
+        identifier = controller.restorationIdentifier ?? identifier
+        controllerDependencies[identifier]?(controller)
+        for childController in controller.childViewControllers as [UIViewController] {
+            injectControllerDependencies(childController)
+        }
+    }
 }
 
 private var key = Selector("injector")
@@ -33,7 +41,7 @@ extension UIStoryboard {
 class InjectableStoryboard: UIStoryboard {
     override func instantiateViewControllerWithIdentifier(identifier: String) -> AnyObject! {
         let vc = super.instantiateViewControllerWithIdentifier(identifier) as UIViewController!
-        injector?.controllerDependencies[identifier]?(vc)
+        injector?.injectControllerDependencies(vc, identifier: identifier)
         return vc
     }
 }
