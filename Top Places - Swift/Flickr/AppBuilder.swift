@@ -45,6 +45,7 @@ class AppBuilder: UIStoryboardInjector {
             vc.flickrService = self.service
             vc.imageService = self.imageService
             self.app.pickedPhotoURLPort = vc
+            self.app.currentPhotoPort = vc
         }
     }
 }

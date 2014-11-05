@@ -40,6 +40,10 @@ protocol FlickrAppPickedPhotoURLPort {
     func didUpdatePickedPhotoURL(url: NSURL)
 }
 
+protocol FlickrAppCurrentPhotoPort {
+    var photo: FlickrPhoto! { get set }
+}
+
 class FlickrApp {
     var topPlaces: Dictionary<String, [FlickrPlace]> {
         didSet {
@@ -52,6 +56,7 @@ class FlickrApp {
     var topPlacesPorts: [FlickrAppTopPlacesPort]
     var photosPorts: [FlickrAppPlacePhotosPort]
     var pickedPhotoURLPort: FlickrAppPickedPhotoURLPort?
+    var currentPhotoPort: FlickrAppCurrentPhotoPort?
 
     init() {
         topPlaces = [String: [FlickrPlace]]()

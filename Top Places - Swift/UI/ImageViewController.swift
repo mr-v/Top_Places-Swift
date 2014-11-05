@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, UIScrollViewDelegate {
+class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, FlickrAppCurrentPhotoPort {
     @IBOutlet weak var scrollView: ImageScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var flickrService: FlickrService!

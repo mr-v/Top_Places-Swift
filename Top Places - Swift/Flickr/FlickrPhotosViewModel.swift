@@ -16,7 +16,12 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
         self.app = app
     }
 
-    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+    func didSelectPhotoAtIndexPath(indexPath: NSIndexPath) {
+        let photo = photoForIndexPath(indexPath)
+        app.currentPhotoPort?.photo = photo
+    }
+
+    private func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
         return app.photos[placeId]![indexPath.row]
     }
 
