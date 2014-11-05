@@ -33,6 +33,8 @@ class AppBuilder: UIStoryboardInjector {
             vc.dataSource = self.topPlacesViewModel
             vc.flickrService = self.service
             self.app.topPlacesPorts.append(vc)
+
+            vc.splitViewController?.preferredDisplayMode = .AllVisible
         }
 
         controllerDependencies["Photos"] =  { [unowned self] in
