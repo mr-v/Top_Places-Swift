@@ -33,18 +33,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
         super.layoutSubviews()
 
         // center image
-        var contentsFrame = imageView.frame
-        var origin = CGPointZero
-
-        if (contentsFrame.width < bounds.width) {
-            origin.x = round((bounds.width - contentsFrame.width)/2)
-        }
-
-        if (contentsFrame.height < bounds.height) {
-            origin.y = round((bounds.height - contentsFrame.height)/2)
-        }
-
-        imageView.frame.origin = origin;
+        centerImageForSize(bounds.size)
     }
 
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView {
@@ -63,4 +52,20 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
     func scrollViewDidZoom(scrollView: UIScrollView) {
         layoutSubviews()
     }
+
+    func centerImageForSize(size: CGSize) {
+        var contentsFrame = imageView.frame
+        var origin = CGPointZero
+
+        if (contentsFrame.width < size.width) {
+            origin.x = round((size.width - contentsFrame.width)/2)
+        }
+
+        if (contentsFrame.height < size.height) {
+            origin.y = round((size.height - contentsFrame.height)/2)
+        }
+
+        imageView.frame.origin = origin;
+    }
+
 }
