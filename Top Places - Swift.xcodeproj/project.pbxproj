@@ -39,6 +39,13 @@
 		EAD807B81A02DDB400D82A3C /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
 		EAD807B91A02DDFC00D82A3C /* FlickrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78337C1A02534D00028F5F /* FlickrApp.swift */; };
 		EAD807BB1A03A7DC00D82A3C /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */; };
+		EAD9BFE01A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9BFDF1A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift */; };
+		EAD9BFE11A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9BFDF1A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift */; };
+		EAD9BFE31A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9BFE21A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift */; };
+		EAF743781A0BA755005F7452 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF743771A0BA755005F7452 /* HistoryTableViewController.swift */; };
+		EAF7437A1A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF743791A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift */; };
+		EAF7437C1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF7437B1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift */; };
+		EAF7437D1A0BB28D005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF743791A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +98,11 @@
 		EAD807B41A02DD1300D82A3C /* Top Places - Async Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places - Async Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EAD807B51A02DD1300D82A3C /* FlickrServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrServiceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppBuilder.swift; path = Flickr/AppBuilder.swift; sourceTree = "<group>"; };
+		EAD9BFDF1A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrSelectedPhotosHistory.swift; path = Flickr/FlickrSelectedPhotosHistory.swift; sourceTree = "<group>"; };
+		EAD9BFE21A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSelectedPhotosHistoryTests.swift; sourceTree = "<group>"; };
+		EAF743771A0BA755005F7452 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = UI/HistoryTableViewController.swift; sourceTree = "<group>"; };
+		EAF743791A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrSelectedPhotosHistoryViewModel.swift; path = Flickr/FlickrSelectedPhotosHistoryViewModel.swift; sourceTree = "<group>"; };
+		EAF7437B1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSelectedPhotosHistoryViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +153,11 @@
 		EA5E68651A0223270004CCEC /* Top Places - Swift */ = {
 			isa = PBXGroup;
 			children = (
-				EA7833751A022B6700028F5F /* Flickr */,
-				EA5E688A1A0226D50004CCEC /* UI */,
-				EA5E68681A0223280004CCEC /* AppDelegate.swift */,
 				EAD807BA1A03A7DC00D82A3C /* AppBuilder.swift */,
+				EA5E68681A0223280004CCEC /* AppDelegate.swift */,
+				EA7833751A022B6700028F5F /* Flickr */,
 				EA5E68661A0223270004CCEC /* Supporting Files */,
+				EA5E688A1A0226D50004CCEC /* UI */,
 			);
 			path = "Top Places - Swift";
 			sourceTree = "<group>";
@@ -167,6 +179,8 @@
 				EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */,
 				EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */,
 				EA7F0DC81A091FF900613D80 /* FlickrPhotosViewModelTests.swift */,
+				EAD9BFE21A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift */,
+				EAF7437B1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift */,
 			);
 			name = "Top Places - Unit Tests";
 			path = "Top Places - SwiftTests";
@@ -184,16 +198,17 @@
 		EA5E688A1A0226D50004CCEC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EAD5DA6C1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift */,
 				EA5E686F1A0223280004CCEC /* Images.xcassets */,
+				EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */,
+				EA7F0DCB1A09428600613D80 /* ImageViewController.swift */,
 				EA5E68711A0223280004CCEC /* LaunchScreen.xib */,
 				EA5E686C1A0223280004CCEC /* Main.storyboard */,
+				EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */,
+				EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */,
 				EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */,
 				EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */,
-				EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */,
-				EA7F0DCB1A09428600613D80 /* ImageViewController.swift */,
-				EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */,
-				EAD5DA6C1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift */,
-				EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */,
+				EAF743771A0BA755005F7452 /* HistoryTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -207,6 +222,8 @@
 				EAD8078E1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift */,
 				EA7F0DC51A091F8300613D80 /* FlickrPhotosViewModel.swift */,
 				EA3904D11A095C940052BE40 /* FlickrImageService.swift */,
+				EAD9BFDF1A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift */,
+				EAF743791A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift */,
 			);
 			name = Flickr;
 			sourceTree = "<group>";
@@ -362,6 +379,7 @@
 			files = (
 				EA5E68891A0226C90004CCEC /* TopPlacesTableViewController.swift in Sources */,
 				EAD5DA3B1A0975C5007D3718 /* ImageScrollView.swift in Sources */,
+				EAF7437A1A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift in Sources */,
 				EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */,
 				EAD5DA6D1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift in Sources */,
 				EA7F0DBE1A03FCC100613D80 /* UIStoryboardExtension.swift in Sources */,
@@ -373,6 +391,8 @@
 				EA5E68691A0223280004CCEC /* AppDelegate.swift in Sources */,
 				EA78337D1A02534D00028F5F /* FlickrApp.swift in Sources */,
 				EAD5DA6F1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift in Sources */,
+				EAF743781A0BA755005F7452 /* HistoryTableViewController.swift in Sources */,
+				EAD9BFE01A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift in Sources */,
 				EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */,
 				EA7F0DC31A091CFC00613D80 /* PhotosViewController.swift in Sources */,
 			);
@@ -382,14 +402,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF7437C1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift in Sources */,
 				EAD807911A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift in Sources */,
 				EA7833781A02368400028F5F /* FlickrService.swift in Sources */,
 				EA7F0DC91A091FFA00613D80 /* FlickrPhotosViewModelTests.swift in Sources */,
+				EAD9BFE11A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift in Sources */,
 				EA7F0DC71A091F8300613D80 /* FlickrPhotosViewModel.swift in Sources */,
 				EA7833861A02B30E00028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */,
 				EAD807921A02C7AA00D82A3C /* FlickrTopPlacesViewModel.swift in Sources */,
+				EAD9BFE31A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift in Sources */,
 				EAD8078D1A02C06C00D82A3C /* FlickrAppTests.swift in Sources */,
 				EA78337E1A02535F00028F5F /* FlickrApp.swift in Sources */,
+				EAF7437D1A0BB28D005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift in Sources */,
 				EA7833811A025B9D00028F5F /* FlickrAppNetworkAdapterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

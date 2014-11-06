@@ -25,7 +25,7 @@ class FlickrPhotosViewModelTests: XCTestCase {
     func test_DidSelectPhotoAtIndexPath_UpdatesCurrentPhotoPort() {
         let (app, viewModel) = makeViewModel()
         let port = StubCurrentPhotoPort()
-        app.currentPhotoPort = port
+        app.currentPhotoPorts.append(port)
 
         app.setPhotosForPlace("0", photos: makeTestPhotos())
         viewModel.didSelectPhotoAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
@@ -55,5 +55,8 @@ class FlickrPhotosViewModelTests: XCTestCase {
 
     class StubCurrentPhotoPort : FlickrAppCurrentPhotoPort {
         var photo: FlickrPhoto!
+        func currentPhotoUpdated(photo: FlickrPhoto) {
+            self.photo = photo
+        }
     }
 }

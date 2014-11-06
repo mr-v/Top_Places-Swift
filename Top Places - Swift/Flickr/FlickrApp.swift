@@ -40,29 +40,40 @@ protocol FlickrAppPickedPhotoURLPort {
     func didUpdatePickedPhotoURL(url: NSURL)
 }
 
-protocol FlickrAppCurrentPhotoPort {
-    var photo: FlickrPhoto! { get set }
+protocol FlickrAppCurrentPhotoPort: class {          // class-only protocol - makes possible to compare objects
+    func currentPhotoUpdated(photo: FlickrPhoto)
+}
+
+
+// https://devforums.apple.com/message/981483#981483
+struct WeakContainer<T where T: FlickrAppCurrentPhotoPort> {
+    weak var _value : T?
+
+    init (value: T) {
+        _value = value
+    }
+
+    func get() -> T? {
+        return _value
+    }
 }
 
 class FlickrApp {
-    var topPlaces: Dictionary<String, [FlickrPlace]> {
+    var topPlaces: [String: [FlickrPlace]] {
         didSet {
             for port in topPlacesPorts {
                 port.didUpdateTopPlaces()
             }
         }
     }
-    private(set) var photos: [String: [FlickrPhoto]]
-    var topPlacesPorts: [FlickrAppTopPlacesPort]
-    var photosPorts: [FlickrAppPlacePhotosPort]
+    var photos = [String: [FlickrPhoto]]()
+    var topPlacesPorts = [FlickrAppTopPlacesPort]()
+    var photosPorts = [FlickrAppPlacePhotosPort]()
     var pickedPhotoURLPort: FlickrAppPickedPhotoURLPort?
-    var currentPhotoPort: FlickrAppCurrentPhotoPort?
+    var currentPhotoPorts = [FlickrAppCurrentPhotoPort]()
 
     init() {
         topPlaces = [String: [FlickrPlace]]()
-        photos = [String: [FlickrPhoto]]()
-        topPlacesPorts = []
-        photosPorts = [FlickrAppPlacePhotosPort]()
     }
 
     func setPhotosForPlace(placeId: String, photos: [FlickrPhoto]) {
@@ -74,5 +85,11 @@ class FlickrApp {
 
     func updatePickedPhotoURL(url: NSURL) {
         pickedPhotoURLPort?.didUpdatePickedPhotoURL(url)
+    }
+
+    func updateCurrentPhoto(photo: FlickrPhoto) {
+        for port in currentPhotoPorts {
+            port.currentPhotoUpdated(photo)
+        }
     }
 }

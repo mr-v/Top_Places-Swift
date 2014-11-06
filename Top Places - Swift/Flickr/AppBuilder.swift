@@ -8,6 +8,8 @@
 
 import UIKit
 
+// wires up application's object graph
+
 class AppBuilder: UIStoryboardInjector {
 
     let app: FlickrApp
@@ -15,14 +17,17 @@ class AppBuilder: UIStoryboardInjector {
     let imageService: FlickrImageService
     let topPlacesViewModel: FlickrTopPlacesViewModel
     let splitControllerDelegate: FlickrSplitViewControllerDelegate
+    let history: FlickrSelectedPhotosHistory
 
     override init() {
         app = FlickrApp()
-        topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
-        app.topPlacesPorts.append(topPlacesViewModel)
         service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
         imageService = FlickrImageService()
         splitControllerDelegate = FlickrSplitViewControllerDelegate()
+        topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
+        app.topPlacesPorts.append(topPlacesViewModel)
+        history = FlickrSelectedPhotosHistory(store: FlickrSelectedPhotosHistoryStore())
+        app.currentPhotoPorts.append(history)
         super.init()
         setupViewControllerDependencies()
     }
@@ -44,17 +49,27 @@ class AppBuilder: UIStoryboardInjector {
             self.app.photosPorts.append(vc)
         }
 
-        controllerDependencies["Image"] =  { [unowned self] in
+        let imageSetup: UIViewControllerInjector = { [unowned self] in
             let vc = $0 as ImageViewController
             vc.flickrService = self.service
             vc.imageService = self.imageService
             self.app.pickedPhotoURLPort = vc
-            self.app.currentPhotoPort = vc
+            self.app.currentPhotoPorts.append(vc)
         }
 
-        controllerDependencies["Split"] = { [unowned self] in
+        controllerDependencies["Image"] =  imageSetup
+        controllerDependencies["ImageHistory"] =  imageSetup
+
+        let splitSetup: UIViewControllerInjector = { [unowned self] in
             let vc = $0 as UISplitViewController
             vc.delegate = self.splitControllerDelegate
+        }
+        controllerDependencies["Split"] = splitSetup
+        controllerDependencies["SplitHistory"] = splitSetup
+
+        controllerDependencies["History"] = { [unowned self] in
+            let vc = $0 as HistoryTableViewController
+            vc.dataSource = FlickrSelectedPhotosHistoryViewModel(app: self.app, history: self.history)
         }
     }
 }

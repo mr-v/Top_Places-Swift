@@ -18,13 +18,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9b-Tm-zfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="-1304"/>
+            <point key="canvasLocation" x="-312" y="-2596"/>
         </scene>
-        <!--Item-->
+        <!--Photos-->
         <scene sceneID="yCg-Oj-2dq">
             <objects>
                 <splitViewController storyboardIdentifier="Split" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbi-1w-9u2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RRI-q1-VVG"/>
+                    <tabBarItem key="tabBarItem" title="Photos" id="RRI-q1-VVG"/>
                     <connections>
                         <segue destination="wxQ-Cm-4Vy" kind="relationship" relationship="masterViewController" id="qwn-el-GLp"/>
                         <segue destination="zHQ-dR-SiP" kind="relationship" relationship="detailViewController" id="dqu-Qu-jNl"/>
@@ -32,7 +32,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgl-Lc-rsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1034" y="-1304"/>
+            <point key="canvasLocation" x="-1076" y="-2596"/>
         </scene>
         <!--Top Places Table View Controller-->
         <scene sceneID="sTg-fX-24w">
@@ -83,12 +83,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ig2-h0-EnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="456" y="-1304"/>
+            <point key="canvasLocation" x="414" y="-2596"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="LsJ-rp-jKd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt1-wh-Cks" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Image" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lBA-Vd-Gq6" customClass="ImageViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cvw-PQ-feB"/>
@@ -109,7 +108,7 @@
                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPl-fX-sgt" customClass="ImageScrollView" customModule="Top_Places___Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,8 +130,9 @@
                         <outlet property="scrollView" destination="LPl-fX-sgt" id="TOy-n8-7ex"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt1-wh-Cks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="-562"/>
+            <point key="canvasLocation" x="-2" y="-1854"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="n3y-84-bV2">
@@ -182,7 +182,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnU-IT-rMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150" y="-1304"/>
+            <point key="canvasLocation" x="1108" y="-2596"/>
         </scene>
         <!--Regular Landscape Tab Bar View Controller-->
         <scene sceneID="Uqg-ii-4aT">
@@ -196,6 +196,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Gbi-1w-9u2" kind="relationship" relationship="viewControllers" id="YTD-ak-Cn5"/>
+                        <segue destination="3fA-un-PjZ" kind="relationship" relationship="viewControllers" id="eXX-VA-rhR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb3-Tk-bFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,7 +206,6 @@
         <!--Navigation Controller-->
         <scene sceneID="oAw-s8-RcA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ljd-vp-NkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zHQ-dR-SiP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vj0-EB-Tgr">
@@ -217,11 +217,155 @@
                         <segue destination="lBA-Vd-Gq6" kind="relationship" relationship="rootViewController" id="jdX-Y7-mtu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljd-vp-NkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-664" y="-562"/>
+            <point key="canvasLocation" x="-706" y="-1854"/>
+        </scene>
+        <!--Recent Picks-->
+        <scene sceneID="pCk-9K-Qfl">
+            <objects>
+                <splitViewController storyboardIdentifier="SplitHistory" title="Recent Picks" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3fA-un-PjZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" id="75l-Qo-G6a"/>
+                    <connections>
+                        <segue destination="Shq-Jj-hRI" kind="relationship" relationship="detailViewController" id="pZy-c4-qjK"/>
+                        <segue destination="rJf-Jg-89Z" kind="relationship" relationship="masterViewController" id="DEa-Vf-3Sv"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="37X-kR-vrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1076" y="-778"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F5K-tu-O75">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Shq-Jj-hRI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0yC-vF-bjG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KAU-NF-LI1" kind="relationship" relationship="rootViewController" id="TLJ-5m-EQP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWA-oE-XIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-536" y="-30"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="nSm-oS-Rq1">
+            <objects>
+                <viewController storyboardIdentifier="ImageHistory" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KAU-NF-LI1" customClass="ImageViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GlE-Lf-8fn"/>
+                        <viewControllerLayoutGuide type="bottom" id="V1v-k8-L43"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KXZ-XN-Zgz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Photo Selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igp-fu-PQO">
+                                <rect key="frame" x="227" y="290" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8Wt-eT-SXu">
+                                <rect key="frame" x="281" y="281" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVB-aI-nki" customClass="ImageScrollView" customModule="Top_Places___Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aVB-aI-nki" secondAttribute="trailing" id="BJV-aY-cNV"/>
+                            <constraint firstItem="aVB-aI-nki" firstAttribute="top" secondItem="KXZ-XN-Zgz" secondAttribute="top" id="HMX-dt-DPq"/>
+                            <constraint firstAttribute="centerX" secondItem="8Wt-eT-SXu" secondAttribute="centerX" id="HRz-AA-x0a"/>
+                            <constraint firstItem="aVB-aI-nki" firstAttribute="bottom" secondItem="V1v-k8-L43" secondAttribute="top" id="R91-BL-d1O"/>
+                            <constraint firstItem="8Wt-eT-SXu" firstAttribute="centerY" secondItem="KXZ-XN-Zgz" secondAttribute="centerY" id="SuB-bW-AaV"/>
+                            <constraint firstAttribute="centerX" secondItem="Igp-fu-PQO" secondAttribute="centerX" id="dPr-u3-mnW"/>
+                            <constraint firstItem="aVB-aI-nki" firstAttribute="leading" secondItem="KXZ-XN-Zgz" secondAttribute="leading" id="fPN-1k-GeV"/>
+                            <constraint firstAttribute="centerY" secondItem="Igp-fu-PQO" secondAttribute="centerY" id="h23-oS-hxe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fyA-28-Uzf"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="8Wt-eT-SXu" id="4hC-KW-Ttx"/>
+                        <outlet property="noSelectionLabel" destination="Igp-fu-PQO" id="bQa-Mh-LoP"/>
+                        <outlet property="scrollView" destination="aVB-aI-nki" id="hPq-T2-APE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WH3-Je-7cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176" y="-30"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MDS-gR-eN5">
+            <objects>
+                <navigationController id="rJf-Jg-89Z" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NgE-Di-5fx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="byX-1o-cs3" kind="relationship" relationship="rootViewController" id="G0v-CI-ijm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EhL-FO-89w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-392" y="-778"/>
+        </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="QKH-SH-jUf">
+            <objects>
+                <tableViewController storyboardIdentifier="History" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byX-1o-cs3" customClass="HistoryTableViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Rvh-IN-0O1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" textLabel="SpH-y3-aVF" detailTextLabel="LBn-nN-lRJ" style="IBUITableViewCellStyleSubtitle" id="nvg-Tv-Ffn">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HistoryCell" tableViewCell="nvg-Tv-Ffn" id="BeL-we-Axy">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SpH-y3-aVF">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LBn-nN-lRJ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="byX-1o-cs3" id="lt2-s6-HcZ"/>
+                            <outlet property="delegate" destination="byX-1o-cs3" id="6Iu-Z0-kIC"/>
+                        </connections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="BjJ-aq-in7"/>
+                    <connections>
+                        <segue destination="Shq-Jj-hRI" kind="showDetail" identifier="ShowImage" id="m0C-jA-Tph"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0St-a2-bG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="-778"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="dqu-Qu-jNl"/>
+        <segue reference="m0C-jA-Tph"/>
     </inferredMetricsTieBreakers>
 </document>

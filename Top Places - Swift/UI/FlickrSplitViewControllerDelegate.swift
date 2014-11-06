@@ -13,8 +13,3 @@ class FlickrSplitViewControllerDelegate : UISplitViewControllerDelegate {
         return true
     }
 }
-    // landscape not collapsed
-//    func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController!) -> UIViewController? {
-//        return
-//    }
-//}

@@ -14,21 +14,39 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
     @IBOutlet weak var noSelectionLabel: UILabel!
 
     var flickrService: FlickrService!
-    var photo: FlickrPhoto! {
-        didSet {
-            title = photo.title
-            scrollView?.imageView.image = nil
-            flickrService.fetchSizesForPhotoId(photo.photoId)
-            activityIndicator?.startAnimating()
-        }
-    }
+    private var photo: FlickrPhoto?
     var imageService: FlickrImageService!
+    var primaryImageController = true
 
     override func viewDidLoad() {
-        let hasPhotoToLoad = photo? != nil
-        noSelectionLabel.hidden = hasPhotoToLoad
-        let isLoadingPhoto = hasPhotoToLoad && scrollView.imageView.image == nil
+        let hasSelectedPhoto = photo? != nil
+        noSelectionLabel.hidden = hasSelectedPhoto
+        let isLoadingPhoto = hasSelectedPhoto && scrollView.imageView.image == nil
         isLoadingPhoto ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        primaryImageController = true
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        primaryImageController = false
+    }
+
+    func currentPhotoUpdated(photo: FlickrPhoto) {
+        if !primaryImageController {
+            return
+        }
+
+        self.photo = photo
+        title = photo.title
+        scrollView?.imageView.image = nil
+        flickrService.fetchSizesForPhotoId(photo.photoId)
+        activityIndicator?.startAnimating()
     }
 
     func didUpdatePickedPhotoURL(url: NSURL) {
