@@ -58,9 +58,16 @@ class FlickrAppNetworkAdapter {
         app.setPhotosForPlace(placeId, photos: result)
     }
 
+    //  URL formats: https://www.flickr.com/services/api/misc.urls.html
     func updatePickedPhotoURL(json: NSDictionary) {
         let sizes = json.valueForKeyPath("sizes.size") as [NSDictionary]
-        let biggestURLString = sizes.last!["source"] as String
+        var biggestURLString = sizes.last!["source"] as String
+        let regex = "^.*_o.(jpg|png|gif)$"
+        if let index = biggestURLString.rangeOfString(regex, options: .RegularExpressionSearch) {
+            if sizes.count >= 2 {
+                biggestURLString = sizes[sizes.count - 2]["source"] as String
+            }
+        }
         app.updatePickedPhotoURL(NSURL(string: biggestURLString)!)
     }
 }

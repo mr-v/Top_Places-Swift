@@ -107,12 +107,22 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
 
     // MARK: - Sizes
 
-    func test_updatePickedPhotoURL_UpdatesListeningObjectsWithBiggestSizeURL() {
+    func test_UpdatePickedPhotoURL_UpdatesListeningObjectsWithBiggestSizeURL() {
         let (app, adapter) = makeNetworkAdapter()
         let urlPort = StubPickedPhotoURL()
         app.pickedPhotoURLPort = urlPort
 
         adapter.updatePickedPhotoURL(stubSizesForPhoto())
+
+        XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
+    }
+
+    func test_UpdatePickedPhotoURL_SizesContainsOriginalPhoto_UpdatesListeninObjectsWithPreviousBiggestSizeURL() {
+        let (app, adapter) = makeNetworkAdapter()
+        let urlPort = StubPickedPhotoURL()
+        app.pickedPhotoURLPort = urlPort
+
+        adapter.updatePickedPhotoURL(stubSizesWithOriginalForPhoto())
 
         XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
     }
@@ -164,6 +174,14 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
                 [ "label": "Medium", "width": "500", "height": "375", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/m/", "media": "photo" ],
                 [ "label": "Medium 640", "width": "640", "height": "480", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1", "url": "https://www.flickr.com/photos/bees/1418878/sizes/z/", "media": "photo" ]
         ] ], "stat": "ok" ]
+    }
+
+    func stubSizesWithOriginalForPhoto() -> NSDictionary {
+        var stubJSONObject = stubSizesForPhoto()
+        var sizes = stubJSONObject.valueForKeyPath("sizes.size") as [NSDictionary]
+        let original: NSDictionary = [ "label": "Medium 640", "width": "640", "height": "480", "source": "https://farm1.staticflickr.com/2/1418878_1e92283336_o.jpg", "url": "https://www.flickr.com/photos/bees/1418878/sizes/z/", "media": "photo" ]
+        sizes.append(original)
+        return ["sizes": ["size": sizes]]
     }
 
     class StubPickedPhotoURL: FlickrAppPickedPhotoURLPort {
