@@ -48,15 +48,6 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
         }
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-
-        let duration = coordinator.transitionDuration()
-        UIView.animateWithDuration(duration) {
-            self.scrollView.centerImageForSize(size)
-        }
-    }
-
     deinit {
         navigationController?.hidesBarsOnTap = false
     }
