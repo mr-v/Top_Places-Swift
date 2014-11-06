@@ -70,6 +70,8 @@ class AppBuilder: UIStoryboardInjector {
         controllerDependencies["History"] = { [unowned self] in
             let vc = $0 as HistoryTableViewController
             vc.dataSource = FlickrSelectedPhotosHistoryViewModel(app: self.app, history: self.history)
+
+            vc.splitViewController?.preferredDisplayMode = .AllVisible
         }
     }
 }
