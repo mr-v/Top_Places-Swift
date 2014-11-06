@@ -34,6 +34,7 @@ class HistoryTableViewController: UITableViewController {
         performSegueWithIdentifier("ShowImage", sender: self)
         // this way image loading is decoupled from view controller hierarchy changes (embedding in navigation controller, split controller, etc.)
         dataSource.didSelectPhotoAtIndexPath(indexPath)
+        tableView.reloadData()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

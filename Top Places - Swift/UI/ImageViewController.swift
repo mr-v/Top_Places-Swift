@@ -21,8 +21,7 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
     override func viewDidLoad() {
         let hasSelectedPhoto = photo? != nil
         noSelectionLabel.hidden = hasSelectedPhoto
-        let isLoadingPhoto = hasSelectedPhoto && scrollView.imageView.image == nil
-        isLoadingPhoto ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        isLoadingPhoto() ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -35,6 +34,17 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
         super.viewWillDisappear(animated)
 
         primaryImageController = false
+
+        if isLoadingPhoto() {
+            scrollView?.imageView.image = nil
+            activityIndicator?.stopAnimating()
+            noSelectionLabel.hidden = false
+        }
+    }
+
+    private func isLoadingPhoto() -> Bool {
+        let hasSelectedPhoto = photo? != nil
+        return hasSelectedPhoto && scrollView.imageView.image == nil
     }
 
     func currentPhotoUpdated(photo: FlickrPhoto) {
@@ -47,6 +57,7 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
         scrollView?.imageView.image = nil
         flickrService.fetchSizesForPhotoId(photo.photoId)
         activityIndicator?.startAnimating()
+        noSelectionLabel?.hidden = true
     }
 
     func didUpdatePickedPhotoURL(url: NSURL) {
