@@ -35,7 +35,8 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as UITableViewCell
         let photo = app.photos[placeId]![indexPath.row]
         cell.textLabel.text = photo.title
-        cell.detailTextLabel!.text = photo.description
+        // workaround - for empty strings detail label would set size to 0, and wouldn't update when reused
+        cell.detailTextLabel!.text = photo.description.isEmpty ? " " : photo.description
         return cell
     }
 }
