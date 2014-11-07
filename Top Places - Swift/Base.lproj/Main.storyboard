@@ -107,8 +107,8 @@
                                 <rect key="frame" x="281" y="281" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPl-fX-sgt" customClass="ImageScrollView" customModule="Top_Places___Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPl-fX-sgt" customClass="ImageScrollView" customModule="Top_Places___Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,6 +124,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bfg-gX-4kh"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="j3I-vq-NU4" id="H1i-3u-p6O"/>
                         <outlet property="noSelectionLabel" destination="2U6-LZ-Wyy" id="Jcf-rL-BGs"/>
@@ -132,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dt1-wh-Cks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="-1722"/>
+            <point key="canvasLocation" x="876" y="-1711"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="n3y-84-bV2">
