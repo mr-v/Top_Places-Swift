@@ -21,7 +21,7 @@
 		EA7833831A02AD7900028F5F /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = EA7833821A02AD7900028F5F /* testdata.json */; };
 		EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
 		EA7833861A02B30E00028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */; };
-		EA7F0DBE1A03FCC100613D80 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */; };
+		EA7F0DBE1A03FCC100613D80 /* UIStoryboardInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DBD1A03FCC100613D80 /* UIStoryboardInjector.swift */; };
 		EA7F0DC31A091CFC00613D80 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */; };
 		EA7F0DC71A091F8300613D80 /* FlickrPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DC51A091F8300613D80 /* FlickrPhotosViewModel.swift */; };
 		EA7F0DC91A091FFA00613D80 /* FlickrPhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DC81A091FF900613D80 /* FlickrPhotosViewModelTests.swift */; };
@@ -81,7 +81,7 @@
 		EA7833801A025B9D00028F5F /* FlickrAppNetworkAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrAppNetworkAdapterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7833821A02AD7900028F5F /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = SOURCE_ROOT; };
 		EA7833841A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = FlickrTopPlacesNetworkAdapter.swift; path = Flickr/FlickrTopPlacesNetworkAdapter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryboardExtension.swift; path = UI/UIStoryboardExtension.swift; sourceTree = "<group>"; };
+		EA7F0DBD1A03FCC100613D80 /* UIStoryboardInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStoryboardInjector.swift; path = UI/UIStoryboardInjector.swift; sourceTree = "<group>"; };
 		EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosViewController.swift; path = UI/PhotosViewController.swift; sourceTree = "<group>"; };
 		EA7F0DC51A091F8300613D80 /* FlickrPhotosViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrPhotosViewModel.swift; path = Flickr/FlickrPhotosViewModel.swift; sourceTree = "<group>"; };
 		EA7F0DC81A091FF900613D80 /* FlickrPhotosViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhotosViewModelTests.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				EA5E686C1A0223280004CCEC /* Main.storyboard */,
 				EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */,
 				EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */,
-				EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */,
+				EA7F0DBD1A03FCC100613D80 /* UIStoryboardInjector.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 				EAF7437A1A0BAE93005F7452 /* FlickrSelectedPhotosHistoryViewModel.swift in Sources */,
 				EA7833851A02B1A200028F5F /* FlickrTopPlacesNetworkAdapter.swift in Sources */,
 				EAD5DA6D1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift in Sources */,
-				EA7F0DBE1A03FCC100613D80 /* UIStoryboardExtension.swift in Sources */,
+				EA7F0DBE1A03FCC100613D80 /* UIStoryboardInjector.swift in Sources */,
 				EA7F0DCA1A0925BB00613D80 /* FlickrPhotosViewModel.swift in Sources */,
 				EA3904D21A095C940052BE40 /* FlickrImageService.swift in Sources */,
 				EAD8078F1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift in Sources */,
