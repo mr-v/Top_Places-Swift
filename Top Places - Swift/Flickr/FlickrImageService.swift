@@ -11,6 +11,7 @@ import UIKit
 class FlickrImageService {
     private var currentTask:NSURLSessionTask?
     private var imageSession: NSURLSession
+    private var currentTaskForIdentifier = [String: NSURLSessionTask?]()
 
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -19,11 +20,14 @@ class FlickrImageService {
         imageSession = NSURLSession(configuration: configuration)
     }
 
-    func fetchImage(url: NSURL, callback: (UIImage) -> ()) {
-        currentTask?.cancel()
+    func fetchImage(source: AnyObject, url: NSURL, callback: (UIImage) -> ()) {
+        let sourceKey = keyFromObject(source)
+        if let taskInProgress = currentTaskForIdentifier[sourceKey] {
+            taskInProgress!.cancel()
+        }
 
         let request = NSURLRequest(URL: url)
-        currentTask = imageSession.dataTaskWithRequest(request) {
+        let task = imageSession.dataTaskWithRequest(request) {
             [weak self] data, urlResponse, error in
             if error != nil {
                 if error.code == NSURLErrorCancelled {
@@ -39,14 +43,22 @@ class FlickrImageService {
                     dispatch_async(dispatch_get_main_queue()) {
                         callback(image)
                     }
-                    //     TODO handle 400, 500 errors
+                    //     TODO handle 400...499, 500...599 errors
                 default:
                     fatalError("")
                 }
             }
-            self?.currentTask = nil
+            self?.currentTaskForIdentifier[sourceKey] = nil
         }
-        currentTask!.resume()
+        task.resume()
+        currentTaskForIdentifier[sourceKey] = task
+    }
+
+    // note: experimental :), returns heap address of an object;
+    // in theory should save managing unique keys in each class using this service,
+    // in practice could be a source of potential bugs (?)
+    private func keyFromObject(o: AnyObject) -> String {
+        return "\(unsafeBitCast(o, Int.self))"
     }
 }
 

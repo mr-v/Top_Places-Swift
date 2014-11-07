@@ -9,14 +9,14 @@
 import UIKit
 
 class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
+    var dataSource: FlickrPhotosViewModel!
+    var imageController: ImageViewController!
+    var flickrService: FlickrService!
     var place: FlickrPlace! {
         didSet {
             title = place.name
         }
     }
-    var dataSource: FlickrPhotosViewModel!
-    var flickrService: FlickrService!
-    var imageController: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
         refreshControl?.beginRefreshing()
     }
 
+    // TODO: handle errror case... - refreshControl, feedback; add callbacks for success/failure?
     func didUpdatePhotosForPlace(placeId: String) {
         if place.placeId == placeId {
             tableView.reloadData()
@@ -38,10 +39,9 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
         }
     }
 
-    // TODO: handle errror case... - refreshControl, text?
-
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showDetailViewController(imageController, sender: self)
+        imageController.photo = dataSource.photoForIndexPath(indexPath)
+        showDetailViewController(UINavigationController(rootViewController: imageController), sender: self)
         dataSource.didSelectPhotoAtIndexPath(indexPath)
     }
 }

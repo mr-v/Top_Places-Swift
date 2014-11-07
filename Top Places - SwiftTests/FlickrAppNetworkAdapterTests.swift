@@ -107,24 +107,20 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
 
     // MARK: - Sizes
 
-    func test_UpdatePickedPhotoURL_UpdatesListeningObjectsWithBiggestSizeURL() {
-        let (app, adapter) = makeNetworkAdapter()
-        let urlPort = StubPickedPhotoURL()
-        app.pickedPhotoURLPort = urlPort
+    func test_UpdatePickedPhotoURL_InvokesCallbackWithBiggestSizeURL() {
+        let (_, adapter) = makeNetworkAdapter()
 
-        adapter.updatePickedPhotoURL(stubSizesForPhoto())
-
-        XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
+        adapter.updatePickedPhotoURL(stubSizesForPhoto()) {
+            XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, $0)
+        }
     }
 
-    func test_UpdatePickedPhotoURL_SizesContainsOriginalPhoto_UpdatesListeninObjectsWithPreviousBiggestSizeURL() {
-        let (app, adapter) = makeNetworkAdapter()
-        let urlPort = StubPickedPhotoURL()
-        app.pickedPhotoURLPort = urlPort
+    func test_UpdatePickedPhotoURL_SizesContainsOriginalPhoto_InvokesCallbackWitPreviousBiggestSizeURL() {
+        let (_, adapter) = makeNetworkAdapter()
 
-        adapter.updatePickedPhotoURL(stubSizesWithOriginalForPhoto())
-
-        XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, urlPort.url)
+        adapter.updatePickedPhotoURL(stubSizesWithOriginalForPhoto()) {
+            XCTAssertEqual(NSURL(string: "https://farm1.staticflickr.com/2/1418878_1e92283336_z.jpg?zz=1")!, $0)
+        }
     }
 
     // MARK: - test utilities
@@ -184,11 +180,4 @@ class FlickrAppNetworkAdapterTests: XCTestCase {
         return ["sizes": ["size": sizes]]
     }
 
-    class StubPickedPhotoURL: FlickrAppPickedPhotoURLPort {
-        var url: NSURL!
-
-        func didUpdatePickedPhotoURL(url: NSURL) {
-            self.url = url
-        }
-    }
 }

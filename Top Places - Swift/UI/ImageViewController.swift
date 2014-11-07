@@ -8,63 +8,48 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, FlickrAppCurrentPhotoPort {
+class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort {
     @IBOutlet weak var scrollView: ImageScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var noSelectionLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
 
     var flickrService: FlickrService!
-    private var photo: FlickrPhoto?
     var imageService: FlickrImageService!
-    var primaryImageController = true
+
+    var photo: FlickrPhoto? {
+        didSet {
+            title = photo!.title
+            flickrService.fetchSizesForPhotoId(photo!.photoId, callback: didUpdatePickedPhotoURL)
+            showLoadingUI()
+        }
+    }
+
+    // TODO: add error handling: couldn't load the image/network problems
 
     override func viewDidLoad() {
         let hasSelectedPhoto = photo? != nil
-        noSelectionLabel.hidden = hasSelectedPhoto
-        isLoadingPhoto() ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        if isLoadingPhoto() {
+            showLoadingUI()
+        }
 
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
         navigationItem.leftItemsSupplementBackButton = true
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        primaryImageController = true
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        primaryImageController = false
-
-        if isLoadingPhoto() {
-            scrollView?.imageView.image = nil
-            activityIndicator?.stopAnimating()
-            noSelectionLabel.hidden = false
-        }
-    }
 
     private func isLoadingPhoto() -> Bool {
         let hasSelectedPhoto = photo? != nil
         return hasSelectedPhoto && scrollView.imageView.image == nil
     }
 
-    func currentPhotoUpdated(photo: FlickrPhoto) {
-        if !primaryImageController {
-            return
-        }
-
-        self.photo = photo
-        title = photo.title
+    func showLoadingUI() {
         scrollView?.imageView.image = nil
-        flickrService.fetchSizesForPhotoId(photo.photoId)
         activityIndicator?.startAnimating()
-        noSelectionLabel?.hidden = true
+        errorLabel?.hidden = true
     }
 
     func didUpdatePickedPhotoURL(url: NSURL) {
-        imageService.fetchImage(url) {
+        imageService.fetchImage(self, url: url) {
             image in
             self.scrollView.zoomScale = 1
             self.scrollView.imageView.image = image

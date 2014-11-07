@@ -29,7 +29,7 @@ class FlickrSelectedPhotosHistoryViewModel: NSObject, UITableViewDataSource {
         app.updateCurrentPhoto(photo)
     }
 
-    private func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
         return history.lastPickedPhotos[indexPath.row]
     }
 

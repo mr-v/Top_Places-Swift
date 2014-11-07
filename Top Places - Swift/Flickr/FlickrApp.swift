@@ -55,8 +55,7 @@ class FlickrApp {
     var photos = [String: [FlickrPhoto]]()
     var topPlacesPorts = [FlickrAppTopPlacesPort]()
     var photosPorts = [FlickrAppPlacePhotosPort]()
-    var pickedPhotoURLPort: FlickrAppPickedPhotoURLPort?
-    var currentPhotoPorts = [FlickrAppCurrentPhotoPort]()
+    var currentPhotoPort: FlickrAppCurrentPhotoPort?
 
     init() {
         topPlaces = [String: [FlickrPlace]]()
@@ -69,13 +68,7 @@ class FlickrApp {
         }
     }
 
-    func updatePickedPhotoURL(url: NSURL) {
-        pickedPhotoURLPort?.didUpdatePickedPhotoURL(url)
-    }
-
     func updateCurrentPhoto(photo: FlickrPhoto) {
-        for port in currentPhotoPorts {
-            port.currentPhotoUpdated(photo)
-        }
+        currentPhotoPort?.currentPhotoUpdated(photo)
     }
 }

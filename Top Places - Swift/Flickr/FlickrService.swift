@@ -15,6 +15,8 @@
 
 import Foundation
 
+typealias URLCallback = (url: NSURL) -> ()
+
 class FlickrService {
     let RESTEndpoint = "https://api.flickr.com/services/rest/"
     let APIExplorerKey: String = "8bac83dae148d108bd0ac45ca6fd07c3"
@@ -37,20 +39,19 @@ class FlickrService {
 
     func fetchPhotosFromPlace(placeId: String) {
         let photoLimit = 50
-        let photosParameters = "method=flickr.photos.search&place_id=\(placeId)&per_page=\(photoLimit)&extras=original_format,tags,description,geo,date_upload,owner_name,place_url"
+        let photosParameters = "method=flickr.photos.search&place_id=\(placeId)&per_page=\(photoLimit)&extras=description"
         sendRequest(photosParameters) {
             jsonObject in self.adapter.updatePhotosFromPlace(placeId, json: jsonObject)
         }
     }
 
-    func fetchSizesForPhotoId(photoId: String) {
+    func fetchSizesForPhotoId(photoId: String, callback: URLCallback) {
         let getSizesParameters = "method=flickr.photos.getSizes&photo_id=\(photoId)"
         sendRequest(getSizesParameters) {
             jsonObject in
-            self.adapter.updatePickedPhotoURL(jsonObject)
+            self.adapter.updatePickedPhotoURL(jsonObject, callback: callback)
         }
     }
-
 
     func sendRequest(parameters: String, callback: (jsonObject: NSDictionary) -> ()) {
         let urlString = RESTEndpoint + "?" + parameters + "&" + standardParameters

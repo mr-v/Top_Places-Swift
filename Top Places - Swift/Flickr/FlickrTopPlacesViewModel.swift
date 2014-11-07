@@ -55,11 +55,7 @@ class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPla
     private func updateSectionToName() {
         var countries = app.topPlaces.keys.array
         countries.sort(<)
-        sectionToName = countries.reduce([]) {
-            (var mapping, country) in
-            mapping.append(country)
-            return mapping
-        }
+        sectionToName = countries
     }
 
     private func countryForSection(section: Int) -> String {

@@ -58,7 +58,7 @@ class FlickrServiceTests: XCTestCase {
         }
         let placeId = "hP_s5s9VVr5Qcg"
 
-        service.fetchSizesForPhotoId("1418878")
+        service.fetchSizesForPhotoId("1418878") { url in }
 
         waitForExpectationsWithTimeout(10) {
             error in
@@ -90,7 +90,7 @@ class FlickrServiceTests: XCTestCase {
             updateCallback(json)
         }
 
-        override func updatePickedPhotoURL(json: NSDictionary) {
+        override func updatePickedPhotoURL(json: NSDictionary, callback: URLCallback) {
             updateCallback(json)
         }
     }

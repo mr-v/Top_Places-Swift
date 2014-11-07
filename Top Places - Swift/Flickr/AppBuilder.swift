@@ -27,7 +27,7 @@ class AppBuilder: UIStoryboardInjector {
         topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
         app.topPlacesPorts.append(topPlacesViewModel)
         history = FlickrSelectedPhotosHistory(store: FlickrSelectedPhotosHistoryStore())
-        app.currentPhotoPorts.append(history)
+        app.currentPhotoPort = history
         super.init()
         setupViewControllerDependencies()
     }
@@ -47,15 +47,13 @@ class AppBuilder: UIStoryboardInjector {
             vc.dataSource = FlickrPhotosViewModel(app: self.app)
             vc.flickrService = self.service
             self.app.photosPorts.append(vc)
-            vc.imageController = self.makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(vc.storyboard!)
+            vc.imageController = self.makeImageViewControllerWithStoryBoard(vc.storyboard!)
         }
 
         controllerDependencies["Image"] =  { [unowned self] in
             let vc = $0 as ImageViewController
             vc.flickrService = self.service
             vc.imageService = self.imageService
-            self.app.pickedPhotoURLPort = vc
-            self.app.currentPhotoPorts.append(vc)
         }
 
         let splitSetup: UIViewControllerInjector = { [unowned self] in
@@ -69,12 +67,11 @@ class AppBuilder: UIStoryboardInjector {
             let vc = $0 as HistoryTableViewController
             vc.dataSource = FlickrSelectedPhotosHistoryViewModel(app: self.app, history: self.history)
             vc.splitViewController?.preferredDisplayMode = .AllVisible
-            vc.imageController = self.makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(vc.storyboard!)
+            vc.imageController = self.makeImageViewControllerWithStoryBoard(vc.storyboard!)
         }
     }
 
-    private func makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(storyboard: UIStoryboard) -> UINavigationController {
-        let controller = storyboard.instantiateViewControllerWithIdentifier("Image") as ImageViewController
-        return UINavigationController(rootViewController: controller)
+    private func makeImageViewControllerWithStoryBoard(storyboard: UIStoryboard) -> ImageViewController {
+        return storyboard.instantiateViewControllerWithIdentifier("Image") as ImageViewController
     }
 }

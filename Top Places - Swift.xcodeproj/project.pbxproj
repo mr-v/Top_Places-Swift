@@ -199,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD5DA6C1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift */,
+				EAF743771A0BA755005F7452 /* HistoryTableViewController.swift */,
 				EA5E686F1A0223280004CCEC /* Images.xcassets */,
 				EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */,
 				EA7F0DCB1A09428600613D80 /* ImageViewController.swift */,
@@ -208,7 +209,6 @@
 				EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */,
 				EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */,
 				EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */,
-				EAF743771A0BA755005F7452 /* HistoryTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";

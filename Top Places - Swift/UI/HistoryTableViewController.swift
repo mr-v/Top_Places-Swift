@@ -10,8 +10,7 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
     var dataSource: FlickrSelectedPhotosHistoryViewModel!
-    var flickrService: FlickrService!
-    var imageController: UIViewController!
+    var imageController: ImageViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,8 @@ class HistoryTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showDetailViewController(imageController, sender: self)
+        imageController.photo = dataSource.photoForIndexPath(indexPath)
+        showDetailViewController(UINavigationController(rootViewController: imageController), sender: self)
         dataSource.didSelectPhotoAtIndexPath(indexPath)
         tableView.reloadData()
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: .None)

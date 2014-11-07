@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
     let reuseId = "PhotoCell"
     let app: FlickrApp
@@ -18,12 +19,10 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
 
     func didSelectPhotoAtIndexPath(indexPath: NSIndexPath) {
         let photo = photoForIndexPath(indexPath)
-        for port in app.currentPhotoPorts {
-            port.currentPhotoUpdated(photo)
-        }
+        app.updateCurrentPhoto(photo)
     }
 
-    private func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
         return app.photos[placeId]![indexPath.row]
     }
 
@@ -37,7 +36,7 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as UITableViewCell
         let photo = app.photos[placeId]![indexPath.row]
         cell.textLabel.text = photo.title
-        // workaround - for empty strings detail label would set size to 0, and wouldn't update when reused
+        // workaround - empty strings detail label would set size to 0 and wouldn't update when reused, resulting in non-visible detail
         cell.detailTextLabel!.text = photo.description.isEmpty ? " " : photo.description
         return cell
     }
