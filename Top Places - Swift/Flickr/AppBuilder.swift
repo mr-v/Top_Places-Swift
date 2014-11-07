@@ -47,18 +47,16 @@ class AppBuilder: UIStoryboardInjector {
             vc.dataSource = FlickrPhotosViewModel(app: self.app)
             vc.flickrService = self.service
             self.app.photosPorts.append(vc)
+            vc.imageController = self.makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(vc.storyboard!)
         }
 
-        let imageSetup: UIViewControllerInjector = { [unowned self] in
+        controllerDependencies["Image"] =  { [unowned self] in
             let vc = $0 as ImageViewController
             vc.flickrService = self.service
             vc.imageService = self.imageService
             self.app.pickedPhotoURLPort = vc
             self.app.currentPhotoPorts.append(vc)
         }
-
-        controllerDependencies["Image"] =  imageSetup
-        controllerDependencies["ImageHistory"] =  imageSetup
 
         let splitSetup: UIViewControllerInjector = { [unowned self] in
             let vc = $0 as UISplitViewController
@@ -70,8 +68,13 @@ class AppBuilder: UIStoryboardInjector {
         controllerDependencies["History"] = { [unowned self] in
             let vc = $0 as HistoryTableViewController
             vc.dataSource = FlickrSelectedPhotosHistoryViewModel(app: self.app, history: self.history)
-
             vc.splitViewController?.preferredDisplayMode = .AllVisible
+            vc.imageController = self.makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(vc.storyboard!)
         }
+    }
+
+    private func makeImageViewControllerWrappedInNavigationControllerWithStoryBoard(storyboard: UIStoryboard) -> UINavigationController {
+        let controller = storyboard.instantiateViewControllerWithIdentifier("Image") as ImageViewController
+        return UINavigationController(rootViewController: controller)
     }
 }

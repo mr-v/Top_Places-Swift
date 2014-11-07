@@ -16,6 +16,7 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     }
     var dataSource: FlickrPhotosViewModel!
     var flickrService: FlickrService!
+    var imageController: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +41,7 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     // TODO: handle errror case... - refreshControl, text?
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ShowImage", sender: self)
-        // this way image loading is decoupled from view controller hierarchy changes (embedding in navigation controller, split controller, etc.)
+        showDetailViewController(imageController, sender: self)
         dataSource.didSelectPhotoAtIndexPath(indexPath)
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowImage" {
-            let controller = (segue.destinationViewController as UINavigationController).topViewController
-            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-            controller.navigationItem.leftItemsSupplementBackButton = true
-        }
     }
 }

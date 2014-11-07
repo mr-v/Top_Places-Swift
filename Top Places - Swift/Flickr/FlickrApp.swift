@@ -40,22 +40,8 @@ protocol FlickrAppPickedPhotoURLPort {
     func didUpdatePickedPhotoURL(url: NSURL)
 }
 
-protocol FlickrAppCurrentPhotoPort: class {          // class-only protocol - makes possible to compare objects
+protocol FlickrAppCurrentPhotoPort {
     func currentPhotoUpdated(photo: FlickrPhoto)
-}
-
-
-// https://devforums.apple.com/message/981483#981483
-struct WeakContainer<T where T: FlickrAppCurrentPhotoPort> {
-    weak var _value : T?
-
-    init (value: T) {
-        _value = value
-    }
-
-    func get() -> T? {
-        return _value
-    }
 }
 
 class FlickrApp {

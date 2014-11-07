@@ -22,6 +22,9 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort, Flickr
         let hasSelectedPhoto = photo? != nil
         noSelectionLabel.hidden = hasSelectedPhoto
         isLoadingPhoto() ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        navigationItem.leftItemsSupplementBackButton = true
     }
 
     override func viewWillAppear(animated: Bool) {
