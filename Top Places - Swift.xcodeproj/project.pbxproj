@@ -29,7 +29,6 @@
 		EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DCB1A09428600613D80 /* ImageViewController.swift */; };
 		EAD5DA3B1A0975C5007D3718 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */; };
 		EAD5DA6D1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA6C1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift */; };
-		EAD5DA6F1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */; };
 		EAD8078D1A02C06C00D82A3C /* FlickrAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */; };
 		EAD8078F1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078E1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift */; };
 		EAD807911A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */; };
@@ -89,7 +88,6 @@
 		EA7F0DCB1A09428600613D80 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewController.swift; path = UI/ImageViewController.swift; sourceTree = "<group>"; };
 		EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = UI/ImageScrollView.swift; sourceTree = "<group>"; };
 		EAD5DA6C1A0AB4C8007D3718 /* FlickrSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrSplitViewControllerDelegate.swift; path = UI/FlickrSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
-		EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegularLandscapeTabBarViewController.swift; path = UI/RegularLandscapeTabBarViewController.swift; sourceTree = "<group>"; };
 		EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrAppTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAD8078E1A02C42400D82A3C /* FlickrTopPlacesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = FlickrTopPlacesViewModel.swift; path = Flickr/FlickrTopPlacesViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FlickrTopPlacesViewModelTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -206,7 +204,6 @@
 				EA5E68711A0223280004CCEC /* LaunchScreen.xib */,
 				EA5E686C1A0223280004CCEC /* Main.storyboard */,
 				EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */,
-				EAD5DA6E1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift */,
 				EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */,
 				EA7F0DBD1A03FCC100613D80 /* UIStoryboardExtension.swift */,
 			);
@@ -390,7 +387,6 @@
 				EA7833771A022B7A00028F5F /* FlickrService.swift in Sources */,
 				EA5E68691A0223280004CCEC /* AppDelegate.swift in Sources */,
 				EA78337D1A02534D00028F5F /* FlickrApp.swift in Sources */,
-				EAD5DA6F1A0ABE82007D3718 /* RegularLandscapeTabBarViewController.swift in Sources */,
 				EAF743781A0BA755005F7452 /* HistoryTableViewController.swift in Sources */,
 				EAD9BFE01A0B7E260067F75C /* FlickrSelectedPhotosHistory.swift in Sources */,
 				EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */,

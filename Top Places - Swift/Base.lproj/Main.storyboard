@@ -182,10 +182,10 @@
             </objects>
             <point key="canvasLocation" x="1108" y="-2596"/>
         </scene>
-        <!--Regular Landscape Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Uqg-ii-4aT">
             <objects>
-                <tabBarController id="Qa0-q1-2xD" customClass="RegularLandscapeTabBarViewController" customModule="Top_Places___Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="Qa0-q1-2xD" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hmd-C7-5KI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
