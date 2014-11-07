@@ -24,7 +24,7 @@
         <scene sceneID="yCg-Oj-2dq">
             <objects>
                 <splitViewController storyboardIdentifier="Split" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbi-1w-9u2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" id="RRI-q1-VVG"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="bar_photo" id="RRI-q1-VVG"/>
                     <connections>
                         <segue destination="wxQ-Cm-4Vy" kind="relationship" relationship="masterViewController" id="qwn-el-GLp"/>
                         <segue destination="zHQ-dR-SiP" kind="relationship" relationship="detailViewController" id="dqu-Qu-jNl"/>
@@ -223,7 +223,7 @@
         <scene sceneID="pCk-9K-Qfl">
             <objects>
                 <splitViewController storyboardIdentifier="SplitHistory" title="Recent Picks" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3fA-un-PjZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="75l-Qo-G6a"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="75l-Qo-G6a"/>
                     <connections>
                         <segue destination="Shq-Jj-hRI" kind="relationship" relationship="detailViewController" id="pZy-c4-qjK"/>
                         <segue destination="rJf-Jg-89Z" kind="relationship" relationship="masterViewController" id="DEa-Vf-3Sv"/>
@@ -372,4 +372,7 @@
             <point key="canvasLocation" x="170" y="-30"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bar_photo" width="25" height="25"/>
+    </resources>
 </document>

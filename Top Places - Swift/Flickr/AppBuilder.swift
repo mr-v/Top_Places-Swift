@@ -60,7 +60,11 @@ class AppBuilder: UIStoryboardInjector {
             let vc = $0 as UISplitViewController
             vc.delegate = self.splitControllerDelegate
         }
-        controllerDependencies["Split"] = splitSetup
+        controllerDependencies["Split"] = {
+            let vc = $0 as UISplitViewController
+            vc.tabBarItem.selectedImage = UIImage(named: "bar_photo_selected")
+            splitSetup(vc)
+        }
         controllerDependencies["SplitHistory"] = splitSetup
 
         controllerDependencies["History"] = { [unowned self] in
