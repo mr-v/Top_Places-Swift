@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3DA1F6D374D50B7D538252E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D1DFB2FF8E0D0792BF0310 /* libPods.a */; };
 		EA3904D21A095C940052BE40 /* FlickrImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3904D11A095C940052BE40 /* FlickrImageService.swift */; };
 		EA5ACF0E1A234480002625F2 /* FetchTopPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF0D1A234480002625F2 /* FetchTopPlaces.swift */; };
 		EA5ACF101A23473F002625F2 /* FetchTopPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF0F1A23473F002625F2 /* FetchTopPlacesTests.swift */; };
@@ -77,6 +78,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07D1DFB2FF8E0D0792BF0310 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA23BEE31A23B492003F9E87 /* Top_Places___Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Top_Places___Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA3904D11A095C940052BE40 /* FlickrImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrImageService.swift; path = Flickr/FlickrImageService.swift; sourceTree = "<group>"; };
 		EA5ACF0D1A234480002625F2 /* FetchTopPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchTopPlaces.swift; path = Flickr/FetchTopPlaces.swift; sourceTree = "<group>"; };
 		EA5ACF0F1A23473F002625F2 /* FetchTopPlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTopPlacesTests.swift; sourceTree = "<group>"; };
@@ -126,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3DA1F6D374D50B7D538252E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +152,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49216D74BF17A606C1C81664 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */,
+				43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EA5E685A1A0223270004CCEC = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +168,8 @@
 				EA5E687B1A0223280004CCEC /* Top Places - Unit Tests */,
 				EAD807AA1A02DCF000D82A3C /* Top Places - Async Tests */,
 				EA5E68641A0223270004CCEC /* Products */,
+				49216D74BF17A606C1C81664 /* Pods */,
+				F0B2318D703FF1D6194281C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +192,7 @@
 				EA5E68661A0223270004CCEC /* Supporting Files */,
 				EA5E688A1A0226D50004CCEC /* UI */,
 				EA5ACF121A2349F2002625F2 /* Result.swift */,
+				EA23BEE31A23B492003F9E87 /* Top_Places___Swift-Bridging-Header.h */,
 			);
 			path = "Top Places - Swift";
 			sourceTree = "<group>";
@@ -267,6 +285,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F0B2318D703FF1D6194281C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07D1DFB2FF8E0D0792BF0310 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA5E68821A0223280004CCEC /* Build configuration list for PBXNativeTarget "Top Places - Swift" */;
 			buildPhases = (
+				F150E52E82EBE0BEEF5F579A /* Check Pods Manifest.lock */,
 				EA5E685F1A0223270004CCEC /* Sources */,
 				EA5E68601A0223270004CCEC /* Frameworks */,
 				EA5E68611A0223270004CCEC /* Resources */,
+				C5D2EC4F72A6D43021F99B0E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,6 +419,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C5D2EC4F72A6D43021F99B0E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F150E52E82EBE0BEEF5F579A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA5E685F1A0223270004CCEC /* Sources */ = {
@@ -577,17 +638,20 @@
 		};
 		EA5E68831A0223280004CCEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Top Places - Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PRODUCT_NAME:c99extidentifier)/$(PRODUCT_NAME:c99extidentifier)-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		EA5E68841A0223280004CCEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Top Places - Swift/Info.plist";
