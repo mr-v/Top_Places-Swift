@@ -10,11 +10,6 @@ import Foundation
 
 class FlickrAppNetworkAdapter {
 
-    enum FlickrResponseKey: String {
-        case Content = "_content"
-        case PhotoDescription = "description._content"
-    }
-
     private let app: FlickrApp
 
     init(app: FlickrApp) {
@@ -25,24 +20,24 @@ class FlickrAppNetworkAdapter {
         let places = json.valueForKeyPath("places.place") as [NSDictionary]
         var result = [String: [FlickrPlace]]()
         for place in places {
-            var components = (place[FlickrResponseKey.Content.rawValue] as String).componentsSeparatedByString(", ")
-            let country = components.removeLast()
-            let placeName = components.removeAtIndex(0)
-            let description = ", ".join(components)
-            let placeId = place["place_id"] as String
-            var placesInCountry: [FlickrPlace] = result[country] ?? [FlickrPlace]()
-            placesInCountry.append(FlickrPlace(name: placeName, description: description, placeId: placeId))
+            let content = place[FlickrResponseContentKey] as String
+            let commaRange = content.rangeOfString(", ", options: .BackwardsSearch)
+            let country = content.substringFromIndex(commaRange!.endIndex)
+            var placesInCountry = result[country] ?? [FlickrPlace]()
+            placesInCountry.append(FlickrPlace(jsonObject: place))
             result[country] = placesInCountry
         }
         app.topPlaces = result
     }
+
+    let FlickrResponsePhotoDescriptionKey = "description._content"
 
     func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
         let photos = json.valueForKeyPath("photos.photo") as [NSDictionary]
         var result = [FlickrPhoto]()
         for photo in photos {
             var title = photo["title"] as String
-            var description = photo.valueForKeyPath(FlickrResponseKey.PhotoDescription.rawValue) as String
+            var description = photo.valueForKeyPath(FlickrResponsePhotoDescriptionKey) as String
             switch (title, description) {
             case  ("", let d) where !d.isEmpty:
                 title = description

@@ -11,9 +11,10 @@ import XCTest
 
 class FetchTopPlacesTests: XCTestCase {
 
-    func test_Execute_OnSuccess_CallsCompletionHandlerWithOKResult() {
-        var result: Result<[FlickrPlace]>?
-        let useCase = makeFetchTopPlaces(.OK(NSDictionary())) { r in result = r }
+
+    func test_Execute_SuccessResponse_CallsCompletionHandlerWithOKResult() {
+        var result: Result<[String: [FlickrPlace]]>?
+        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -25,8 +26,8 @@ class FetchTopPlacesTests: XCTestCase {
         }
     }
 
-    func test_Execute_OnError_CallsCompletionHandlerWithErrorResult() {
-        var result: Result<[FlickrPlace]>?
+    func test_Execute_ErrorResponse_CallsCompletionHandlerWithErrorResult() {
+        var result: Result<[String: [FlickrPlace]]>?
         let useCase = makeFetchTopPlaces(.Error) { r in result = r }
 
         useCase.execute()
@@ -39,10 +40,39 @@ class FetchTopPlacesTests: XCTestCase {
         }
     }
 
+    func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlacesGroupedByCountry() {
+        var result: Result<[String: [FlickrPlace]]>?
+        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+
+        useCase.execute()
+
+        switch result! {
+        case .OK(let data):
+            XCTAssertEqual(["United Kingdom"], data.keys.array)
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlaces() {
+        var result: Result<[String: [FlickrPlace]]>?
+        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+
+        useCase.execute()
+
+        switch result! {
+        case .OK(let data):
+            let expected = [FlickrPlace(name: "London", description: "England", placeId: "hP_s5s9VVr5Qcg")]
+            XCTAssertEqual(expected, data["United Kingdom"]!)
+        default:
+            XCTFail()
+        }
+    }
+
 
     // MARK: - factory methods
 
-    private func makeFetchTopPlaces(serviceResponse: Result<NSDictionary>, completionHandler: (Result<[FlickrPlace]>) -> ()) -> FetchTopPlaces {
+    private func makeFetchTopPlaces(serviceResponse: Result<NSDictionary>, completionHandler: (Result<[String :[FlickrPlace]]>) -> ()) -> FetchTopPlaces {
         let stubService = StubService(response: serviceResponse)
         let useCase = FetchTopPlaces(service: stubService, completionHandler: completionHandler)
         return useCase
