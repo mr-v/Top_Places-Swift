@@ -20,7 +20,7 @@ class FetchTopPlaces {
     }
 
     func execute() {
-        service.fetchJSON(onCompletion)
+        service.fetchJSON([String: AnyObject](), onCompletion)
     }
 
     func onCompletion(data: Result<NSDictionary>) {
@@ -42,4 +42,3 @@ class FetchTopPlaces {
         }
     }
 }
-

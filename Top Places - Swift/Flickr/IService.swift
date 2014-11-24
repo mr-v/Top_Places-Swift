@@ -9,5 +9,5 @@
 import Foundation
 
 protocol IService {
-    func fetchJSON(completionHandler: Result<NSDictionary> -> ())
+    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ())
 }

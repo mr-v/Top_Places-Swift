@@ -85,7 +85,7 @@ class FetchTopPlacesTests: XCTestCase {
             self.response = response
         }
 
-        private func fetchJSON(completionHandler: Result<NSDictionary> -> ()) {
+        private func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
             completionHandler(response)
         }
     }
