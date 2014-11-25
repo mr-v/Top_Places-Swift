@@ -11,22 +11,74 @@ import XCTest
 
 class WebServiceTests: XCTestCase {
 
-    func test_FetchJSON_200_CallCompletionHandlerWithJSONObject() {
-        let urlString = "https://api.flickr.com/services/rest/"
-        let defaultParameters: [String: Any] = ["format": "json",
-            "nojsoncallback": 1,
-            "api_key": "8bac83dae148d108bd0ac45ca6fd07c3"]
+    let baseURL = "https://www.google.com"
 
-        let service = WebService(baseURLString: urlString, defaultParameters: defaultParameters)
-        // @"{\"ok\":true}"
+    deinit {
+        LSNocilla.sharedInstance().stop()
+    }
+
+    override func setUp() {
+        super.setUp()
+
+        LSNocilla.sharedInstance().start()
+        LSNocilla.sharedInstance().clearStubs()
+    }
+
+    override func tearDown() {
+        LSNocilla.sharedInstance().stop()
+    }
+
+    func test_FetchJSON_200ProperJSON_CallCompletionHandlerWithJSONObject() {
+        let e = expectationWithDescription("200ProperJSON")
+        stubCorrectJSONResponse()
+        let urlString = baseURL
+        let service = WebService(baseURLString: urlString, defaultParameters: [String: Any]())
         service.fetchJSON([String: Any]()) { result in
+            e.fulfill()
             switch result {
             case .OK(let data):
-                XCTAssertEqual(["ok": true], data)
+                let expected = ["ok": 1] as NSDictionary
+                XCTAssertEqual(expected, data)
             default:
                 XCTFail()
             }
         }
-        XCTFail()
+
+        waitForExpectationsAndFailAfterTimeout(10)
+    }
+
+    func test_FetchJSON_200ImproperJSON_CallsCompletionHandlerWithErrorResult() {
+        let e = expectationWithDescription("200ImproperJSON")
+        stubImproperJSONResponse()
+        let urlString = baseURL
+        let service = WebService(baseURLString: urlString, defaultParameters: [String: Any]())
+        service.fetchJSON([String: Any]()) { result in
+            e.fulfill()
+            switch result {
+            case .Error:
+                XCTAssertTrue(true)
+            default:
+                XCTFail()
+            }
+        }
+        waitForExpectationsAndFailAfterTimeout(10)
+    }
+
+    // MARK: -
+
+    private func waitForExpectationsAndFailAfterTimeout(timeout: NSTimeInterval) {
+        waitForExpectationsWithTimeout(timeout) {
+            if let error = $0 {
+                XCTFail()
+            }
+        }
+    }
+
+    private func stubCorrectJSONResponse() {
+        stubRequest("GET", baseURL).andReturn(200).withBody("{\"ok\":true}")
+    }
+
+    private func stubImproperJSONResponse() {
+        stubRequest("GET", baseURL).andReturn(200).withBody("{1}")
     }
 }

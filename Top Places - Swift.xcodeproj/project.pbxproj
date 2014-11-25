@@ -90,11 +90,11 @@
 		07D1DFB2FF8E0D0792BF0310 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EA23BEE31A23B492003F9E87 /* Top_Places___Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Top_Places___Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA23BEE41A23B6E9003F9E87 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		EA23BEE81A23B6FA003F9E87 /* DictionaryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryUtils.swift; sourceTree = "<group>"; };
 		EA23BEEF1A23B91D003F9E87 /* WebServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceTests.swift; sourceTree = "<group>"; };
 		EA23BEF61A23BA0A003F9E87 /* FetchTopPlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTopPlacesTests.swift; sourceTree = "<group>"; };
+		EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places - SwiftTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA3904D11A095C940052BE40 /* FlickrImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlickrImageService.swift; path = Flickr/FlickrImageService.swift; sourceTree = "<group>"; };
 		EA5ACF0D1A234480002625F2 /* FetchTopPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchTopPlaces.swift; path = Flickr/FetchTopPlaces.swift; sourceTree = "<group>"; };
 		EA5ACF121A2349F2002625F2 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -206,7 +206,6 @@
 				EA5ACF121A2349F2002625F2 /* Result.swift */,
 				EA23BEE41A23B6E9003F9E87 /* WebService.swift */,
 				EA23BEE81A23B6FA003F9E87 /* DictionaryUtils.swift */,
-				EA23BEE31A23B492003F9E87 /* Top_Places___Swift-Bridging-Header.h */,
 			);
 			path = "Top Places - Swift";
 			sourceTree = "<group>";
@@ -228,12 +227,13 @@
 				EAD8078C1A02C06C00D82A3C /* FlickrAppTests.swift */,
 				EAD807901A02C78800D82A3C /* FlickrTopPlacesViewModelTests.swift */,
 				EA7F0DC81A091FF900613D80 /* FlickrPhotosViewModelTests.swift */,
-				EA23BEEF1A23B91D003F9E87 /* WebServiceTests.swift */,
 				EAD9BFE21A0B7E380067F75C /* FlickrSelectedPhotosHistoryTests.swift */,
 				EAF7437B1A0BB053005F7452 /* FlickrSelectedPhotosHistoryViewModelTests.swift */,
 				EA5ACF1B1A23644F002625F2 /* FlickrPlaceTests.swift */,
 				EA23BEF61A23BA0A003F9E87 /* FetchTopPlacesTests.swift */,
+				EA23BEEF1A23B91D003F9E87 /* WebServiceTests.swift */,
 				EA5ACF1F1A236E9D002625F2 /* Factory.swift */,
+				EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */,
 			);
 			name = "Top Places - Unit Tests";
 			path = "Top Places - SwiftTests";
@@ -669,7 +669,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(TARGET_NAME)/$(PRODUCT_NAME:c99extidentifier)-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -687,8 +686,10 @@
 		};
 		EA5E68861A0223280004CCEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -700,14 +701,18 @@
 				INFOPLIST_FILE = "Top Places - SwiftTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Top Places - SwiftTests/Top Places - SwiftTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
 			};
 			name = Debug;
 		};
 		EA5E68871A0223280004CCEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -715,12 +720,14 @@
 				INFOPLIST_FILE = "Top Places - SwiftTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Top Places - SwiftTests/Top Places - SwiftTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
 			};
 			name = Release;
 		};
 		EAD807B21A02DCF000D82A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -743,6 +750,7 @@
 		};
 		EAD807B31A02DCF000D82A3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
