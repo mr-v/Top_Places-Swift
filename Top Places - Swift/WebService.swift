@@ -10,13 +10,13 @@ import Foundation
 
 class WebService: IService {
     private let session: NSURLSession
-    let baseURL: NSURL
+    let baseURLString: String
     let defaultParameters: [String : Any]
 
     init(baseURLString: String, defaultParameters: [String: Any]) {
         let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         session = NSURLSession(configuration: defaultConfiguration)
-        baseURL = NSURL(string: baseURLString)!
+        self.baseURLString = baseURLString
         self.defaultParameters = defaultParameters
     }
 
@@ -51,17 +51,17 @@ class WebService: IService {
     }
 
     private func urlRequestWithParameters(parameters: [String: Any]) -> NSURLRequest {
+        let components = NSURLComponents(string: baseURLString)!
         let mergedParameters = defaultParameters + parameters
-        let query = queryWithParameters(mergedParameters)
-        let endpoint = ""
-        let url = NSURL(string: endpoint + query, relativeToURL: baseURL)!
-        var request = NSMutableURLRequest(URL: url)
+        if !mergedParameters.isEmpty {
+            components.queryItems = queryItemsWithParameters(mergedParameters)
+        }
+        let request = NSURLRequest(URL: components.URL!)
         return request
     }
 
-    private func queryWithParameters(parameters: [String: Any]) -> NSString {
+    private func queryItemsWithParameters(parameters: [String: Any]) -> [NSURLQueryItem] {
         let keys = parameters.keys.array
-        let query = "&".join(keys.map { key in "\(key)=\(parameters[key]!)"})
-        return query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        return keys.map { key in NSURLQueryItem(name: key, value: "\(parameters[key]!)") }
     }
 }
