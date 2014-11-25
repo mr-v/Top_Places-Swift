@@ -12,7 +12,7 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     var dataSource: FlickrPhotosViewModel!
     var imageController: ImageViewController!
     var flickrService: FlickrService!
-    var place: FlickrPlace! {
+    var place: Place! {
         didSet {
             title = place.name
         }

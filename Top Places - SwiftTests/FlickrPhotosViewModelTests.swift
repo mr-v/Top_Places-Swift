@@ -30,7 +30,7 @@ class FlickrPhotosViewModelTests: XCTestCase {
         app.setPhotosForPlace("0", photos: makeTestPhotos())
         viewModel.didSelectPhotoAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
 
-        XCTAssertEqual(FlickrPhoto(title: "title 0", description: "description 0", photoId: "0"), port.photo)
+        XCTAssertEqual(Photo(title: "title 0", description: "description 0", photoId: "0"), port.photo)
     }
 
 
@@ -45,17 +45,17 @@ class FlickrPhotosViewModelTests: XCTestCase {
         return (app, viewModel)
     }
 
-    private func makeTestPhotos() -> [FlickrPhoto] {
-        var list = [FlickrPhoto]()
+    private func makeTestPhotos() -> [Photo] {
+        var list = [Photo]()
         for i in 0..<rowCount {
-            list.append(FlickrPhoto(title: "title \(i)", description: "description \(i)", photoId: String(i)))
+            list.append(Photo(title: "title \(i)", description: "description \(i)", photoId: String(i)))
         }
         return list
     }
 
     class StubCurrentPhotoPort : FlickrAppCurrentPhotoPort {
-        var photo: FlickrPhoto!
-        func currentPhotoUpdated(photo: FlickrPhoto) {
+        var photo: Photo!
+        func currentPhotoUpdated(photo: Photo) {
             self.photo = photo
         }
     }

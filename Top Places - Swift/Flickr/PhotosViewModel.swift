@@ -22,7 +22,7 @@ class FlickrPhotosViewModel: NSObject, UITableViewDataSource {
         app.updateCurrentPhoto(photo)
     }
 
-    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+    func photoForIndexPath(indexPath: NSIndexPath) -> Photo {
         return app.photos[placeId]![indexPath.row]
     }
 

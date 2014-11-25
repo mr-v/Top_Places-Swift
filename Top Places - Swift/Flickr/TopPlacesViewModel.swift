@@ -1,5 +1,5 @@
 //
-//  FlickrTopPlacesViewModel.swift
+//  TopPlacesViewModel.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 30/10/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPlacesPort {
+class TopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPlacesPort {
     let reuseId = "PlaceCell"
     let app: FlickrApp
     var sectionToName: [String]!
@@ -21,7 +21,7 @@ class FlickrTopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPla
         updateSectionToName()
     }
 
-    func placeForIndexPath(indexPath: NSIndexPath) -> FlickrPlace {
+    func placeForIndexPath(indexPath: NSIndexPath) -> Place {
         let country = countryForSection(indexPath.section)
         return app.topPlaces[country]![indexPath.row]
     }

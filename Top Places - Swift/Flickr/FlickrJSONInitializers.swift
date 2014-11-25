@@ -10,7 +10,7 @@ import Foundation
 
 let FlickrResponseContentKey = "_content"
 
-extension FlickrPlace {
+extension Place {
     init(jsonObject: NSDictionary) {
         var placeComponents = (jsonObject[FlickrResponseContentKey] as String).componentsSeparatedByString(", ")
         placeComponents.removeLast() // remove place's country name

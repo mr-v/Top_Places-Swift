@@ -15,18 +15,18 @@ class AppBuilder: UIStoryboardInjector {
     let app: FlickrApp
     let service: FlickrService
     let imageService: FlickrImageService
-    let topPlacesViewModel: FlickrTopPlacesViewModel
-    let splitControllerDelegate: FlickrSplitViewControllerDelegate
-    let history: FlickrSelectedPhotosHistory
+    let topPlacesViewModel: TopPlacesViewModel
+    let splitControllerDelegate: SplitViewControllerDelegate
+    let history: SelectedPhotosHistory
 
     override init() {
         app = FlickrApp()
         service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
         imageService = FlickrImageService()
-        splitControllerDelegate = FlickrSplitViewControllerDelegate()
-        topPlacesViewModel = FlickrTopPlacesViewModel(app: app)
+        splitControllerDelegate = SplitViewControllerDelegate()
+        topPlacesViewModel = TopPlacesViewModel(app: app)
         app.topPlacesPorts.append(topPlacesViewModel)
-        history = FlickrSelectedPhotosHistory(store: FlickrSelectedPhotosHistoryStore())
+        history = SelectedPhotosHistory(store: SelectedPhotosHistoryStore())
         app.currentPhotoPort = history
         super.init()
         setupViewControllerDependencies()
@@ -69,7 +69,7 @@ class AppBuilder: UIStoryboardInjector {
 
         controllerDependencies["History"] = { [unowned self] in
             let vc = $0 as HistoryTableViewController
-            vc.dataSource = FlickrSelectedPhotosHistoryViewModel(app: self.app, history: self.history)
+            vc.dataSource = SelectedPhotosHistoryViewModel(app: self.app, history: self.history)
             vc.splitViewController?.preferredDisplayMode = .AllVisible
             vc.imageController = self.makeImageViewControllerWithStoryBoard(vc.storyboard!)
         }

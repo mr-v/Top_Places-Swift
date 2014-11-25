@@ -16,7 +16,7 @@ class FlickrAppTests: XCTestCase {
         let port = MockPort()
         app.topPlacesPorts.append(port)
 
-        app.topPlaces = Dictionary<String, [FlickrPlace]>()
+        app.topPlaces = Dictionary<String, [Place]>()
 
         XCTAssertTrue(port.called)
     }

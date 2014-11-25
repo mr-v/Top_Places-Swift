@@ -1,5 +1,5 @@
 //
-//  FlickrSelectedPhotosHistoryViewModel.swift
+//  SelectedPhotosHistoryViewModel.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 06/11/14.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FlickrSelectedPhotosHistoryViewModel: NSObject, UITableViewDataSource {
+class SelectedPhotosHistoryViewModel: NSObject, UITableViewDataSource {
     let reuseIdentifier = "HistoryCell"
     let noItemsTitle = "No picked photo history"
     lazy var noItemsDescription: String = { "This tab displays last \(self.history.picksLimit) picked photos from Photos" }()
-    let history: FlickrSelectedPhotosHistory
+    let history: SelectedPhotosHistory
     let app: FlickrApp
 
-    init(app: FlickrApp, history: FlickrSelectedPhotosHistory) {
+    init(app: FlickrApp, history: SelectedPhotosHistory) {
         self.app = app
         self.history = history
     }
@@ -29,7 +29,7 @@ class FlickrSelectedPhotosHistoryViewModel: NSObject, UITableViewDataSource {
         app.updateCurrentPhoto(photo)
     }
 
-    func photoForIndexPath(indexPath: NSIndexPath) -> FlickrPhoto {
+    func photoForIndexPath(indexPath: NSIndexPath) -> Photo {
         return history.lastPickedPhotos[indexPath.row]
     }
 

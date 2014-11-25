@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct FlickrPlace: Equatable {
+struct Place: Equatable {
     let name: String
     let description: String
     let placeId: String
 }
 
-func ==(lhs: FlickrPlace, rhs: FlickrPlace) -> Bool{
+func ==(lhs: Place, rhs: Place) -> Bool{
     return lhs.name == rhs.name && lhs.description == lhs.description
 }
 
-struct FlickrPhoto: Equatable {
+struct Photo: Equatable {
     let title: String
     let description: String
     let photoId: String
 }
 
-func ==(lhs: FlickrPhoto, rhs: FlickrPhoto) -> Bool {
+func ==(lhs: Photo, rhs: Photo) -> Bool {
     return lhs.photoId == rhs.photoId
 }
 
@@ -41,34 +41,34 @@ protocol FlickrAppPickedPhotoURLPort {
 }
 
 protocol FlickrAppCurrentPhotoPort {
-    func currentPhotoUpdated(photo: FlickrPhoto)
+    func currentPhotoUpdated(photo: Photo)
 }
 
 class FlickrApp {
-    var topPlaces: [String: [FlickrPlace]] {
+    var topPlaces: [String: [Place]] {
         didSet {
             for port in topPlacesPorts {
                 port.didUpdateTopPlaces()
             }
         }
     }
-    var photos = [String: [FlickrPhoto]]()
+    var photos = [String: [Photo]]()
     var topPlacesPorts = [FlickrAppTopPlacesPort]()
     var photosPorts = [FlickrAppPlacePhotosPort]()
     var currentPhotoPort: FlickrAppCurrentPhotoPort?
 
     init() {
-        topPlaces = [String: [FlickrPlace]]()
+        topPlaces = [String: [Place]]()
     }
 
-    func setPhotosForPlace(placeId: String, photos: [FlickrPhoto]) {
+    func setPhotosForPlace(placeId: String, photos: [Photo]) {
         self.photos[placeId] = photos
         for port in photosPorts {
             port.didUpdatePhotosForPlace(placeId)
         }
     }
 
-    func updateCurrentPhoto(photo: FlickrPhoto) {
+    func updateCurrentPhoto(photo: Photo) {
         currentPhotoPort?.currentPhotoUpdated(photo)
     }
 }

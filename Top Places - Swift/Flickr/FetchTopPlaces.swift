@@ -9,7 +9,7 @@
 import Foundation
 
 class FetchTopPlaces {
-    typealias ResultFlickrPlaceCompletionHandler = (Result<[String: [FlickrPlace]]>) -> ()
+    typealias ResultFlickrPlaceCompletionHandler = (Result<[String: [Place]]>) -> ()
 
     private let completionHandler: ResultFlickrPlaceCompletionHandler
     private let service: IService
@@ -27,13 +27,13 @@ class FetchTopPlaces {
         switch data {
         case .OK(let json):
             let places = json.valueForKeyPath("places.place") as [NSDictionary]
-            var placesByCountry = [String: [FlickrPlace]]()
+            var placesByCountry = [String: [Place]]()
             for place in places {
                 let content = place[FlickrResponseContentKey] as String
                 let lastCommaRange = content.rangeOfString(", ", options: .BackwardsSearch)
                 let country = content.substringFromIndex(lastCommaRange!.endIndex)
-                var placesInCountry = placesByCountry[country] ?? [FlickrPlace]()
-                placesInCountry.append(FlickrPlace(jsonObject: place))
+                var placesInCountry = placesByCountry[country] ?? [Place]()
+                placesInCountry.append(Place(jsonObject: place))
                 placesByCountry[country] = placesInCountry
             }
             completionHandler(.OK(placesByCountry))

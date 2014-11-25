@@ -31,7 +31,7 @@ class FlickrPlaceTests: XCTestCase {
 
     // MARK: - factory methods
 
-    private func makePlaceFromJSONObject() -> FlickrPlace {
-        return FlickrPlace(jsonObject: stubTopPlaceJSONObject())
+    private func makePlaceFromJSONObject() -> Place {
+        return Place(jsonObject: stubTopPlaceJSONObject())
     }
 }

@@ -18,13 +18,13 @@ class FlickrAppNetworkAdapter {
 
     func updateTopPlacesWithJSONObject(json: NSDictionary) {
         let places = json.valueForKeyPath("places.place") as [NSDictionary]
-        var result = [String: [FlickrPlace]]()
+        var result = [String: [Place]]()
         for place in places {
             let content = place[FlickrResponseContentKey] as String
             let commaRange = content.rangeOfString(", ", options: .BackwardsSearch)
             let country = content.substringFromIndex(commaRange!.endIndex)
-            var placesInCountry = result[country] ?? [FlickrPlace]()
-            placesInCountry.append(FlickrPlace(jsonObject: place))
+            var placesInCountry = result[country] ?? [Place]()
+            placesInCountry.append(Place(jsonObject: place))
             result[country] = placesInCountry
         }
         app.topPlaces = result
@@ -34,7 +34,7 @@ class FlickrAppNetworkAdapter {
 
     func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
         let photos = json.valueForKeyPath("photos.photo") as [NSDictionary]
-        var result = [FlickrPhoto]()
+        var result = [Photo]()
         for photo in photos {
             var title = photo["title"] as String
             var description = photo.valueForKeyPath(FlickrResponsePhotoDescriptionKey) as String
@@ -48,7 +48,7 @@ class FlickrAppNetworkAdapter {
                 false
             }
             let photoId = photo["id"] as String
-            result.append(FlickrPhoto(title: title, description: description, photoId: photoId))
+            result.append(Photo(title: title, description: description, photoId: photoId))
         }
         app.setPhotosForPlace(placeId, photos: result)
     }

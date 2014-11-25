@@ -1,5 +1,5 @@
 //
-//  FlickrTopPlacesViewModelTests.swift
+//  TopPlacesViewModelTests.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 30/10/14.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class FlickrTopPlacesViewModelTests: XCTestCase {
+class TopPlacesViewModelTests: XCTestCase {
 
     // TODO: - empty
 
@@ -57,21 +57,21 @@ class FlickrTopPlacesViewModelTests: XCTestCase {
         app.topPlaces = makeTestTopPlaces()
 
         let result = viewModel.placeForIndexPath(NSIndexPath(forRow: 1, inSection: 2))
-        XCTAssertEqual(FlickrPlace(name: "York", description: "England", placeId: "2"), result)
+        XCTAssertEqual(Place(name: "York", description: "England", placeId: "2"), result)
     }
 
     // MARK: -
 
-    private func makeViewModel() -> (FlickrApp, FlickrTopPlacesViewModel) {
+    private func makeViewModel() -> (FlickrApp, TopPlacesViewModel) {
         let app = FlickrApp()
-        let viewModel = FlickrTopPlacesViewModel(app: app)
+        let viewModel = TopPlacesViewModel(app: app)
         app.topPlacesPorts.append(viewModel)
         return (app, viewModel)
     }
 
-    private func makeTestTopPlaces() -> Dictionary<String, [FlickrPlace]> {
-        return ["United Kingdom": [FlickrPlace(name: "London", description: "England", placeId: "1"), FlickrPlace(name: "York", description: "England", placeId: "2")],
-            "Brazil": [FlickrPlace(name: "Rio de Janeiro", description: "Rio de Janeiro", placeId: "#")],
-            "Canada": [FlickrPlace(name: "Toronto", description: "Ontario", placeId: "4")]]
+    private func makeTestTopPlaces() -> Dictionary<String, [Place]> {
+        return ["United Kingdom": [Place(name: "London", description: "England", placeId: "1"), Place(name: "York", description: "England", placeId: "2")],
+            "Brazil": [Place(name: "Rio de Janeiro", description: "Rio de Janeiro", placeId: "#")],
+            "Canada": [Place(name: "Toronto", description: "Ontario", placeId: "4")]]
     }
 }

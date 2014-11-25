@@ -9,7 +9,7 @@
 import UIKit
 
 class TopPlacesTableViewController: UITableViewController, FlickrAppTopPlacesPort {
-    var dataSource: FlickrTopPlacesViewModel!
+    var dataSource: TopPlacesViewModel!
     var flickrService: FlickrService!
 
     override func viewDidLoad() {

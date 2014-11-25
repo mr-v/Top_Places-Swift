@@ -1,5 +1,5 @@
 //
-//  FlickrSplitViewControllerDelegate.swift
+//  SplitViewControllerDelegate.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 05/11/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrSplitViewControllerDelegate : UISplitViewControllerDelegate {
+class SplitViewControllerDelegate : UISplitViewControllerDelegate {
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
         return true
     }

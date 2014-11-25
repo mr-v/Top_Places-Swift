@@ -1,5 +1,5 @@
 //
-//  FlickrSelectedPhotosHistoryViewModelTests.swift
+//  SelectedPhotosHistoryViewModelTests.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 06/11/14.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class FlickrSelectedPhotosHistoryViewModelTests: XCTestCase {
+class SelectedPhotosHistoryViewModelTests: XCTestCase {
 
     func test_NumberOfRowsInSection_EmptyHistory_ReturnsCountOfOne() {
         let viewModel = makeViewModel(0)
@@ -57,11 +57,11 @@ class FlickrSelectedPhotosHistoryViewModelTests: XCTestCase {
 
     // MARK: -
 
-    func makeViewModel(count: Int) -> FlickrSelectedPhotosHistoryViewModel {
-        let history = FlickrSelectedPhotosHistory(store: MockStore())
+    func makeViewModel(count: Int) -> SelectedPhotosHistoryViewModel {
+        let history = SelectedPhotosHistory(store: MockStore())
         let photos = makePhotos(count: count)
         for photo in photos { history.currentPhotoUpdated(photo) }
-        let viewModel = FlickrSelectedPhotosHistoryViewModel(app: FlickrApp(), history: history)
+        let viewModel = SelectedPhotosHistoryViewModel(app: FlickrApp(), history: history)
         return viewModel
     }
 

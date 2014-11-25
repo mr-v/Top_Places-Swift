@@ -1,5 +1,5 @@
 //
-//  FlickrSelectedPhotosHistoryTests.swift
+//  SelectedPhotosHistoryTests.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 06/11/14.
@@ -9,9 +9,9 @@
 import UIKit
 import XCTest
 
-class FlickrSelectedPhotosHistoryTests: XCTestCase {
+class SelectedPhotosHistoryTests: XCTestCase {
 
-    var historyWithMockStore = FlickrSelectedPhotosHistory(store: MockStore()) // initializer runs before each test
+    var historyWithMockStore = SelectedPhotosHistory(store: MockStore()) // initializer runs before each test
 
     // MARK: -
 
@@ -63,9 +63,9 @@ class FlickrSelectedPhotosHistoryTests: XCTestCase {
 
     // MARK: - User Defaults
 
-    func makeHistoryWithDefaultsStore(key: String) -> FlickrSelectedPhotosHistory {
-        let store = FlickrSelectedPhotosHistoryStore(defaultsKey: key)
-        return FlickrSelectedPhotosHistory(store: store)
+    func makeHistoryWithDefaultsStore(key: String) -> SelectedPhotosHistory {
+        let store = SelectedPhotosHistoryStore(defaultsKey: key)
+        return SelectedPhotosHistory(store: store)
     }
 
     func test_Init_HistoryIsEmptyBeforeLoading() {
@@ -73,7 +73,7 @@ class FlickrSelectedPhotosHistoryTests: XCTestCase {
     }
 
     func test_LoadHistory_BackedByDefaultsStore_LoadsPhotos() {
-        var firstHistory: FlickrSelectedPhotosHistory! = makeHistoryWithDefaultsStore(__FUNCTION__)
+        var firstHistory: SelectedPhotosHistory! = makeHistoryWithDefaultsStore(__FUNCTION__)
 
         for photo in makePhotos(count: 3) { firstHistory.currentPhotoUpdated(photo) }
         let expected = firstHistory.lastPickedPhotos
@@ -86,7 +86,7 @@ class FlickrSelectedPhotosHistoryTests: XCTestCase {
     }
 
     func test_LoadHistory_NoHistoryBackedByDefaultsStore_SetsEmptyArray() {
-        var history: FlickrSelectedPhotosHistory! = makeHistoryWithDefaultsStore(__FUNCTION__)
+        var history: SelectedPhotosHistory! = makeHistoryWithDefaultsStore(__FUNCTION__)
 
         history.loadHistory()
 
@@ -96,10 +96,10 @@ class FlickrSelectedPhotosHistoryTests: XCTestCase {
 
 // MARK: -
 
-class MockStore: FlickrSelectedPhotosHistoryStore {
-    override func storeHistory(photos: [FlickrPhoto]) { }
+class MockStore: SelectedPhotosHistoryStore {
+    override func storeHistory(photos: [Photo]) { }
 }
 
-func makePhotos(count: Int = 1) -> [FlickrPhoto] {
-    return (0..<count).map { FlickrPhoto(title: "title \($0)", description: "description \($0)", photoId: String($0)) }
+func makePhotos(count: Int = 1) -> [Photo] {
+    return (0..<count).map { Photo(title: "title \($0)", description: "description \($0)", photoId: String($0)) }
 }

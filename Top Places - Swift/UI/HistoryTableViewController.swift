@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
-    var dataSource: FlickrSelectedPhotosHistoryViewModel!
+    var dataSource: SelectedPhotosHistoryViewModel!
     var imageController: ImageViewController!
 
     override func viewDidLoad() {

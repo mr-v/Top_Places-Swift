@@ -16,7 +16,7 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort {
     var flickrService: FlickrService!
     var imageService: FlickrImageService!
 
-    var photo: FlickrPhoto? {
+    var photo: Photo? {
         didSet {
             title = photo!.title
             flickrService.fetchSizesForPhotoId(photo!.photoId, callback: didUpdatePickedPhotoURL)
