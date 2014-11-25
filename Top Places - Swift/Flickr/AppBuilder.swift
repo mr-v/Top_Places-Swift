@@ -18,14 +18,23 @@ class AppBuilder: UIStoryboardInjector {
     let topPlacesViewModel: TopPlacesViewModel
     let splitControllerDelegate: SplitViewControllerDelegate
     let history: SelectedPhotosHistory
+    let useCaseFactory: UseCaseFactory
+    let webService: WebService
 
     override init() {
         app = FlickrApp()
         service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
         imageService = FlickrImageService()
+
+        let urlString = "https://api.flickr.com/services/rest/"
+        let defaultParameters: [String: Any] = ["api_key": "8bac83dae148d108bd0ac45ca6fd07c3",
+            "format": "json",
+            "nojsoncallback": "1"]
+        webService = WebService(baseURLString: urlString, defaultParameters: defaultParameters)
+
+        useCaseFactory = UseCaseFactory(service: webService)
         splitControllerDelegate = SplitViewControllerDelegate()
-        topPlacesViewModel = TopPlacesViewModel(app: app)
-        app.topPlacesPorts.append(topPlacesViewModel)
+        topPlacesViewModel = TopPlacesViewModel(app: app, useCaseFactory: useCaseFactory)
         history = SelectedPhotosHistory(store: SelectedPhotosHistoryStore())
         app.currentPhotoPort = history
         super.init()
@@ -36,9 +45,6 @@ class AppBuilder: UIStoryboardInjector {
         controllerDependencies["TopPlaces"] =  { [unowned self] in
             let vc = $0 as TopPlacesTableViewController
             vc.dataSource = self.topPlacesViewModel
-            vc.flickrService = self.service
-            self.app.topPlacesPorts.append(vc)
-
             vc.splitViewController?.preferredDisplayMode = .AllVisible
         }
 

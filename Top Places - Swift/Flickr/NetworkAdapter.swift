@@ -16,20 +16,6 @@ class FlickrAppNetworkAdapter {
         self.app = app
     }
 
-    func updateTopPlacesWithJSONObject(json: NSDictionary) {
-        let places = json.valueForKeyPath("places.place") as [NSDictionary]
-        var result = [String: [Place]]()
-        for place in places {
-            let content = place[FlickrResponseContentKey] as String
-            let commaRange = content.rangeOfString(", ", options: .BackwardsSearch)
-            let country = content.substringFromIndex(commaRange!.endIndex)
-            var placesInCountry = result[country] ?? [Place]()
-            placesInCountry.append(Place(jsonObject: place))
-            result[country] = placesInCountry
-        }
-        app.topPlaces = result
-    }
-
     let FlickrResponsePhotoDescriptionKey = "description._content"
 
     func updatePhotosFromPlace(placeId: String, json: NSDictionary) {

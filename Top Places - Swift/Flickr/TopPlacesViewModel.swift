@@ -8,22 +8,38 @@
 
 import UIKit
 
-class TopPlacesViewModel: NSObject, UITableViewDataSource, FlickrAppTopPlacesPort {
-    let reuseId = "PlaceCell"
-    let app: FlickrApp
-    var sectionToName: [String]!
+class TopPlacesViewModel: NSObject, UITableViewDataSource {
+    private let reuseId = "PlaceCell"
+    private let app: FlickrApp
+    private var sectionToName: [String]!
+    private let useCaseFactory: IUseCaseFactory
+    var delegate: DataSourceDelegate?
 
-    init(app: FlickrApp) {
+    init(app: FlickrApp, useCaseFactory: IUseCaseFactory) {
         self.app = app
+        self.useCaseFactory = useCaseFactory
     }
 
-    func didUpdateTopPlaces() {
-        updateSectionToName()
+    func updateTopPlaces() {
+        let parameters: UseCaseFactoryParameters = [CompletionHandlerUseCaseKey: onTopPlacesUpdateCompletion]
+        let updateTopPlaces = useCaseFactory.createWithType(.UpdateTopPlaces, parameters: parameters)
+        updateTopPlaces.execute()
     }
 
     func placeForIndexPath(indexPath: NSIndexPath) -> Place {
         let country = countryForSection(indexPath.section)
         return app.topPlaces[country]![indexPath.row]
+    }
+
+    private func onTopPlacesUpdateCompletion(result: Result<[String: [Place]]>) {
+        switch result {
+        case .OK(let data):
+            app.topPlaces = data
+        case .Error:
+            false   // TODO: add logging?
+        }
+        updateSectionToName()
+        delegate?.dataSourceDidChangeContent()
     }
 
     // MARK: - Data Source

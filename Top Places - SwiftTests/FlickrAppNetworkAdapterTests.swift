@@ -11,53 +11,6 @@ import XCTest
 
 class FlickrAppNetworkAdapterTests: XCTestCase {
 
-    // MARK: - places
-
-    func test_UpdateTopPlacesWithJSONObject_UpdatesTopPlaces() {
-        let (app, adapter) = makeNetworkAdapter()
-        let defaultZeroCount = app.topPlaces.count
-
-        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
-
-        XCTAssertNotEqual(defaultZeroCount, app.topPlaces.count)
-    }
-
-    func test_UpdateTopPlacesWithJSONObject_ExtractsCountry() {
-        let (app, adapter) = makeNetworkAdapter()
-
-        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
-
-        let result = app.topPlaces.keys.first!
-        XCTAssertEqual("United Kingdom", result)
-    }
-
-    func test_UpdateTopPlacesWithJSONObject_ExtractsPlace() {
-        let (app, adapter) = makeNetworkAdapter()
-
-        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
-
-        let result = app.topPlaces["United Kingdom"]![0]
-        XCTAssertEqual("London", result.name)
-    }
-
-    func test_UpdateTopPlacesWithJSONObject_ExtractsDescription() {
-        let (app, adapter) = makeNetworkAdapter()
-
-        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
-
-        let result = app.topPlaces["United Kingdom"]![0]
-        XCTAssertEqual("England", result.description)
-    }
-
-    func test_UpdateTopPlacesWithJSONObject_ExtractsPlaceId() {
-        let (app, adapter) = makeNetworkAdapter()
-
-        adapter.updateTopPlacesWithJSONObject(stubTopPlacesJSONObject())
-
-        let result = app.topPlaces["United Kingdom"]![0]
-        XCTAssertEqual(placeId, result.placeId)
-    }
-
     // MARK: - photos
 
     func test_UpdatePhotosFromPlace_UpdatesPhotos() {

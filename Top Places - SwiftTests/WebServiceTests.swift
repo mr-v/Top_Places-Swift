@@ -101,7 +101,6 @@ class WebServiceTests: XCTestCase {
         waitForExpectationsAndFailAfterTimeout(3)
     }
 
-
     func test_FetchJSON_QueryIsPercentEncoded() {
         let expectation = expectationWithDescription("")
         let service = makeWebService()
@@ -114,7 +113,22 @@ class WebServiceTests: XCTestCase {
 
         waitForExpectationsAndFailAfterTimeout(3)
     }
-    // encoding
+
+    func test_FetchJSON_APIFail_CallsCompletionHandlerWithErrorResult() {
+        let expectation = expectationWithDescription("")
+        let service = makeWebService()
+        stubFailedAPICall()
+
+        service.fetchJSON([String: Any]()) { result in
+            expectation.fulfill()
+            switch result {
+            case .Error:    XCTAssertTrue(true)
+            default:        XCTFail()
+            }
+        }
+
+        waitForExpectationsAndFailAfterTimeout(3)
+    }
 
     // MARK: -
 
@@ -156,5 +170,9 @@ class WebServiceTests: XCTestCase {
         let query = "custom=%20%20%C4%85"
         stubRequest("GET", baseURLString + "?" + query).andReturn(200)
         return parameters
+    }
+
+    private func stubFailedAPICall() {
+        stubRequest("GET", baseURLString).andReturn(200).withBody("{\"stat\":\"fail\"}")
     }
 }

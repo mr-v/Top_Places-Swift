@@ -41,6 +41,11 @@ class WebService: IService {
                 return
             }
             if let jsonObject = deserialized {
+                if jsonObject["stat"] as? String == "fail" {
+                    dispatchError()
+                    return
+                }
+
                 dispatch_async(dispatch_get_main_queue()) { completionHandler(.OK(jsonObject)) }
             } else {
                 dispatchError()

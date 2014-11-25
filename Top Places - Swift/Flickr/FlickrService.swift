@@ -29,14 +29,6 @@ class FlickrService {
         urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     }
 
-    func fetchTopPlaces() {
-        let localityPlaceType = "7"
-        let topPlacesParameters = "method=flickr.places.getTopPlacesList&place_type_id=\(localityPlaceType)"
-        sendRequest(topPlacesParameters) {
-            jsonObject in self.adapter.updateTopPlacesWithJSONObject(jsonObject)
-        }
-    }
-
     func fetchPhotosFromPlace(placeId: String) {
         let photoLimit = 50
         let photosParameters = "method=flickr.photos.search&place_id=\(placeId)&per_page=\(photoLimit)&extras=description"

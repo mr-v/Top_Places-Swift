@@ -8,24 +8,24 @@
 
 import UIKit
 
-class TopPlacesTableViewController: UITableViewController, FlickrAppTopPlacesPort {
+class TopPlacesTableViewController: UITableViewController, DataSourceDelegate {
     var dataSource: TopPlacesViewModel!
-    var flickrService: FlickrService!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Top Places"
+        dataSource.delegate = self
         tableView.dataSource = dataSource
         fetchTopPlaces()
     }
 
     @IBAction func fetchTopPlaces() {
         refreshControl?.beginRefreshing()
-        flickrService.fetchTopPlaces()
+        dataSource.updateTopPlaces()
     }
 
-    func didUpdateTopPlaces() {
+    func dataSourceDidChangeContent() {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }

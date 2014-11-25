@@ -11,23 +11,4 @@ import XCTest
 
 class FlickrAppTests: XCTestCase {
 
-    func test_TopPlaces_DidSet_CallsPortsUpdate() {
-        let app = FlickrApp()
-        let port = MockPort()
-        app.topPlacesPorts.append(port)
-
-        app.topPlaces = Dictionary<String, [Place]>()
-
-        XCTAssertTrue(port.called)
-    }
-
-    // MARK: -
-
-    class MockPort: FlickrAppTopPlacesPort {
-        private var called = false
-
-        func didUpdateTopPlaces() {
-            called = true
-        }
-    }
 }

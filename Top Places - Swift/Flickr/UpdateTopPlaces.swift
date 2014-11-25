@@ -1,5 +1,5 @@
 //
-//  FetchTopPlaces.swift
+//  UpdateTopPlaces.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 24/11/14.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class FetchTopPlaces {
-    typealias ResultFlickrPlaceCompletionHandler = (Result<[String: [Place]]>) -> ()
+typealias ResultFlickrPlaceCompletionHandler = (Result<[String: [Place]]>) -> ()
 
+class UpdateTopPlaces: UseCase {
     private let completionHandler: ResultFlickrPlaceCompletionHandler
     private let service: IService
 
@@ -20,7 +20,10 @@ class FetchTopPlaces {
     }
 
     func execute() {
-        service.fetchJSON([String: AnyObject](), onCompletion)
+        let localityPlaceTypeId = "7"
+        let parameters: [String: Any] = ["method": "flickr.places.getTopPlacesList",
+            "place_type_id": localityPlaceTypeId]
+        service.fetchJSON(parameters, onCompletion)
     }
 
     func onCompletion(data: Result<NSDictionary>) {

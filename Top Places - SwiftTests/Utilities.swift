@@ -10,11 +10,39 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
- func waitForExpectationsAndFailAfterTimeout(timeout: NSTimeInterval) {
-    waitForExpectationsWithTimeout(timeout) {
-        if let error = $0 {
-            XCTFail()
+    func waitForExpectationsAndFailAfterTimeout(timeout: NSTimeInterval) {
+        waitForExpectationsWithTimeout(timeout) {
+            if let error = $0 {
+                XCTFail()
+            }
         }
     }
 }
+
+let StubResultUseCaseFactoryKey = "StubResultUseCaseFactoryKey"
+
+class StubUseCaseFactory<T>: IUseCaseFactory {
+    let result: Result<T>
+    init(result: Result<T>) {
+        self.result = result
+    }
+
+    func createWithType(type: UseCaseType, parameters: UseCaseFactoryParameters) -> UseCase {
+        let completionHandler = parameters[CompletionHandlerUseCaseKey] as (Result<T>) -> ()
+        return StubUseCase(result: result, completionHandler: completionHandler)
+    }
+}
+
+class StubUseCase<T>: UseCase {
+    let completionHandler: (Result<T>) -> ()
+    let result: Result<T>
+
+    init(result: Result<T>, completionHandler: (Result<T>) -> ()) {
+        self.result = result
+        self.completionHandler = completionHandler
+    }
+
+    func execute() {
+        completionHandler(result)
+    }
 }

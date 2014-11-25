@@ -13,23 +13,6 @@ typealias DeserializedJSONClosure = (NSDictionary) -> ()
 
 class FlickrServiceTests: XCTestCase {
 
-    func test_FetchTopPlaces_SuccessfulRequest_ContainsArrayOfPlaces() {
-        let expectation = expectationWithDescription("top places fetched")
-        let service = makeFlickrService {
-            jsonObject in
-            expectation.fulfill()
-            let places = jsonObject.valueForKeyPath("places.place") as? [NSDictionary]
-            XCTAssertNotNil(places?)
-        }
-
-        service.fetchTopPlaces()
-
-        waitForExpectationsWithTimeout(10) {
-            error in
-            service.urlSession.invalidateAndCancel()
-        }
-    }
-
     func test_FetchPhotosFromPlace_SuccessfulRequest_ContainsArraysOfPhoto() {
         let expectation = expectationWithDescription("photos from place fetched")
         let service = makeFlickrService {
@@ -80,10 +63,6 @@ class FlickrServiceTests: XCTestCase {
         init(updateCallback: DeserializedJSONClosure) {
             self.updateCallback = updateCallback
             super.init(app: FlickrApp())
-        }
-
-        override func updateTopPlacesWithJSONObject(json: NSDictionary){
-            updateCallback(json)
         }
 
         override func updatePhotosFromPlace(placeId: String, json: NSDictionary) {

@@ -1,5 +1,5 @@
 //
-//  FetchTopPlacesTests.swift
+//  UpdateTopPlacesTests.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 24/11/14.
@@ -9,12 +9,12 @@
 import UIKit
 import XCTest
 
-class FetchTopPlacesTests: XCTestCase {
+class UpdateTopPlacesTests: XCTestCase {
 
 
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithOKResult() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -28,7 +28,7 @@ class FetchTopPlacesTests: XCTestCase {
 
     func test_Execute_ErrorResponse_CallsCompletionHandlerWithErrorResult() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeFetchTopPlaces(.Error) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.Error) { r in result = r }
 
         useCase.execute()
 
@@ -42,7 +42,7 @@ class FetchTopPlacesTests: XCTestCase {
 
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlacesGroupedByCountry() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -56,7 +56,7 @@ class FetchTopPlacesTests: XCTestCase {
 
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlaces() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeFetchTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -72,9 +72,9 @@ class FetchTopPlacesTests: XCTestCase {
 
     // MARK: - factory methods
 
-    private func makeFetchTopPlaces(serviceResponse: Result<NSDictionary>, completionHandler: (Result<[String :[Place]]>) -> ()) -> FetchTopPlaces {
+    private func makeUpdateTopPlaces(serviceResponse: Result<NSDictionary>, completionHandler: (Result<[String :[Place]]>) -> ()) -> UpdateTopPlaces {
         let stubService = StubService(response: serviceResponse)
-        let useCase = FetchTopPlaces(service: stubService, completionHandler: completionHandler)
+        let useCase = UpdateTopPlaces(service: stubService, completionHandler: completionHandler)
         return useCase
     }
 
