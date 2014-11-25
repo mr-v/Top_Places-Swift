@@ -18,7 +18,7 @@
 		EA23BEED1A23B8F1003F9E87 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF121A2349F2002625F2 /* Result.swift */; };
 		EA23BEF41A23B91D003F9E87 /* WebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEEF1A23B91D003F9E87 /* WebServiceTests.swift */; };
 		EA23BEF71A23BA0A003F9E87 /* UpdateTopPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEF61A23BA0A003F9E87 /* UpdateTopPlacesTests.swift */; };
-		EA23BF6B1A248855003F9E87 /* WebServiceFlickrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF6A1A248855003F9E87 /* WebServiceFlickrTests.swift */; };
+		EA23BF6B1A248855003F9E87 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */; };
 		EA23BF721A24A809003F9E87 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF711A24A809003F9E87 /* Utilities.swift */; };
 		EA23BF731A24A809003F9E87 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF711A24A809003F9E87 /* Utilities.swift */; };
 		EA23BF751A24C13D003F9E87 /* UseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF741A24C13D003F9E87 /* UseCaseFactoryTests.swift */; };
@@ -109,7 +109,7 @@
 		EA23BEEF1A23B91D003F9E87 /* WebServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceTests.swift; sourceTree = "<group>"; };
 		EA23BEF61A23BA0A003F9E87 /* UpdateTopPlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTopPlacesTests.swift; sourceTree = "<group>"; };
 		EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places - SwiftTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA23BF6A1A248855003F9E87 /* WebServiceFlickrTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceFlickrTests.swift; sourceTree = "<group>"; };
+		EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
 		EA23BF711A24A809003F9E87 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EA23BF741A24C13D003F9E87 /* UseCaseFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseFactoryTests.swift; sourceTree = "<group>"; };
 		EA23BF761A24C216003F9E87 /* UseCaseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 				EAD807AB1A02DCF000D82A3C /* Supporting Files */,
 				EAD807B51A02DD1300D82A3C /* FlickrServiceTests.swift */,
 				EAD807B41A02DD1300D82A3C /* Top Places - Async Tests-Bridging-Header.h */,
-				EA23BF6A1A248855003F9E87 /* WebServiceFlickrTests.swift */,
+				EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */,
 			);
 			name = "Top Places - Integration Tests";
 			path = "Top Places - Async Tests";
@@ -593,7 +593,7 @@
 				EAD807B81A02DDB400D82A3C /* NetworkAdapter.swift in Sources */,
 				EAD807B91A02DDFC00D82A3C /* FlickrApp.swift in Sources */,
 				EAD807B61A02DD1300D82A3C /* FlickrServiceTests.swift in Sources */,
-				EA23BF6B1A248855003F9E87 /* WebServiceFlickrTests.swift in Sources */,
+				EA23BF6B1A248855003F9E87 /* UseCasesIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

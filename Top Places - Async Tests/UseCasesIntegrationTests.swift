@@ -11,23 +11,19 @@ import XCTest
 
 class WebServiceFlickrTests: XCTestCase {
 
-    func test_FetchJSON_TopPlacesEndpointSuccess_JSONContainsPlacesArray() {
+    func test_UpdateTopPlaces_OnSuccess_ReturnsResultWithPlaces() {
         let expectation = expectationWithDescription("")
         let service = makeWebService()
-        let localityPlaceTypeId = "7"
-        let parameters: [String: Any] = ["method": "flickr.places.getTopPlacesList",
-            "place_type_id": localityPlaceTypeId]
-
-        service.fetchJSON(parameters) { result in
+        let useCase = UpdateTopPlaces(service: service) {result in
             expectation.fulfill()
             switch result {
-            case .OK(let data):
-                let places = data.valueForKeyPath("places.place") as? [NSDictionary]
-                XCTAssertNotNil(places)
-            default:
-                XCTFail()
+            case .OK(let (placesByCountry)):    XCTAssertTrue(true)
+            default:                            XCTFail()
             }
         }
+
+        useCase.execute()
+
         waitForExpectationsAndFailAfterTimeout(10)
     }
 
@@ -39,10 +35,8 @@ class WebServiceFlickrTests: XCTestCase {
             result in
             expectation.fulfill()
             switch result {
-            case .OK(let data):
-                XCTAssertTrue(true)
-            default:
-                XCTFail()
+            case .OK(let (_, photos)):  XCTAssertTrue(true)
+            default:                    XCTFail()
             }
         }
 
