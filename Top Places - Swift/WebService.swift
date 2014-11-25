@@ -22,19 +22,28 @@ class WebService: IService {
 
     func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
         let request = urlRequestWithParameters(parameters)
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, urlResponse, error) -> Void in
-            // TODO: completion
-//            if error
+        let task = session.dataTaskWithRequest(request, completionHandler: { data, urlResponse, error in
+            func dispatchError() {
+                dispatch_async(dispatch_get_main_queue()) { completionHandler(.Error) }
+            }
+
+            if let httpResponse = urlResponse as? NSHTTPURLResponse {
+                if httpResponse.statusCode != 200 {
+                    dispatchError()
+                    return
+                }
+            }
+
             var possibleError: NSError?
             var deserialized = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &possibleError) as? NSDictionary
             if let error = possibleError {
-                dispatch_async(dispatch_get_main_queue()) { completionHandler(.Error) }
+                dispatchError()
                 return
             }
             if let jsonObject = deserialized {
                 dispatch_async(dispatch_get_main_queue()) { completionHandler(.OK(jsonObject)) }
             } else {
-                dispatch_async(dispatch_get_main_queue()) { completionHandler(.Error) }
+                dispatchError()
             }
 
         })
