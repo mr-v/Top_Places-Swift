@@ -46,3 +46,15 @@ class StubUseCase<T>: UseCase {
         completionHandler(result)
     }
 }
+
+class StubService: IService {
+    let response: Result<NSDictionary>
+
+    init(response: Result<NSDictionary>) {
+        self.response = response
+    }
+
+    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
+        completionHandler(response)
+    }
+}

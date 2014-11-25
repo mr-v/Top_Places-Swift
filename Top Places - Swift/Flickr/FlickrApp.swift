@@ -28,10 +28,6 @@ func ==(lhs: Photo, rhs: Photo) -> Bool {
     return lhs.photoId == rhs.photoId
 }
 
-protocol FlickrAppPlacePhotosPort {
-    func didUpdatePhotosForPlace(placeId: String)
-}
-
 protocol FlickrAppPickedPhotoURLPort {
     func didUpdatePickedPhotoURL(url: NSURL)
 }
@@ -43,18 +39,10 @@ protocol FlickrAppCurrentPhotoPort {
 class FlickrApp {
     var topPlaces: [String: [Place]]
     var photos = [String: [Photo]]()
-    var photosPorts = [FlickrAppPlacePhotosPort]()
     var currentPhotoPort: FlickrAppCurrentPhotoPort?
 
     init() {
         topPlaces = [String: [Place]]()
-    }
-
-    func setPhotosForPlace(placeId: String, photos: [Photo]) {
-        self.photos[placeId] = photos
-        for port in photosPorts {
-            port.didUpdatePhotosForPlace(placeId)
-        }
     }
 
     func updateCurrentPhoto(photo: Photo) {

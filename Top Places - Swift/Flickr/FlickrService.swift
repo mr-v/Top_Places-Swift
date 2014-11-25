@@ -29,14 +29,6 @@ class FlickrService {
         urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     }
 
-    func fetchPhotosFromPlace(placeId: String) {
-        let photoLimit = 50
-        let photosParameters = "method=flickr.photos.search&place_id=\(placeId)&per_page=\(photoLimit)&extras=description"
-        sendRequest(photosParameters) {
-            jsonObject in self.adapter.updatePhotosFromPlace(placeId, json: jsonObject)
-        }
-    }
-
     func fetchSizesForPhotoId(photoId: String, callback: URLCallback) {
         let getSizesParameters = "method=flickr.photos.getSizes&photo_id=\(photoId)"
         sendRequest(getSizesParameters) {

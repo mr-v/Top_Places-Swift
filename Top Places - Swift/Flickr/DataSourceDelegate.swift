@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol DataSourceDelegate {
+protocol DataSourceDelegate: class {
     func dataSourceDidChangeContent()
 }

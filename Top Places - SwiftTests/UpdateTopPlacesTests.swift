@@ -11,10 +11,9 @@ import XCTest
 
 class UpdateTopPlacesTests: XCTestCase {
 
-
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithOKResult() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(makeStubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -42,7 +41,7 @@ class UpdateTopPlacesTests: XCTestCase {
 
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlacesGroupedByCountry() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(makeStubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -56,7 +55,7 @@ class UpdateTopPlacesTests: XCTestCase {
 
     func test_Execute_SuccessResponse_CallsCompletionHandlerWithPlaces() {
         var result: Result<[String: [Place]]>?
-        let useCase = makeUpdateTopPlaces(.OK(stubTopPlacesJSONResponse())) { r in result = r }
+        let useCase = makeUpdateTopPlaces(.OK(makeStubTopPlacesJSONResponse())) { r in result = r }
 
         useCase.execute()
 
@@ -78,15 +77,5 @@ class UpdateTopPlacesTests: XCTestCase {
         return useCase
     }
 
-    private class StubService: IService {
-        let response: Result<NSDictionary>
 
-        init(response: Result<NSDictionary>) {
-            self.response = response
-        }
-
-        private func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
-            completionHandler(response)
-        }
-    }
 }

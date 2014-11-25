@@ -50,9 +50,7 @@ class AppBuilder: UIStoryboardInjector {
 
         controllerDependencies["Photos"] =  { [unowned self] in
             let vc = $0 as PhotosViewController
-            vc.dataSource = FlickrPhotosViewModel(app: self.app)
-            vc.flickrService = self.service
-            self.app.photosPorts.append(vc)
+            vc.dataSource = PhotosViewModel(app: self.app, useCaseFactory: self.useCaseFactory)
             vc.imageController = self.makeImageViewControllerWithStoryBoard(vc.storyboard!)
         }
 

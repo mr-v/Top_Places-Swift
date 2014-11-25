@@ -13,7 +13,7 @@ class TopPlacesViewModel: NSObject, UITableViewDataSource {
     private let app: FlickrApp
     private var sectionToName: [String]!
     private let useCaseFactory: IUseCaseFactory
-    var delegate: DataSourceDelegate?
+    weak var delegate: DataSourceDelegate!
 
     init(app: FlickrApp, useCaseFactory: IUseCaseFactory) {
         self.app = app

@@ -10,6 +10,7 @@ import Foundation
 
 enum UseCaseType {
     case UpdateTopPlaces
+    case UpdatePhotosForPlace
 }
 
 protocol UseCase {
@@ -23,6 +24,7 @@ protocol IUseCaseFactory {
 typealias UseCaseFactoryParameters = [String: Any]
 
 let CompletionHandlerUseCaseKey = "completionHandler"
+let PlaceIdUseCaseKey = "placeId"
 
 class UseCaseFactory: IUseCaseFactory {
     private let service: IService
@@ -34,8 +36,12 @@ class UseCaseFactory: IUseCaseFactory {
     func createWithType(type: UseCaseType, parameters: UseCaseFactoryParameters) -> UseCase {
         switch type {
         case .UpdateTopPlaces:
-            let completionHandler = parameters[CompletionHandlerUseCaseKey] as ResultFlickrPlaceCompletionHandler
+            let completionHandler = parameters[CompletionHandlerUseCaseKey] as CompletionHandlerForPlaceResult
             return UpdateTopPlaces(service: service, completionHandler: completionHandler)
+        case .UpdatePhotosForPlace:
+            let completionHandler = parameters[CompletionHandlerUseCaseKey] as CompletionHandlerForPhotosResult
+            let placeId = parameters[PlaceIdUseCaseKey] as String
+            return UpdatePhotosForPlace(placeId: placeId, service: service, completionHandler: completionHandler)
         }
     }
 }

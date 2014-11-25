@@ -31,6 +31,26 @@ class WebServiceFlickrTests: XCTestCase {
         waitForExpectationsAndFailAfterTimeout(10)
     }
 
+    func test_UpdatePhotosForPlaceUseCase_OnSucces_ReturnsResultWithPhotos() {
+        let expectation = expectationWithDescription("")
+        let service = makeWebService()
+        let placeId = "hP_s5s9VVr5Qcg"
+        let useCase = UpdatePhotosForPlace(placeId: placeId, service: service) {
+            result in
+            expectation.fulfill()
+            switch result {
+            case .OK(let data):
+                XCTAssertTrue(true)
+            default:
+                XCTFail()
+            }
+        }
+
+        useCase.execute()
+
+        waitForExpectationsAndFailAfterTimeout(10)
+    }
+
     // MARK: -
 
     private func makeWebService() -> WebService {

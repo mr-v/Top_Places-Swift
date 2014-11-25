@@ -9,6 +9,7 @@
 import Foundation
 
 let FlickrResponseContentKey = "_content"
+let FlickrResponsePhotoDescriptionKey = "description._content"
 
 extension Place {
     init(jsonObject: NSDictionary) {
@@ -20,5 +21,22 @@ extension Place {
         name = placeName
         description = placeDescription
         self.placeId = placeId
+    }
+}
+
+extension Photo {
+    init(jsonObject: NSDictionary) {
+        title = jsonObject["title"] as String
+        description = jsonObject.valueForKeyPath(FlickrResponsePhotoDescriptionKey) as String
+        switch (title, description) {
+        case  ("", let d) where !d.isEmpty:
+            title = description
+            description = ""
+        case ("", ""):
+            title = "Unknown"
+        default:
+            false
+        }
+        photoId = jsonObject["id"] as String
     }
 }

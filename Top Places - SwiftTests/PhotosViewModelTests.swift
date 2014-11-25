@@ -1,5 +1,5 @@
 //
-//  FlickrPhotosViewModel.swift
+//  PhotosViewModel.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 04/11/14.
@@ -9,14 +9,14 @@
 import UIKit
 import XCTest
 
-class FlickrPhotosViewModelTests: XCTestCase {
+class PhotosViewModelTests: XCTestCase {
 
     // MARK: - data source
 
     func test_NumberOfRowsInSection() {
-        let (app, viewModel) = makeViewModel()
+        let (_, viewModel) = makeViewModel()
 
-        app.setPhotosForPlace("0", photos: makeTestPhotos())
+        viewModel.updatePhotos()
 
         let result = viewModel.tableView(UITableView(), numberOfRowsInSection: 2)
         XCTAssertEqual(rowCount, result)
@@ -27,30 +27,36 @@ class FlickrPhotosViewModelTests: XCTestCase {
         let port = StubCurrentPhotoPort()
         app.currentPhotoPort = port
 
-        app.setPhotosForPlace("0", photos: makeTestPhotos())
+        let (id, photos) = makeTestPhotos()
+        app.photos[id] = photos
         viewModel.didSelectPhotoAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
 
         XCTAssertEqual(Photo(title: "title 0", description: "description 0", photoId: "0"), port.photo)
     }
 
+    // TODO: - test cell configuration
+
 
 //  MARK: -
 
-    let rowCount = 5
+    private let rowCount = 5
+    private let placeId = "0"
 
-    private func makeViewModel() -> (FlickrApp, FlickrPhotosViewModel) {
+    private func makeViewModel() -> (FlickrApp, PhotosViewModel) {
         let app = FlickrApp()
-        let viewModel = FlickrPhotosViewModel(app: app)
-        viewModel.placeId = "0"
+        let result = Result.OK(makeTestPhotos())
+
+        let viewModel = PhotosViewModel(app: app, useCaseFactory: StubUseCaseFactory(result: result))
+        viewModel.placeId = placeId
         return (app, viewModel)
     }
 
-    private func makeTestPhotos() -> [Photo] {
+    private func makeTestPhotos() -> (String, [Photo]) {
         var list = [Photo]()
         for i in 0..<rowCount {
             list.append(Photo(title: "title \(i)", description: "description \(i)", photoId: String(i)))
         }
-        return list
+        return ("0", list)
     }
 
     class StubCurrentPhotoPort : FlickrAppCurrentPhotoPort {

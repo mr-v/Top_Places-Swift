@@ -8,10 +8,9 @@
 
 import UIKit
 
-class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
-    var dataSource: FlickrPhotosViewModel!
+class PhotosViewController: UITableViewController, DataSourceDelegate {
+    var dataSource: PhotosViewModel!
     var imageController: ImageViewController!
-    var flickrService: FlickrService!
     var place: Place! {
         didSet {
             title = place.name
@@ -21,22 +20,20 @@ class PhotosViewController: UITableViewController, FlickrAppPlacePhotosPort {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dataSource.delegate = self
         dataSource.placeId = place.placeId
         tableView.dataSource = dataSource
         fetchPhotosFromPlace()
     }
 
     @IBAction func fetchPhotosFromPlace() {
-        flickrService.fetchPhotosFromPlace(place.placeId)
         refreshControl?.beginRefreshing()
+        dataSource.updatePhotos()
     }
 
-    // TODO: handle errror case... - refreshControl, feedback; add callbacks for success/failure?
-    func didUpdatePhotosForPlace(placeId: String) {
-        if place.placeId == placeId {
-            tableView.reloadData()
-            refreshControl?.endRefreshing()
-        }
+    func dataSourceDidChangeContent() {
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

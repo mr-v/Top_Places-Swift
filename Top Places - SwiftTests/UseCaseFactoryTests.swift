@@ -11,12 +11,22 @@ import XCTest
 
 class UseCaseFactoryTests: XCTestCase {
 
-    func test_Create_UpdateTopPlacesParameter_CreatesUpdateTopPlaces() {
+    func test_Create_UpdateTopPlaces_CreatesUpdateTopPlaces() {
         let factory = makeUseCaseFactory()
-        let completionHandler: ResultFlickrPlaceCompletionHandler = { _ in }
+        let completionHandler: CompletionHandlerForPlaceResult = { _ in }
         let parameters: [String: Any] = [CompletionHandlerUseCaseKey: completionHandler]
 
         let useCase = factory.createWithType(.UpdateTopPlaces, parameters: parameters) as? UpdateTopPlaces
+
+        XCTAssertNotNil(useCase)
+    }
+
+    func test_Create_UpdatePhotosForPlace_CreatesUpdatePhotosForPlace() {
+        let factory = makeUseCaseFactory()
+        let completionHandler: CompletionHandlerForPhotosResult = { _ in }
+        let parameters: [String: Any] = [CompletionHandlerUseCaseKey: completionHandler, PlaceIdUseCaseKey: ""]
+
+        let useCase = factory.createWithType(.UpdatePhotosForPlace, parameters: parameters) as? UpdatePhotosForPlace
 
         XCTAssertNotNil(useCase)
     }

@@ -16,29 +16,6 @@ class FlickrAppNetworkAdapter {
         self.app = app
     }
 
-    let FlickrResponsePhotoDescriptionKey = "description._content"
-
-    func updatePhotosFromPlace(placeId: String, json: NSDictionary) {
-        let photos = json.valueForKeyPath("photos.photo") as [NSDictionary]
-        var result = [Photo]()
-        for photo in photos {
-            var title = photo["title"] as String
-            var description = photo.valueForKeyPath(FlickrResponsePhotoDescriptionKey) as String
-            switch (title, description) {
-            case  ("", let d) where !d.isEmpty:
-                title = description
-                description = ""
-            case ("", ""):
-                title = "Unknown"
-            default:
-                false
-            }
-            let photoId = photo["id"] as String
-            result.append(Photo(title: title, description: description, photoId: photoId))
-        }
-        app.setPhotosForPlace(placeId, photos: result)
-    }
-
     //  URL formats: https://www.flickr.com/services/api/misc.urls.html
     func updatePickedPhotoURL(json: NSDictionary, callback: URLCallback) {
         let sizes = json.valueForKeyPath("sizes.size") as [NSDictionary]

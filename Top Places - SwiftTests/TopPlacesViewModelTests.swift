@@ -49,6 +49,8 @@ class TopPlacesViewModelTests: XCTestCase {
         XCTAssertEqual(Place(name: "York", description: "England", placeId: "2"), result)
     }
 
+    // TODO: - test cell configuration
+
 
     // MARK: -
 

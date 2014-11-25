@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias ResultFlickrPlaceCompletionHandler = (Result<[String: [Place]]>) -> ()
+typealias CompletionHandlerForPlaceResult = (Result<[String: [Place]]>) -> ()
 
 class UpdateTopPlaces: UseCase {
-    private let completionHandler: ResultFlickrPlaceCompletionHandler
+    private let completionHandler: CompletionHandlerForPlaceResult
     private let service: IService
 
-    init(service: IService, completionHandler: ResultFlickrPlaceCompletionHandler) {
+    init(service: IService, completionHandler: CompletionHandlerForPlaceResult) {
         self.service = service
         self.completionHandler = completionHandler
     }
