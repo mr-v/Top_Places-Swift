@@ -157,12 +157,4 @@ class WebServiceTests: XCTestCase {
         stubRequest("GET", baseURLString + "?" + query).andReturn(200)
         return parameters
     }
-
-    private func waitForExpectationsAndFailAfterTimeout(timeout: NSTimeInterval) {
-        waitForExpectationsWithTimeout(timeout) {
-            if let error = $0 {
-                XCTFail()
-            }
-        }
-    }
 }
