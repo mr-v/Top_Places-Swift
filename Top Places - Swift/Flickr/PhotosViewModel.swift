@@ -21,8 +21,7 @@ class PhotosViewModel: NSObject, UITableViewDataSource {
     }
 
     func updatePhotos() {
-        let parameters: UseCaseFactoryParameters = [CompletionHandlerUseCaseKey: onPhotosUpdateCompletion,
-            PlaceIdUseCaseKey: placeId]
+        let parameters = UseCaseFactoryParametersComponents().placeId(placeId).completionHandler(onPhotosUpdateCompletion).parameters
         let updateTopPlaces = useCaseFactory.createWithType(.UpdatePhotosForPlace, parameters: parameters)
         updateTopPlaces.execute()
     }
@@ -55,7 +54,7 @@ class PhotosViewModel: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as UITableViewCell
         let photo = app.photos[placeId]![indexPath.row]
-        cell.textLabel.text = photo.title
+        cell.textLabel!.text = photo.title
         // workaround - empty strings detail label would have set size to 0 and wouldn't update when reused, resulting in non-visible detail
         cell.detailTextLabel!.text = photo.description.isEmpty ? " " : photo.description
         return cell

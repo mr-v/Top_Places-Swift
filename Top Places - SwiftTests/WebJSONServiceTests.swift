@@ -1,5 +1,5 @@
 //
-//  WebServiceTests.swift
+//  WebJSONServiceTests.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 24/11/14.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class WebServiceTests: XCTestCase {
+class WebJSONServiceTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -24,7 +24,7 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_200ProperJSON_CallsCompletionHandlerWithJSONObject() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
+        let service = makeWebJSONService()
         stubCorrectJSONResponse()
 
         service.fetchJSON([String: Any]()) { result in
@@ -43,8 +43,8 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_200ImproperJSON_CallsCompletionHandlerWithErrorResult() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
-        stubImproperJSONResponse()
+        let service = makeWebJSONService()
+        stubInvalidJSONResponse()
 
         service.fetchJSON([String: Any]()) { result in
             expectation.fulfill()
@@ -59,7 +59,7 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_OtherThat200_CallsCompletionHandlerWithErrorResult() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
+        let service = makeWebJSONService()
         stub404()
 
         service.fetchJSON([String: Any]()) { result in
@@ -73,12 +73,14 @@ class WebServiceTests: XCTestCase {
     }
 
     // MARK: - Query formatting tests
-    // note: query is encapsulated in the service, as a workaround query are tested with stub requests if query doesn't match expected results it will fail after timout
+    // note: creating query is encapsulated in the service,
+    // as a workaround queries are tested with stub requests;
+    // if query doesn't match expected stub it will fail after timeout
 
     func test_FetchJSON_QueryContainsDefaultParameters() {
         let expectation = expectationWithDescription("")
         let parameters = stubRequestWithDefaultParameters()
-        let service = makeWebService(defaultParameters: parameters)
+        let service = makeWebJSONService(defaultParameters: parameters)
 
         service.fetchJSON([String: Any]()) { result in
             expectation.fulfill()
@@ -90,7 +92,7 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_QueryContainsParameters() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
+        let service = makeWebJSONService()
         let parameters = stubRequestWithParameters()
 
         service.fetchJSON(parameters) { result in
@@ -103,7 +105,7 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_QueryIsPercentEncoded() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
+        let service = makeWebJSONService()
         let parameters = stubRequestWithPercentEncodedParameters()
 
         service.fetchJSON(parameters) { result in
@@ -116,7 +118,7 @@ class WebServiceTests: XCTestCase {
 
     func test_FetchJSON_APIFail_CallsCompletionHandlerWithErrorResult() {
         let expectation = expectationWithDescription("")
-        let service = makeWebService()
+        let service = makeWebJSONService()
         stubFailedAPICall()
 
         service.fetchJSON([String: Any]()) { result in
@@ -134,8 +136,8 @@ class WebServiceTests: XCTestCase {
 
     private let baseURLString = "https://www.google.com/"
 
-    private func makeWebService(defaultParameters: [String: Any] = [String: Any]()) -> WebService {
-        let service = WebService(baseURLString: baseURLString, defaultParameters: defaultParameters)
+    private func makeWebJSONService(defaultParameters: [String: Any] = [String: Any]()) -> WebJSONService {
+        let service = WebJSONService(baseURLString: baseURLString, defaultParameters: defaultParameters)
         return service
     }
 
@@ -143,7 +145,7 @@ class WebServiceTests: XCTestCase {
         stubRequest("GET", baseURLString).andReturn(200).withBody("{\"ok\":true}")
     }
 
-    private func stubImproperJSONResponse() {
+    private func stubInvalidJSONResponse() {
         stubRequest("GET", baseURLString).andReturn(200).withBody("{1}")
     }
 

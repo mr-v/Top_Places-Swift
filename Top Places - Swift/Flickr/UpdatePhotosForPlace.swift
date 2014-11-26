@@ -12,15 +12,16 @@ typealias CompletionHandlerForPhotosResult = (Result<(String, [Photo])>) -> ()
 
 class UpdatePhotosForPlace: UseCase {
     private let completionHandler: CompletionHandlerForPhotosResult
-    private let service: IService
+    private let service: JSONService
     private let placeId: String
 
-    init(placeId: String, service: IService, completionHandler: CompletionHandlerForPhotosResult) {
+    init(placeId: String, service: JSONService, completionHandler: CompletionHandlerForPhotosResult) {
         self.placeId = placeId
         self.service = service
         self.completionHandler = completionHandler
     }
 
+    // https://www.flickr.com/services/api/flickr.photos.search.html
     func execute() {
         let photoLimit = 50
         let parameters: [String: Any] = ["method": "flickr.photos.search",

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Witold Skibniewski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import XCTest
 
 extension XCTestCase {
@@ -47,7 +47,7 @@ class StubUseCase<T>: UseCase {
     }
 }
 
-class StubService: IService {
+class StubService: JSONService {
     let response: Result<NSDictionary>
 
     init(response: Result<NSDictionary>) {
@@ -55,6 +55,22 @@ class StubService: IService {
     }
 
     func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
+        completionHandler(response)
+    }
+}
+
+class StubImageService: ImageService {
+    let response: Result<UIImage>
+
+    init(response: Result<UIImage>) {
+        self.response = response
+    }
+
+    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) {
+        completionHandler(response)
+    }
+
+    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) {
         completionHandler(response)
     }
 }

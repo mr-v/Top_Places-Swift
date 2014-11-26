@@ -8,23 +8,22 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort {
+class ImageViewController: UIViewController {
     @IBOutlet weak var scrollView: ImageScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
 
-    var flickrService: FlickrService!
-    var imageService: FlickrImageService!
-
+    var useCaseFactory: IUseCaseFactory!
     var photo: Photo? {
         didSet {
             title = photo!.title
-            flickrService.fetchSizesForPhotoId(photo!.photoId, callback: didUpdatePickedPhotoURL)
+
+            let parameters = UseCaseFactoryParametersComponents().photoId(photo!.photoId).completionHandler(didLoadImage).parameters
+            let useCase = useCaseFactory.createWithType(.LoadPhotoWithId, parameters: parameters)
+            useCase.execute()
             showLoadingUI()
         }
     }
-
-    // TODO: add error handling: couldn't load the image/network problems
 
     override func viewDidLoad() {
         let hasSelectedPhoto = photo? != nil
@@ -35,7 +34,6 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort {
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
         navigationItem.leftItemsSupplementBackButton = true
     }
-
 
     private func isLoadingPhoto() -> Bool {
         let hasSelectedPhoto = photo? != nil
@@ -48,21 +46,29 @@ class ImageViewController: UIViewController, FlickrAppPickedPhotoURLPort {
         errorLabel?.hidden = true
     }
 
-    func didUpdatePickedPhotoURL(url: NSURL) {
-        imageService.fetchImage(self, url: url) {
-            image in
-            self.scrollView.zoomScale = 1
-            self.scrollView.imageView.image = image
-            let scaleX = self.view.frame.height/image.size.height
-            let scaleY = self.view.frame.width/image.size.width
-            let ratio = min(min(scaleX, scaleY), 1)
-            self.scrollView.minimumZoomScale = ratio * 0.5
-            self.scrollView.maximumZoomScale = max(ratio * 3, 1)
-            self.scrollView.zoomScale = ratio
-            self.scrollView.defaultZoomScale = ratio
-            self.activityIndicator.stopAnimating()
-            self.navigationController?.hidesBarsOnTap = true
+    func didLoadImage(result: Result<UIImage>) {
+        activityIndicator?.stopAnimating()
+        switch result {
+        case .OK(let image):
+            errorLabel.hidden = true
+            setImage(image)
+        case .Error:
+            errorLabel.hidden = false
+            errorLabel.text = "Couldn't load image"
         }
+    }
+
+    private func setImage(image: UIImage) {
+        scrollView.zoomScale = 1
+        scrollView.imageView.image = image
+        let scaleX = self.view.frame.height/image.size.height
+        let scaleY = self.view.frame.width/image.size.width
+        let ratio = min(min(scaleX, scaleY), 1)
+        scrollView.minimumZoomScale = ratio * 0.5
+        scrollView.maximumZoomScale = max(ratio * 3, 1)
+        scrollView.zoomScale = ratio
+        scrollView.defaultZoomScale = ratio
+        navigationController?.hidesBarsOnTap = true
     }
 
     deinit {

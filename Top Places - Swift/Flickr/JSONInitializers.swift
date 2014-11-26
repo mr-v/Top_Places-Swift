@@ -40,3 +40,21 @@ extension Photo {
         photoId = jsonObject["id"] as String
     }
 }
+
+//  URL formats: https://www.flickr.com/services/api/misc.urls.html
+extension NSURL {
+    convenience init?(sizesJSONObject: [NSDictionary]) {
+        func extractURLString(data: NSDictionary) -> String {
+            return data["source"] as String
+        }
+
+        var biggestURLString = extractURLString(sizesJSONObject.last!)
+        let originalPhotoRegex = "^.*_o.(jpg|png|gif)$"
+        if let index = biggestURLString.rangeOfString(originalPhotoRegex, options: .RegularExpressionSearch) {
+            if sizesJSONObject.count > 1 {
+                biggestURLString = extractURLString(dropLast(sizesJSONObject).last!)
+            }
+        }
+        self.init(string: biggestURLString)
+    }
+}

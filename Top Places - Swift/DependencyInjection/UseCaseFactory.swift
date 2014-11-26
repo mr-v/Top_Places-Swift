@@ -11,26 +11,26 @@ import Foundation
 enum UseCaseType {
     case UpdateTopPlaces
     case UpdatePhotosForPlace
+    case LoadPhotoWithId
 }
 
 protocol UseCase {
     func execute()
 }
 
+typealias UseCaseFactoryParameters = [String: Any]
+
 protocol IUseCaseFactory {
     func createWithType(type: UseCaseType, parameters: UseCaseFactoryParameters) -> UseCase
 }
 
-typealias UseCaseFactoryParameters = [String: Any]
-
-let CompletionHandlerUseCaseKey = "completionHandler"
-let PlaceIdUseCaseKey = "placeId"
-
 class UseCaseFactory: IUseCaseFactory {
-    private let service: IService
+    private let service: JSONService
+    private let imageService: ImageService
 
-    init(service: IService) {
+    init(service: JSONService, imageService: ImageService) {
         self.service = service
+        self.imageService = imageService
     }
 
     func createWithType(type: UseCaseType, parameters: UseCaseFactoryParameters) -> UseCase {
@@ -42,6 +42,10 @@ class UseCaseFactory: IUseCaseFactory {
             let completionHandler = parameters[CompletionHandlerUseCaseKey] as CompletionHandlerForPhotosResult
             let placeId = parameters[PlaceIdUseCaseKey] as String
             return UpdatePhotosForPlace(placeId: placeId, service: service, completionHandler: completionHandler)
+        case .LoadPhotoWithId:
+            let photoId = parameters[PhotoIdUseCaseKey] as String
+            let completionHandler = parameters[CompletionHandlerUseCaseKey] as CompletionHandlerForLoadImageResult
+            return LoadPhotoWithId(photoId: photoId, service: service, imageService: imageService, completionHandler: completionHandler)
         }
     }
 }

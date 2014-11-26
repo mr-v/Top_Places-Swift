@@ -1,5 +1,5 @@
 //
-//  WebService.swift
+//  WebJSONService.swift
 //  Top Places - Swift
 //
 //  Created by Witold Skibniewski on 24/11/14.
@@ -8,16 +8,17 @@
 
 import Foundation
 
-class WebService: IService {
+class WebJSONService: JSONService {
     private let session: NSURLSession
     let baseURLString: String
     let defaultParameters: [String : Any]
 
     init(baseURLString: String, defaultParameters: [String: Any]) {
-        let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        session = NSURLSession(configuration: defaultConfiguration)
         self.baseURLString = baseURLString
         self.defaultParameters = defaultParameters
+
+        let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        session = NSURLSession(configuration: defaultConfiguration)
     }
 
     func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {

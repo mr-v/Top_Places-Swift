@@ -21,7 +21,7 @@ class TopPlacesViewModel: NSObject, UITableViewDataSource {
     }
 
     func updateTopPlaces() {
-        let parameters: UseCaseFactoryParameters = [CompletionHandlerUseCaseKey: onTopPlacesUpdateCompletion]
+        let parameters = UseCaseFactoryParametersComponents().completionHandler(onTopPlacesUpdateCompletion).parameters
         let updateTopPlaces = useCaseFactory.createWithType(.UpdateTopPlaces, parameters: parameters)
         updateTopPlaces.execute()
     }
@@ -53,7 +53,7 @@ class TopPlacesViewModel: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: indexPath) as UITableViewCell
         let place = placeForIndexPath(indexPath)
-        cell.textLabel.text = place.name
+        cell.textLabel!.text = place.name
         cell.detailTextLabel!.text = place.description
         return cell
     }
@@ -66,7 +66,7 @@ class TopPlacesViewModel: NSObject, UITableViewDataSource {
         return countryForSection(section)
     }
 
-    // MARK: - 
+    // MARK: -
 
     private func updateSectionToName() {
         var countries = app.topPlaces.keys.array

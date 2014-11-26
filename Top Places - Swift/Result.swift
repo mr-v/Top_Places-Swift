@@ -10,5 +10,7 @@ import Foundation
 
 enum Result<T> {
     case OK(T)
-    case Error  // TODO: add name and description - as of now adding non-generic associated values causes compiler to crash (note: works well in playgrounds)
+    case Error
 }
+
+// add name and description to Error - as of now adding non-generic associated values causes compiler to crash (note: works well in playgrounds)

@@ -34,7 +34,7 @@ class SelectedPhotosHistoryViewModelTests: XCTestCase {
 
         let cell = viewModel.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
 
-        XCTAssertEqual(cell.textLabel.text!, viewModel.noItemsTitle)
+        XCTAssertEqual(cell.textLabel!.text!, viewModel.noItemsTitle)
     }
 
     func test_CellForRowAtIndexPath_NoHistory_ReturnsCellWitnNoHistoryDescription() {

@@ -51,7 +51,7 @@ class SelectedPhotosHistoryViewModel: NSObject, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
         let texts = textsForLabels()
-        cell.textLabel.text = texts.title
+        cell.textLabel!.text = texts.title
         cell.detailTextLabel?.text = texts.description
         cell.userInteractionEnabled = !history.lastPickedPhotos.isEmpty
         return cell

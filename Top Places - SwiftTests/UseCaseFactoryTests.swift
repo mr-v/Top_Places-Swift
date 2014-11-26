@@ -31,10 +31,20 @@ class UseCaseFactoryTests: XCTestCase {
         XCTAssertNotNil(useCase)
     }
 
+    func test_Create_LoadPhotoWithId_CreatesLoadPhotoWithId() {
+        let factory = makeUseCaseFactory()
+        let completionHandler: CompletionHandlerForLoadImageResult = { _ in }
+        let parameters = UseCaseFactoryParametersComponents().photoId("test").completionHandler(completionHandler).parameters
+
+        let useCase = factory.createWithType(.LoadPhotoWithId, parameters: parameters) as? LoadPhotoWithId
+
+        XCTAssertNotNil(useCase)
+    }
+
     // MARK: -
 
     func makeUseCaseFactory() -> UseCaseFactory {
-        let service = WebService(baseURLString: "", defaultParameters: [String: Any]())
-        return UseCaseFactory(service: service)
+        let service = WebJSONService(baseURLString: "", defaultParameters: [String: Any]())
+        return UseCaseFactory(service: service, imageService: WebImageService())
     }
 }

@@ -12,13 +12,14 @@ typealias CompletionHandlerForPlaceResult = (Result<[String: [Place]]>) -> ()
 
 class UpdateTopPlaces: UseCase {
     private let completionHandler: CompletionHandlerForPlaceResult
-    private let service: IService
+    private let service: JSONService
 
-    init(service: IService, completionHandler: CompletionHandlerForPlaceResult) {
+    init(service: JSONService, completionHandler: CompletionHandlerForPlaceResult) {
         self.service = service
         self.completionHandler = completionHandler
     }
 
+    // https://www.flickr.com/services/api/flickr.places.getTopPlacesList.html
     func execute() {
         let localityPlaceTypeId = "7"
         let parameters: [String: Any] = ["method": "flickr.places.getTopPlacesList",

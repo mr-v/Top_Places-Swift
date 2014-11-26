@@ -11,28 +11,25 @@ import UIKit
 // wires up application's object graph
 
 class AppBuilder: UIStoryboardInjector {
-
     let app: FlickrApp
-    let service: FlickrService
-    let imageService: FlickrImageService
     let topPlacesViewModel: TopPlacesViewModel
     let splitControllerDelegate: SplitViewControllerDelegate
     let history: SelectedPhotosHistory
     let useCaseFactory: UseCaseFactory
-    let webService: WebService
+    let webService: WebJSONService
+    let imageService: WebImageService
 
     override init() {
         app = FlickrApp()
-        service = FlickrService(adapter: FlickrAppNetworkAdapter(app: app))
-        imageService = FlickrImageService()
 
         let urlString = "https://api.flickr.com/services/rest/"
         let defaultParameters: [String: Any] = ["api_key": "8bac83dae148d108bd0ac45ca6fd07c3",
             "format": "json",
             "nojsoncallback": "1"]
-        webService = WebService(baseURLString: urlString, defaultParameters: defaultParameters)
+        webService = WebJSONService(baseURLString: urlString, defaultParameters: defaultParameters)
 
-        useCaseFactory = UseCaseFactory(service: webService)
+        imageService = WebImageService()
+        useCaseFactory = UseCaseFactory(service: webService, imageService: imageService)
         splitControllerDelegate = SplitViewControllerDelegate()
         topPlacesViewModel = TopPlacesViewModel(app: app, useCaseFactory: useCaseFactory)
         history = SelectedPhotosHistory(store: SelectedPhotosHistoryStore())
@@ -56,8 +53,7 @@ class AppBuilder: UIStoryboardInjector {
 
         controllerDependencies["Image"] =  { [unowned self] in
             let vc = $0 as ImageViewController
-            vc.flickrService = self.service
-            vc.imageService = self.imageService
+            vc.useCaseFactory = self.useCaseFactory
         }
 
         let splitSetup: UIViewControllerInjector = { [unowned self] in
