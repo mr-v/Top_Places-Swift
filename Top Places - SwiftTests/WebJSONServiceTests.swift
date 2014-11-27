@@ -11,15 +11,16 @@ import XCTest
 
 class WebJSONServiceTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-
+    override class func setUp() {
         LSNocilla.sharedInstance().start()
+    }
+
+    override class func tearDown() {
+        LSNocilla.sharedInstance().stop()
     }
 
     override func tearDown() {
         LSNocilla.sharedInstance().clearStubs()
-        LSNocilla.sharedInstance().stop()
     }
 
     func test_FetchJSON_200ProperJSON_CallsCompletionHandlerWithJSONObject() {
