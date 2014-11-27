@@ -11,22 +11,23 @@ import UIKit
 class ImageViewController: UIViewController {
     @IBOutlet weak var scrollView: ImageScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
 
     var useCaseFactory: IUseCaseFactory!
+    private var loadingUseCase: UseCase?
     var photo: Photo? {
         didSet {
             title = photo!.title
 
+            loadingUseCase?.cancel()
             let parameters = UseCaseFactoryParametersComponents().photoId(photo!.photoId).completionHandler(didLoadImage).parameters
-            let useCase = useCaseFactory.createWithType(.LoadPhotoWithId, parameters: parameters)
-            useCase.execute()
+            loadingUseCase = useCaseFactory.createWithType(.LoadPhotoWithId, parameters: parameters)
+            loadingUseCase!.execute()
             showLoadingUI()
         }
     }
 
     override func viewDidLoad() {
-        let hasSelectedPhoto = photo? != nil
         if isLoadingPhoto() {
             showLoadingUI()
         }
@@ -35,27 +36,38 @@ class ImageViewController: UIViewController {
         navigationItem.leftItemsSupplementBackButton = true
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if let isMoving = navigationController?.isMovingFromParentViewController() {
+            if isMoving {
+                loadingUseCase?.cancel()
+                loadingUseCase = nil
+            }
+        }
+    }
+
     private func isLoadingPhoto() -> Bool {
-        let hasSelectedPhoto = photo? != nil
-        return hasSelectedPhoto && scrollView.imageView.image == nil
+        return loadingUseCase != nil
     }
 
     func showLoadingUI() {
         scrollView?.imageView.image = nil
         activityIndicator?.startAnimating()
-        errorLabel?.hidden = true
+        messageLabel?.hidden = true
     }
 
     func didLoadImage(result: Result<UIImage>) {
         activityIndicator?.stopAnimating()
         switch result {
         case .OK(let image):
-            errorLabel.hidden = true
+            messageLabel.hidden = true
             setImage(image)
         case .Error:
-            errorLabel.hidden = false
-            errorLabel.text = "Couldn't load image"
+            messageLabel.hidden = false
+            messageLabel.text = "Couldn't load image"
         }
+        loadingUseCase = nil
     }
 
     private func setImage(image: UIImage) {

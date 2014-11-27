@@ -10,7 +10,7 @@ import Foundation
 
 typealias CompletionHandlerForPlaceResult = (Result<[String: [Place]]>) -> ()
 
-class UpdateTopPlaces: UseCase {
+class UpdateTopPlaces: AsyncUseCase {
     private let completionHandler: CompletionHandlerForPlaceResult
     private let service: JSONService
 
@@ -20,11 +20,12 @@ class UpdateTopPlaces: UseCase {
     }
 
     // https://www.flickr.com/services/api/flickr.places.getTopPlacesList.html
-    func execute() {
+    override func execute()  {
         let localityPlaceTypeId = "7"
         let parameters: [String: Any] = ["method": "flickr.places.getTopPlacesList",
             "place_type_id": localityPlaceTypeId]
-        service.fetchJSON(parameters, onCompletion)
+        let cancelable = service.fetchJSON(parameters, onCompletion)
+        setTaskInprogress(cancelable)
     }
 
     func onCompletion(data: Result<NSDictionary>) {

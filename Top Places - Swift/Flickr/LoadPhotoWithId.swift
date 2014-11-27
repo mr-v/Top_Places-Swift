@@ -10,7 +10,7 @@ import UIKit
 
 typealias CompletionHandlerForLoadImageResult = (Result<UIImage>) -> ()
 
-class LoadPhotoWithId: UseCase {
+class LoadPhotoWithId: AsyncUseCase {
     private let completionHandler: CompletionHandlerForLoadImageResult
     private let service: JSONService
     private let imageService: ImageService
@@ -24,26 +24,33 @@ class LoadPhotoWithId: UseCase {
     }
 
     // https://www.flickr.com/services/api/flickr.photos.getSizes.html
-    func execute() {
+    override func execute() {
         let parameters: [String: Any] = ["method": "flickr.photos.getSizes", "photo_id": photoId]
-        service.fetchJSON(parameters, completionHandler: sizesFetched)
+        let cancelable = service.fetchJSON(parameters, completionHandler: makeSizesFetchedHandler())
+        setTaskInprogress(cancelable)
     }
 
-    private func sizesFetched(result: Result<NSDictionary>) {
-        switch result {
-        case .OK(let data):
-            let sizes = data.valueForKeyPath("sizes.size") as [NSDictionary]
-            if let url = NSURL(sizesJSONObject: sizes) {
-                loadImage(url)
-            } else {
-                completionHandler(.Error)
+    private func makeSizesFetchedHandler() -> (Result<NSDictionary>) -> () {
+        return { [weak self] result in
+            switch result {
+            case .OK(let data):
+                let sizes = data.valueForKeyPath("sizes.size") as [NSDictionary]
+                if let url = NSURL(sizesJSONObject: sizes) {
+                    self?.loadImage(url)
+                } else {
+                    self?.completionHandler(.Error)
+                }
+            case .Error:
+                self?.completionHandler(.Error)
             }
-        case .Error:
-            completionHandler(.Error)
         }
     }
 
     private func loadImage(url: NSURL) {
-        imageService.fetchImage(url) { self.completionHandler($0) }
+        let cancelable = imageService.fetchImage(url) { [weak self] result in
+            self?.completionHandler(result)
+            return
+        }
+        setTaskInprogress(cancelable)
     }
 }

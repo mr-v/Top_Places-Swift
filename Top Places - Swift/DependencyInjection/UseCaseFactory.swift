@@ -14,7 +14,7 @@ enum UseCaseType {
     case LoadPhotoWithId
 }
 
-protocol UseCase {
+protocol UseCase: Cancelable {
     func execute()
 }
 

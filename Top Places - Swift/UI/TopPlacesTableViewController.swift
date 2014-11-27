@@ -20,6 +20,10 @@ class TopPlacesTableViewController: UITableViewController, DataSourceDelegate {
         fetchTopPlaces()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
     @IBAction func fetchTopPlaces() {
         refreshControl?.beginRefreshing()
         dataSource.updateTopPlaces()

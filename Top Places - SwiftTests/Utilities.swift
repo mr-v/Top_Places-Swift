@@ -33,7 +33,7 @@ class StubUseCaseFactory<T>: IUseCaseFactory {
     }
 }
 
-class StubUseCase<T>: UseCase {
+class StubUseCase<T>: AsyncUseCase {
     let completionHandler: (Result<T>) -> ()
     let result: Result<T>
 
@@ -42,8 +42,17 @@ class StubUseCase<T>: UseCase {
         self.completionHandler = completionHandler
     }
 
-    func execute() {
+    override func execute() {
         completionHandler(result)
+        setTaskInprogress(CancelableTestDouble())
+    }
+}
+
+class CancelableTestDouble: Cancelable {
+    var canceled = false
+
+    func cancel() {
+        canceled = true
     }
 }
 
@@ -54,8 +63,9 @@ class StubService: JSONService {
         self.response = response
     }
 
-    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
+    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) -> Cancelable {
         completionHandler(response)
+        return CancelableTestDouble()
     }
 }
 
@@ -66,11 +76,13 @@ class StubImageService: ImageService {
         self.response = response
     }
 
-    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) {
+    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) -> Cancelable? {
         completionHandler(response)
+        return CancelableTestDouble()
     }
 
-    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) {
+    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) -> Cancelable {
         completionHandler(response)
+        return CancelableTestDouble()
     }
 }

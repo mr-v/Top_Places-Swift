@@ -72,6 +72,10 @@
 		EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DCB1A09428600613D80 /* ImageViewController.swift */; };
 		EA9517FC1A2622F000AEBB31 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF1F1A236E9D002625F2 /* Factory.swift */; };
 		EA9517FD1A26280200AEBB31 /* LoadPhotoWithIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA262DAE1A251514004E0EDD /* LoadPhotoWithIdTests.swift */; };
+		EA9517FF1A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
+		EA9518001A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
+		EA9518011A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
+		EA9518051A26576F00AEBB31 /* AsyncUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */; };
 		EAD5DA3B1A0975C5007D3718 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */; };
 		EAD5DA6D1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA6C1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift */; };
 		EAD8078F1A02C42400D82A3C /* TopPlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078E1A02C42400D82A3C /* TopPlacesViewModel.swift */; };
@@ -151,6 +155,8 @@
 		EA7F0DC51A091F8300613D80 /* PhotosViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = PhotosViewModel.swift; path = Flickr/PhotosViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7F0DC81A091FF900613D80 /* PhotosViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotosViewModelTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7F0DCB1A09428600613D80 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ImageViewController.swift; path = UI/ImageViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncUseCase.swift; sourceTree = "<group>"; };
+		EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncUseCaseTests.swift; sourceTree = "<group>"; };
 		EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = UI/ImageScrollView.swift; sourceTree = "<group>"; };
 		EAD5DA6C1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplitViewControllerDelegate.swift; path = UI/SplitViewControllerDelegate.swift; sourceTree = "<group>"; };
 		EAD8078E1A02C42400D82A3C /* TopPlacesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = TopPlacesViewModel.swift; path = Flickr/TopPlacesViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -271,6 +277,7 @@
 			children = (
 				EA7DFCDD1A25DDCA00932B57 /* TestHelpers */,
 				EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */,
+				EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */,
 				EA262DAE1A251514004E0EDD /* LoadPhotoWithIdTests.swift */,
 				EA7DFCDB1A25D9C600932B57 /* NSURLTests.swift */,
 				EA7F0DC81A091FF900613D80 /* PhotosViewModelTests.swift */,
@@ -318,6 +325,7 @@
 		EA7833751A022B6700028F5F /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
+				EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */,
 				EA23BF7D1A24C86C003F9E87 /* DataSourceDelegate.swift */,
 				EA78337C1A02534D00028F5F /* FlickrApp.swift */,
 				EA5ACF181A235443002625F2 /* JSONInitializers.swift */,
@@ -554,6 +562,7 @@
 				EAF743781A0BA755005F7452 /* HistoryTableViewController.swift in Sources */,
 				EA23BF7E1A24C86C003F9E87 /* DataSourceDelegate.swift in Sources */,
 				EA5ACF0E1A234480002625F2 /* UpdateTopPlaces.swift in Sources */,
+				EA9517FF1A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
 				EAD9BFE01A0B7E260067F75C /* SelectedPhotosHistory.swift in Sources */,
 				EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */,
 				EA7F0DC31A091CFC00613D80 /* PhotosViewController.swift in Sources */,
@@ -576,9 +585,11 @@
 				EA23BEEA1A23B6FA003F9E87 /* Dictionary.swift in Sources */,
 				EA262DAD1A25114C004E0EDD /* UseCaseFactory.swift in Sources */,
 				EA23BF721A24A809003F9E87 /* Utilities.swift in Sources */,
+				EA9518001A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
 				EA7F0DC91A091FFA00613D80 /* PhotosViewModelTests.swift in Sources */,
 				EA2E76331A25C4580098E4BB /* WebImageServiceTests.swift in Sources */,
 				EAD9BFE11A0B7E260067F75C /* SelectedPhotosHistory.swift in Sources */,
+				EA9518051A26576F00AEBB31 /* AsyncUseCaseTests.swift in Sources */,
 				EA5ACF141A2349F2002625F2 /* Result.swift in Sources */,
 				EA7DFCDC1A25D9C600932B57 /* NSURLTests.swift in Sources */,
 				EA7DFCD91A25CC6200932B57 /* UseCaseFactoryComponents.swift in Sources */,
@@ -612,6 +623,7 @@
 				EA262DB41A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */,
 				EA23BF731A24A809003F9E87 /* Utilities.swift in Sources */,
 				EA23BEE71A23B6E9003F9E87 /* WebJSONService.swift in Sources */,
+				EA9518011A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
 				EA23BF7B1A24C65E003F9E87 /* UpdateTopPlaces.swift in Sources */,
 				EA5ACF1D1A236A0F002625F2 /* JSONInitializers.swift in Sources */,
 				EA3E71A01A24E5040055F11E /* UpdatePhotosForPlace.swift in Sources */,

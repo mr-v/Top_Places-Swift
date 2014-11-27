@@ -18,10 +18,11 @@ class WebJSONService: JSONService {
         self.defaultParameters = defaultParameters
 
         let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        defaultConfiguration.requestCachePolicy = .ReturnCacheDataElseLoad
         session = NSURLSession(configuration: defaultConfiguration)
     }
 
-    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) {
+    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) -> Cancelable {
         let request = urlRequestWithParameters(parameters)
         let task = session.dataTaskWithRequest(request, completionHandler: { data, urlResponse, error in
             func dispatchError() {
@@ -54,6 +55,7 @@ class WebJSONService: JSONService {
 
         })
         task.resume()
+        return task
     }
 
     private func urlRequestWithParameters(parameters: [String: Any]) -> NSURLRequest {

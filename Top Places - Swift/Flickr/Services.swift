@@ -9,10 +9,10 @@
 import UIKit
 
 protocol JSONService {
-    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ())
+    func fetchJSON(parameters: [String: Any], completionHandler: Result<NSDictionary> -> ()) -> Cancelable
 }
 
 protocol ImageService {
-    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ())
-    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ())
+    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) -> Cancelable
+    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) -> Cancelable?
 }

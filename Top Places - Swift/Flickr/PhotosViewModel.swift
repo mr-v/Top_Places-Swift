@@ -9,11 +9,12 @@
 import UIKit
 
 class PhotosViewModel: NSObject, UITableViewDataSource {
+    var placeId:String!
+    weak var delegate: DataSourceDelegate!
     private let reuseId = "PhotoCell"
     private let app: FlickrApp
-    var placeId:String!
     private let useCaseFactory: IUseCaseFactory
-    weak var delegate: DataSourceDelegate!
+    private var loadingUseCase: UseCase?
 
     init(app: FlickrApp, useCaseFactory: IUseCaseFactory) {
         self.app = app
@@ -21,19 +22,23 @@ class PhotosViewModel: NSObject, UITableViewDataSource {
     }
 
     func updatePhotos() {
-        let parameters = UseCaseFactoryParametersComponents().placeId(placeId).completionHandler(onPhotosUpdateCompletion).parameters
-        let updateTopPlaces = useCaseFactory.createWithType(.UpdatePhotosForPlace, parameters: parameters)
-        updateTopPlaces.execute()
+        let parameters = UseCaseFactoryParametersComponents().placeId(placeId).completionHandler(makePhotosUpdateHandler()).parameters
+        loadingUseCase?.cancel()
+        loadingUseCase = useCaseFactory.createWithType(.UpdatePhotosForPlace, parameters: parameters)
+        loadingUseCase!.execute()
     }
 
-    private func onPhotosUpdateCompletion(result: Result<(String, [Photo])>) {
-        switch result {
-        case .OK(let (id, photos)):
-            app.photos[id] = photos
-        case .Error:
-            false   // TODO: add logging?
+    private func makePhotosUpdateHandler() -> (Result<(String, [Photo])>) -> () {
+        return { [weak self] result in
+            switch result {
+            case .OK(let (id, photos)):
+                self?.app.photos[id] = photos
+            case .Error:
+                false
+            }
+            self?.delegate?.dataSourceDidChangeContent()
+            self?.loadingUseCase = nil
         }
-        delegate?.dataSourceDidChangeContent()
     }
 
     func didSelectPhotoAtIndexPath(indexPath: NSIndexPath) {
@@ -58,5 +63,10 @@ class PhotosViewModel: NSObject, UITableViewDataSource {
         // workaround - empty strings detail label would have set size to 0 and wouldn't update when reused, resulting in non-visible detail
         cell.detailTextLabel!.text = photo.description.isEmpty ? " " : photo.description
         return cell
+    }
+
+    deinit {
+        loadingUseCase?.cancel()
+        loadingUseCase = nil
     }
 }

@@ -12,13 +12,14 @@ class WebImageService: ImageService {
     private let imageSession: NSURLSession
 
     init() {
-        let imageConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let imageCache = NSURLCache(memoryCapacity:10 * 1024 * 1024, diskCapacity:20 * 1024 * 1024, diskPath:nil)
-        imageConfiguration.URLCache = imageCache
-        imageSession = NSURLSession(configuration: imageConfiguration)
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let imageCache = NSURLCache(memoryCapacity:40 * 1024 * 1024, diskCapacity:50 * 1024 * 1024, diskPath:nil)
+        configuration.URLCache = imageCache
+        configuration.requestCachePolicy = .ReturnCacheDataElseLoad
+        imageSession = NSURLSession(configuration: configuration)
     }
 
-    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) {
+    func fetchImage(url: NSURL, completionHandler: Result<UIImage> -> ()) -> Cancelable {
         let request = NSURLRequest(URL: url)
         let task = imageSession.dataTaskWithRequest(request, completionHandler: { data, urlResponse, error in
             func dispatchError() {
@@ -37,16 +38,18 @@ class WebImageService: ImageService {
             } else {
                 dispatchError()
             }
+            println("\(self.imageSession.configuration.URLCache!.currentDiskUsage) \(self.imageSession.configuration.URLCache!.currentMemoryUsage)")
         })
         task.resume()
+        return task
     }
 
-    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) {
+    func fetchImage(urlString: String, completionHandler: Result<UIImage> -> ()) -> Cancelable? {
         let url = NSURL(string: urlString)
         if url == nil {
             dispatch_async(dispatch_get_main_queue()) { completionHandler(.Error) }
-            return
+            return nil
         }
-        fetchImage(url!, completionHandler: completionHandler)
+        return fetchImage(url!, completionHandler: completionHandler)
     }
 }

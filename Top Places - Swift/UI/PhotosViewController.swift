@@ -26,6 +26,14 @@ class PhotosViewController: UITableViewController, DataSourceDelegate {
         fetchPhotosFromPlace()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if isMovingFromParentViewController() {
+            dataSource = nil
+        }
+    }
+
     @IBAction func fetchPhotosFromPlace() {
         refreshControl?.beginRefreshing()
         dataSource.updatePhotos()

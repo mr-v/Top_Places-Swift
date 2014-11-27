@@ -15,10 +15,10 @@ class WebImageServiceTests: XCTestCase {
         super.setUp()
 
         LSNocilla.sharedInstance().start()
-        LSNocilla.sharedInstance().clearStubs()
     }
 
     override func tearDown() {
+        LSNocilla.sharedInstance().clearStubs()
         LSNocilla.sharedInstance().stop()
     }
 

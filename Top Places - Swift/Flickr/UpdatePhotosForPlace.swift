@@ -10,7 +10,7 @@ import UIKit
 
 typealias CompletionHandlerForPhotosResult = (Result<(String, [Photo])>) -> ()
 
-class UpdatePhotosForPlace: UseCase {
+class UpdatePhotosForPlace: AsyncUseCase {
     private let completionHandler: CompletionHandlerForPhotosResult
     private let service: JSONService
     private let placeId: String
@@ -22,13 +22,14 @@ class UpdatePhotosForPlace: UseCase {
     }
 
     // https://www.flickr.com/services/api/flickr.photos.search.html
-    func execute() {
+    override func execute() {
         let photoLimit = 50
         let parameters: [String: Any] = ["method": "flickr.photos.search",
             "place_id": placeId,
             "per_page": photoLimit,
             "extras": "description"]
-        service.fetchJSON(parameters, onCompletion)
+        let cancelable = service.fetchJSON(parameters, onCompletion)
+        setTaskInprogress(cancelable)
     }
 
     func onCompletion(data: Result<NSDictionary>) {
