@@ -19,13 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
-        // initialize storyboard only if no tests are running
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        object_setClass(storyboard, InjectableStoryboard.self)
-        storyboard.injector = AppBuilder()
-
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        // initialize app only if no tests are running
+        let builder = AppBuilder()
+        let storyboard = builder.initializeStoryboard()
         let rootViewController = storyboard.instantiateInitialViewController() as UIViewController
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = rootViewController
         window!.makeKeyAndVisible()
         return true

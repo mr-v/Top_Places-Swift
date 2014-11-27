@@ -38,6 +38,10 @@ class AppBuilder: UIStoryboardInjector {
         setupViewControllerDependencies()
     }
 
+    func initializeStoryboard() -> UIStoryboard {
+        return UIStoryboard.makeInjectableStoryboard(self)
+    }
+
     private func setupViewControllerDependencies() {
         controllerDependencies["TopPlaces"] =  { [unowned self] in
             let vc = $0 as TopPlacesTableViewController
