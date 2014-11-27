@@ -9,6 +9,6 @@
 #ifndef Top_Places___Swift_Top_Places___Swift_Bridging_Header_h
 #define Top_Places___Swift_Top_Places___Swift_Bridging_Header_h
 
-#import "<Nocilla/LSNocilla.h>"
+#import "LSNocilla.h"
 
 #endif

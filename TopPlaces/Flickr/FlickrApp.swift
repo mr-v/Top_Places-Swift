@@ -28,10 +28,6 @@ func ==(lhs: Photo, rhs: Photo) -> Bool {
     return lhs.photoId == rhs.photoId
 }
 
-protocol FlickrAppPickedPhotoURLPort {
-    func didUpdatePickedPhotoURL(url: NSURL)
-}
-
 protocol FlickrAppCurrentPhotoPort {
     func currentPhotoUpdated(photo: Photo)
 }

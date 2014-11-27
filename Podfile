@@ -1,1 +1,1 @@
-pod 'Nocilla', :head
+pod 'Nocilla'

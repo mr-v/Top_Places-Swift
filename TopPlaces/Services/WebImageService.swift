@@ -38,7 +38,6 @@ class WebImageService: ImageService {
             } else {
                 dispatchError()
             }
-            println("\(self.imageSession.configuration.URLCache!.currentDiskUsage) \(self.imageSession.configuration.URLCache!.currentMemoryUsage)")
         })
         task.resume()
         return task

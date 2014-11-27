@@ -8,19 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B3DA1F6D374D50B7D538252E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D1DFB2FF8E0D0792BF0310 /* libPods.a */; };
-		EA23BEE51A23B6E9003F9E87 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE41A23B6E9003F9E87 /* WebJSONService.swift */; };
-		EA23BEE61A23B6E9003F9E87 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE41A23B6E9003F9E87 /* WebJSONService.swift */; };
-		EA23BEE71A23B6E9003F9E87 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE41A23B6E9003F9E87 /* WebJSONService.swift */; };
-		EA23BEE91A23B6FA003F9E87 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE81A23B6FA003F9E87 /* Dictionary.swift */; };
-		EA23BEEA1A23B6FA003F9E87 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE81A23B6FA003F9E87 /* Dictionary.swift */; };
-		EA23BEEB1A23B6FA003F9E87 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEE81A23B6FA003F9E87 /* Dictionary.swift */; };
-		EA23BEEC1A23B8E8003F9E87 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF151A234FDF002625F2 /* Services.swift */; };
-		EA23BEED1A23B8F1003F9E87 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF121A2349F2002625F2 /* Result.swift */; };
 		EA23BEF41A23B91D003F9E87 /* WebJSONServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEEF1A23B91D003F9E87 /* WebJSONServiceTests.swift */; };
 		EA23BEF71A23BA0A003F9E87 /* UpdateTopPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BEF61A23BA0A003F9E87 /* UpdateTopPlacesTests.swift */; };
 		EA23BF6B1A248855003F9E87 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */; };
-		EA23BF721A24A809003F9E87 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF711A24A809003F9E87 /* Utilities.swift */; };
-		EA23BF731A24A809003F9E87 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF711A24A809003F9E87 /* Utilities.swift */; };
 		EA23BF751A24C13D003F9E87 /* UseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23BF741A24C13D003F9E87 /* UseCaseFactoryTests.swift */; };
 		EA23BF7B1A24C65E003F9E87 /* UpdateTopPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF0D1A234480002625F2 /* UpdateTopPlaces.swift */; };
 		EA23BF7C1A24C6AC003F9E87 /* UpdateTopPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF0D1A234480002625F2 /* UpdateTopPlaces.swift */; };
@@ -34,9 +24,6 @@
 		EA262DB21A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA262DB11A25158C004E0EDD /* LoadPhotoWithId.swift */; };
 		EA262DB31A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA262DB11A25158C004E0EDD /* LoadPhotoWithId.swift */; };
 		EA262DB41A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA262DB11A25158C004E0EDD /* LoadPhotoWithId.swift */; };
-		EA2E762F1A25C3790098E4BB /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E762E1A25C3790098E4BB /* WebImageService.swift */; };
-		EA2E76301A25C3790098E4BB /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E762E1A25C3790098E4BB /* WebImageService.swift */; };
-		EA2E76311A25C3790098E4BB /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E762E1A25C3790098E4BB /* WebImageService.swift */; };
 		EA2E76331A25C4580098E4BB /* WebImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E76321A25C4580098E4BB /* WebImageServiceTests.swift */; };
 		EA3E719A1A24DAE60055F11E /* UpdatePhotosForPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E71991A24DAE60055F11E /* UpdatePhotosForPlace.swift */; };
 		EA3E719B1A24DAE60055F11E /* UpdatePhotosForPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E71991A24DAE60055F11E /* UpdatePhotosForPlace.swift */; };
@@ -44,21 +31,18 @@
 		EA3E719F1A24DCAC0055F11E /* PhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E719E1A24DCAC0055F11E /* PhotoTests.swift */; };
 		EA3E71A01A24E5040055F11E /* UpdatePhotosForPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E71991A24DAE60055F11E /* UpdatePhotosForPlace.swift */; };
 		EA5ACF0E1A234480002625F2 /* UpdateTopPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF0D1A234480002625F2 /* UpdateTopPlaces.swift */; };
-		EA5ACF131A2349F2002625F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF121A2349F2002625F2 /* Result.swift */; };
-		EA5ACF141A2349F2002625F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF121A2349F2002625F2 /* Result.swift */; };
-		EA5ACF161A234FDF002625F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF151A234FDF002625F2 /* Services.swift */; };
-		EA5ACF171A234FDF002625F2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF151A234FDF002625F2 /* Services.swift */; };
 		EA5ACF191A235443002625F2 /* JSONInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF181A235443002625F2 /* JSONInitializers.swift */; };
 		EA5ACF1A1A235443002625F2 /* JSONInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF181A235443002625F2 /* JSONInitializers.swift */; };
 		EA5ACF1C1A23644F002625F2 /* PlaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF1B1A23644F002625F2 /* PlaceTests.swift */; };
 		EA5ACF1D1A236A0F002625F2 /* JSONInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF181A235443002625F2 /* JSONInitializers.swift */; };
-		EA5ACF201A236E9D002625F2 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF1F1A236E9D002625F2 /* Factory.swift */; };
-		EA5ACF211A236E9D002625F2 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF1F1A236E9D002625F2 /* Factory.swift */; };
 		EA5E68691A0223280004CCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E68681A0223280004CCEC /* AppDelegate.swift */; };
 		EA5E686E1A0223280004CCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5E686C1A0223280004CCEC /* Main.storyboard */; };
 		EA5E68701A0223280004CCEC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5E686F1A0223280004CCEC /* Images.xcassets */; };
 		EA5E68731A0223280004CCEC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E68711A0223280004CCEC /* LaunchScreen.xib */; };
 		EA5E68891A0226C90004CCEC /* TopPlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */; };
+		EA65F5431A274D5F00884B4C /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65F5411A274D5F00884B4C /* Factory.swift */; };
+		EA65F5441A274D5F00884B4C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65F5421A274D5F00884B4C /* Utilities.swift */; };
+		EA65F5451A274D7500884B4C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65F5421A274D5F00884B4C /* Utilities.swift */; };
 		EA78337D1A02534D00028F5F /* FlickrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78337C1A02534D00028F5F /* FlickrApp.swift */; };
 		EA78337E1A02535F00028F5F /* FlickrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78337C1A02534D00028F5F /* FlickrApp.swift */; };
 		EA7DFCD81A25CB4F00932B57 /* UseCaseFactoryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFCD71A25CB4F00932B57 /* UseCaseFactoryComponents.swift */; };
@@ -70,12 +54,26 @@
 		EA7F0DC91A091FFA00613D80 /* PhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DC81A091FF900613D80 /* PhotosViewModelTests.swift */; };
 		EA7F0DCA1A0925BB00613D80 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DC51A091F8300613D80 /* PhotosViewModel.swift */; };
 		EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F0DCB1A09428600613D80 /* ImageViewController.swift */; };
-		EA9517FC1A2622F000AEBB31 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5ACF1F1A236E9D002625F2 /* Factory.swift */; };
 		EA9517FD1A26280200AEBB31 /* LoadPhotoWithIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA262DAE1A251514004E0EDD /* LoadPhotoWithIdTests.swift */; };
-		EA9517FF1A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
-		EA9518001A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
-		EA9518011A263C3400AEBB31 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */; };
 		EA9518051A26576F00AEBB31 /* AsyncUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */; };
+		EAAEF4911A2747E100089E24 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48B1A2747E100089E24 /* Result.swift */; };
+		EAAEF4921A2747E100089E24 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48B1A2747E100089E24 /* Result.swift */; };
+		EAAEF4931A2747E100089E24 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48B1A2747E100089E24 /* Result.swift */; };
+		EAAEF4941A2747E100089E24 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48C1A2747E100089E24 /* Services.swift */; };
+		EAAEF4951A2747E100089E24 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48C1A2747E100089E24 /* Services.swift */; };
+		EAAEF4961A2747E100089E24 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48C1A2747E100089E24 /* Services.swift */; };
+		EAAEF4971A2747E100089E24 /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48D1A2747E100089E24 /* WebImageService.swift */; };
+		EAAEF4981A2747E100089E24 /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48D1A2747E100089E24 /* WebImageService.swift */; };
+		EAAEF4991A2747E100089E24 /* WebImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48D1A2747E100089E24 /* WebImageService.swift */; };
+		EAAEF49A1A2747E100089E24 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48E1A2747E100089E24 /* WebJSONService.swift */; };
+		EAAEF49B1A2747E100089E24 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48E1A2747E100089E24 /* WebJSONService.swift */; };
+		EAAEF49C1A2747E100089E24 /* WebJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF48E1A2747E100089E24 /* WebJSONService.swift */; };
+		EAAEF49D1A2747E100089E24 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4901A2747E100089E24 /* Dictionary.swift */; };
+		EAAEF49E1A2747E100089E24 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4901A2747E100089E24 /* Dictionary.swift */; };
+		EAAEF49F1A2747E100089E24 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4901A2747E100089E24 /* Dictionary.swift */; };
+		EAAEF4A11A27481500089E24 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4A01A27481500089E24 /* AsyncUseCase.swift */; };
+		EAAEF4A21A27481500089E24 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4A01A27481500089E24 /* AsyncUseCase.swift */; };
+		EAAEF4A31A27481500089E24 /* AsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF4A01A27481500089E24 /* AsyncUseCase.swift */; };
 		EAD5DA3B1A0975C5007D3718 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */; };
 		EAD5DA6D1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5DA6C1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift */; };
 		EAD8078F1A02C42400D82A3C /* TopPlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8078E1A02C42400D82A3C /* TopPlacesViewModel.swift */; };
@@ -98,14 +96,14 @@
 			containerPortal = EA5E685B1A0223270004CCEC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA5E68621A0223270004CCEC;
-			remoteInfo = "Top Places - Swift";
+			remoteInfo = TopPlaces;
 		};
 		EAD807AF1A02DCF000D82A3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA5E685B1A0223270004CCEC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA5E68621A0223270004CCEC;
-			remoteInfo = "Top Places - Swift";
+			remoteInfo = TopPlaces;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -113,13 +111,10 @@
 		07D1DFB2FF8E0D0792BF0310 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EA23BEE41A23B6E9003F9E87 /* WebJSONService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WebJSONService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		EA23BEE81A23B6FA003F9E87 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		EA23BEEF1A23B91D003F9E87 /* WebJSONServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WebJSONServiceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA23BEF61A23BA0A003F9E87 /* UpdateTopPlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTopPlacesTests.swift; sourceTree = "<group>"; };
-		EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Top Places - SwiftTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA23BF321A23C081003F9E87 /* TopPlaces-UnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TopPlaces-UnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		EA23BF711A24A809003F9E87 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EA23BF741A24C13D003F9E87 /* UseCaseFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UseCaseFactoryTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA23BF7D1A24C86C003F9E87 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSourceDelegate.swift; path = Flickr/DataSourceDelegate.swift; sourceTree = "<group>"; };
 		EA262DA61A251143004E0EDD /* AppBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppBuilder.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -127,18 +122,14 @@
 		EA262DA81A251143004E0EDD /* UseCaseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		EA262DAE1A251514004E0EDD /* LoadPhotoWithIdTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadPhotoWithIdTests.swift; sourceTree = "<group>"; };
 		EA262DB11A25158C004E0EDD /* LoadPhotoWithId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadPhotoWithId.swift; path = Flickr/LoadPhotoWithId.swift; sourceTree = "<group>"; };
-		EA2E762E1A25C3790098E4BB /* WebImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WebImageService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA2E76321A25C4580098E4BB /* WebImageServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebImageServiceTests.swift; sourceTree = "<group>"; };
 		EA3E71991A24DAE60055F11E /* UpdatePhotosForPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdatePhotosForPlace.swift; path = Flickr/UpdatePhotosForPlace.swift; sourceTree = "<group>"; };
 		EA3E719C1A24DB320055F11E /* UpdatePhotosForPlaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePhotosForPlaceTests.swift; sourceTree = "<group>"; };
 		EA3E719E1A24DCAC0055F11E /* PhotoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTests.swift; sourceTree = "<group>"; };
 		EA5ACF0D1A234480002625F2 /* UpdateTopPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateTopPlaces.swift; path = Flickr/UpdateTopPlaces.swift; sourceTree = "<group>"; };
-		EA5ACF121A2349F2002625F2 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		EA5ACF151A234FDF002625F2 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Flickr/Services.swift; sourceTree = "<group>"; };
 		EA5ACF181A235443002625F2 /* JSONInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONInitializers.swift; path = Flickr/JSONInitializers.swift; sourceTree = "<group>"; };
 		EA5ACF1B1A23644F002625F2 /* PlaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTests.swift; sourceTree = "<group>"; };
-		EA5ACF1F1A236E9D002625F2 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		EA5E68631A0223270004CCEC /* Top Places - Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Places - Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA5E68631A0223270004CCEC /* TopPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5E68671A0223280004CCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5E68681A0223280004CCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA5E686D1A0223280004CCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,16 +138,22 @@
 		EA5E68781A0223280004CCEC /* Top Places - Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Top Places - Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5E687D1A0223280004CCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5E68881A0226C90004CCEC /* TopPlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = TopPlacesTableViewController.swift; path = UI/TopPlacesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EA65F5411A274D5F00884B4C /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		EA65F5421A274D5F00884B4C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EA78337C1A02534D00028F5F /* FlickrApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = FlickrApp.swift; path = Flickr/FlickrApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		EA78337F1A0253FD00028F5F /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = test.playground; sourceTree = "<group>"; };
 		EA7DFCD71A25CB4F00932B57 /* UseCaseFactoryComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = UseCaseFactoryComponents.swift; path = Flickr/UseCaseFactoryComponents.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7DFCDB1A25D9C600932B57 /* NSURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLTests.swift; sourceTree = "<group>"; };
 		EA7F0DC21A091CFC00613D80 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosViewController.swift; path = UI/PhotosViewController.swift; sourceTree = "<group>"; };
 		EA7F0DC51A091F8300613D80 /* PhotosViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = PhotosViewModel.swift; path = Flickr/PhotosViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7F0DC81A091FF900613D80 /* PhotosViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotosViewModelTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA7F0DCB1A09428600613D80 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ImageViewController.swift; path = UI/ImageViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncUseCase.swift; sourceTree = "<group>"; };
 		EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncUseCaseTests.swift; sourceTree = "<group>"; };
+		EAAEF48B1A2747E100089E24 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		EAAEF48C1A2747E100089E24 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		EAAEF48D1A2747E100089E24 /* WebImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebImageService.swift; sourceTree = "<group>"; };
+		EAAEF48E1A2747E100089E24 /* WebJSONService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebJSONService.swift; sourceTree = "<group>"; };
+		EAAEF4901A2747E100089E24 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		EAAEF4A01A27481500089E24 /* AsyncUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncUseCase.swift; path = Flickr/AsyncUseCase.swift; sourceTree = "<group>"; };
 		EAD5DA3A1A0975C5007D3718 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = UI/ImageScrollView.swift; sourceTree = "<group>"; };
 		EAD5DA6C1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplitViewControllerDelegate.swift; path = UI/SplitViewControllerDelegate.swift; sourceTree = "<group>"; };
 		EAD8078E1A02C42400D82A3C /* TopPlacesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = TopPlacesViewModel.swift; path = Flickr/TopPlacesViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -206,14 +203,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EA23BF6C1A24A6F8003F9E87 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				EA23BEE81A23B6FA003F9E87 /* Dictionary.swift */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
 		EA262DA51A251143004E0EDD /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +216,7 @@
 		EA5E685A1A0223270004CCEC = {
 			isa = PBXGroup;
 			children = (
-				EA5E68651A0223270004CCEC /* Top Places - Swift */,
+				EA5E68651A0223270004CCEC /* TopPlaces */,
 				EA5E687B1A0223280004CCEC /* Top Places - Unit Tests */,
 				EAD807AA1A02DCF000D82A3C /* Top Places - Integration Tests */,
 				EA5E68641A0223270004CCEC /* Products */,
@@ -239,34 +228,30 @@
 		EA5E68641A0223270004CCEC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA5E68631A0223270004CCEC /* Top Places - Swift.app */,
+				EA5E68631A0223270004CCEC /* TopPlaces.app */,
 				EA5E68781A0223280004CCEC /* Top Places - Unit Tests.xctest */,
 				EAD807A91A02DCF000D82A3C /* Top Places - Integration Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA5E68651A0223270004CCEC /* Top Places - Swift */ = {
+		EA5E68651A0223270004CCEC /* TopPlaces */ = {
 			isa = PBXGroup;
 			children = (
 				EA262DA51A251143004E0EDD /* DependencyInjection */,
 				EA7833751A022B6700028F5F /* Flickr */,
+				EAAEF48A1A2747E100089E24 /* Services */,
 				EA5E688A1A0226D50004CCEC /* UI */,
-				EA23BF6C1A24A6F8003F9E87 /* Utilities */,
+				EAAEF48F1A2747E100089E24 /* Utilities */,
 				EA5E68681A0223280004CCEC /* AppDelegate.swift */,
-				EA5ACF121A2349F2002625F2 /* Result.swift */,
-				EA5ACF151A234FDF002625F2 /* Services.swift */,
-				EA2E762E1A25C3790098E4BB /* WebImageService.swift */,
-				EA23BEE41A23B6E9003F9E87 /* WebJSONService.swift */,
 				EA5E68661A0223270004CCEC /* Supporting Files */,
 			);
-			path = "Top Places - Swift";
+			path = TopPlaces;
 			sourceTree = "<group>";
 		};
 		EA5E68661A0223270004CCEC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EA78337F1A0253FD00028F5F /* test.playground */,
 				EA5E68671A0223280004CCEC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -275,8 +260,8 @@
 		EA5E687B1A0223280004CCEC /* Top Places - Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EA7DFCDD1A25DDCA00932B57 /* TestHelpers */,
-				EA23BF321A23C081003F9E87 /* Top Places - SwiftTests-Bridging-Header.h */,
+				EA65F5401A274D5F00884B4C /* TestHelpers */,
+				EA23BF321A23C081003F9E87 /* TopPlaces-UnitTests-Bridging-Header.h */,
 				EA9518041A26576F00AEBB31 /* AsyncUseCaseTests.swift */,
 				EA262DAE1A251514004E0EDD /* LoadPhotoWithIdTests.swift */,
 				EA7DFCDB1A25D9C600932B57 /* NSURLTests.swift */,
@@ -295,7 +280,7 @@
 				EA5E687C1A0223280004CCEC /* Supporting Files */,
 			);
 			name = "Top Places - Unit Tests";
-			path = "Top Places - SwiftTests";
+			path = "TopPlaces-UnitTests";
 			sourceTree = "<group>";
 		};
 		EA5E687C1A0223280004CCEC /* Supporting Files */ = {
@@ -322,10 +307,19 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		EA65F5401A274D5F00884B4C /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				EA65F5411A274D5F00884B4C /* Factory.swift */,
+				EA65F5421A274D5F00884B4C /* Utilities.swift */,
+			);
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
 		EA7833751A022B6700028F5F /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				EA9517FE1A263C3400AEBB31 /* AsyncUseCase.swift */,
+				EAAEF4A01A27481500089E24 /* AsyncUseCase.swift */,
 				EA23BF7D1A24C86C003F9E87 /* DataSourceDelegate.swift */,
 				EA78337C1A02534D00028F5F /* FlickrApp.swift */,
 				EA5ACF181A235443002625F2 /* JSONInitializers.swift */,
@@ -341,13 +335,23 @@
 			name = Flickr;
 			sourceTree = "<group>";
 		};
-		EA7DFCDD1A25DDCA00932B57 /* TestHelpers */ = {
+		EAAEF48A1A2747E100089E24 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				EA5ACF1F1A236E9D002625F2 /* Factory.swift */,
-				EA23BF711A24A809003F9E87 /* Utilities.swift */,
+				EAAEF48B1A2747E100089E24 /* Result.swift */,
+				EAAEF48C1A2747E100089E24 /* Services.swift */,
+				EAAEF48D1A2747E100089E24 /* WebImageService.swift */,
+				EAAEF48E1A2747E100089E24 /* WebJSONService.swift */,
 			);
-			name = TestHelpers;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EAAEF48F1A2747E100089E24 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EAAEF4901A2747E100089E24 /* Dictionary.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EAD807AA1A02DCF000D82A3C /* Top Places - Integration Tests */ = {
@@ -357,7 +361,7 @@
 				EA23BF6A1A248855003F9E87 /* UseCasesIntegrationTests.swift */,
 			);
 			name = "Top Places - Integration Tests";
-			path = "Top Places - Async Tests";
+			path = "TopPlaces-IntegrationTests";
 			sourceTree = "<group>";
 		};
 		EAD807AB1A02DCF000D82A3C /* Supporting Files */ = {
@@ -379,9 +383,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA5E68621A0223270004CCEC /* Top Places - Swift */ = {
+		EA5E68621A0223270004CCEC /* TopPlaces */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA5E68821A0223280004CCEC /* Build configuration list for PBXNativeTarget "Top Places - Swift" */;
+			buildConfigurationList = EA5E68821A0223280004CCEC /* Build configuration list for PBXNativeTarget "TopPlaces" */;
 			buildPhases = (
 				F150E52E82EBE0BEEF5F579A /* Check Pods Manifest.lock */,
 				EA5E685F1A0223270004CCEC /* Sources */,
@@ -393,9 +397,9 @@
 			);
 			dependencies = (
 			);
-			name = "Top Places - Swift";
-			productName = "Top Places - Swift";
-			productReference = EA5E68631A0223270004CCEC /* Top Places - Swift.app */;
+			name = TopPlaces;
+			productName = TopPlaces;
+			productReference = EA5E68631A0223270004CCEC /* TopPlaces.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EA5E68771A0223280004CCEC /* Top Places - Unit Tests */ = {
@@ -412,7 +416,7 @@
 				EA5E687A1A0223280004CCEC /* PBXTargetDependency */,
 			);
 			name = "Top Places - Unit Tests";
-			productName = "Top Places - SwiftTests";
+			productName = "TopPlaces-UnitTests";
 			productReference = EA5E68781A0223280004CCEC /* Top Places - Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -430,7 +434,7 @@
 				EAD807B01A02DCF000D82A3C /* PBXTargetDependency */,
 			);
 			name = "Top Places - Integration Tests";
-			productName = "Top Places - Async Tests";
+			productName = "TopPlaces-IntegrationTests";
 			productReference = EAD807A91A02DCF000D82A3C /* Top Places - Integration Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -456,7 +460,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA5E685E1A0223270004CCEC /* Build configuration list for PBXProject "Top Places - Swift" */;
+			buildConfigurationList = EA5E685E1A0223270004CCEC /* Build configuration list for PBXProject "TopPlaces-Swift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -469,7 +473,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA5E68621A0223270004CCEC /* Top Places - Swift */,
+				EA5E68621A0223270004CCEC /* TopPlaces */,
 				EA5E68771A0223280004CCEC /* Top Places - Unit Tests */,
 				EAD807A81A02DCF000D82A3C /* Top Places - Integration Tests */,
 			);
@@ -542,32 +546,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA262DAA1A251143004E0EDD /* UIStoryboardInjector.swift in Sources */,
+				EAAEF49A1A2747E100089E24 /* WebJSONService.swift in Sources */,
 				EA5E68891A0226C90004CCEC /* TopPlacesTableViewController.swift in Sources */,
+				EAAEF4971A2747E100089E24 /* WebImageService.swift in Sources */,
 				EAD5DA3B1A0975C5007D3718 /* ImageScrollView.swift in Sources */,
-				EA5ACF201A236E9D002625F2 /* Factory.swift in Sources */,
 				EA7DFCD81A25CB4F00932B57 /* UseCaseFactoryComponents.swift in Sources */,
-				EA5ACF131A2349F2002625F2 /* Result.swift in Sources */,
 				EAF7437A1A0BAE93005F7452 /* SelectedPhotosHistoryViewModel.swift in Sources */,
+				EAAEF4911A2747E100089E24 /* Result.swift in Sources */,
 				EA262DAB1A251143004E0EDD /* UseCaseFactory.swift in Sources */,
 				EAD5DA6D1A0AB4C8007D3718 /* SplitViewControllerDelegate.swift in Sources */,
 				EA7F0DCA1A0925BB00613D80 /* PhotosViewModel.swift in Sources */,
+				EAAEF4A11A27481500089E24 /* AsyncUseCase.swift in Sources */,
+				EAAEF4941A2747E100089E24 /* Services.swift in Sources */,
 				EA262DA91A251143004E0EDD /* AppBuilder.swift in Sources */,
 				EA3E719A1A24DAE60055F11E /* UpdatePhotosForPlace.swift in Sources */,
-				EA23BEE51A23B6E9003F9E87 /* WebJSONService.swift in Sources */,
 				EAD8078F1A02C42400D82A3C /* TopPlacesViewModel.swift in Sources */,
-				EA2E762F1A25C3790098E4BB /* WebImageService.swift in Sources */,
 				EA5E68691A0223280004CCEC /* AppDelegate.swift in Sources */,
 				EA5ACF191A235443002625F2 /* JSONInitializers.swift in Sources */,
 				EA78337D1A02534D00028F5F /* FlickrApp.swift in Sources */,
 				EAF743781A0BA755005F7452 /* HistoryTableViewController.swift in Sources */,
 				EA23BF7E1A24C86C003F9E87 /* DataSourceDelegate.swift in Sources */,
 				EA5ACF0E1A234480002625F2 /* UpdateTopPlaces.swift in Sources */,
-				EA9517FF1A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
 				EAD9BFE01A0B7E260067F75C /* SelectedPhotosHistory.swift in Sources */,
 				EA7F0DCC1A09428600613D80 /* ImageViewController.swift in Sources */,
+				EAAEF49D1A2747E100089E24 /* Dictionary.swift in Sources */,
 				EA7F0DC31A091CFC00613D80 /* PhotosViewController.swift in Sources */,
-				EA5ACF161A234FDF002625F2 /* Services.swift in Sources */,
-				EA23BEE91A23B6FA003F9E87 /* Dictionary.swift in Sources */,
 				EA262DB21A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,35 +580,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA3E719D1A24DB320055F11E /* UpdatePhotosForPlaceTests.swift in Sources */,
-				EA2E76301A25C3790098E4BB /* WebImageService.swift in Sources */,
 				EAF7437C1A0BB053005F7452 /* SelectedPhotosHistoryViewModelTests.swift in Sources */,
-				EA5ACF171A234FDF002625F2 /* Services.swift in Sources */,
 				EAD807911A02C78800D82A3C /* TopPlacesViewModelTests.swift in Sources */,
-				EA5ACF211A236E9D002625F2 /* Factory.swift in Sources */,
-				EA23BEEA1A23B6FA003F9E87 /* Dictionary.swift in Sources */,
 				EA262DAD1A25114C004E0EDD /* UseCaseFactory.swift in Sources */,
-				EA23BF721A24A809003F9E87 /* Utilities.swift in Sources */,
-				EA9518001A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
+				EAAEF4A21A27481500089E24 /* AsyncUseCase.swift in Sources */,
 				EA7F0DC91A091FFA00613D80 /* PhotosViewModelTests.swift in Sources */,
 				EA2E76331A25C4580098E4BB /* WebImageServiceTests.swift in Sources */,
 				EAD9BFE11A0B7E260067F75C /* SelectedPhotosHistory.swift in Sources */,
+				EAAEF4981A2747E100089E24 /* WebImageService.swift in Sources */,
+				EAAEF49E1A2747E100089E24 /* Dictionary.swift in Sources */,
 				EA9518051A26576F00AEBB31 /* AsyncUseCaseTests.swift in Sources */,
-				EA5ACF141A2349F2002625F2 /* Result.swift in Sources */,
 				EA7DFCDC1A25D9C600932B57 /* NSURLTests.swift in Sources */,
 				EA7DFCD91A25CC6200932B57 /* UseCaseFactoryComponents.swift in Sources */,
+				EAAEF4951A2747E100089E24 /* Services.swift in Sources */,
 				EA23BEF41A23B91D003F9E87 /* WebJSONServiceTests.swift in Sources */,
 				EA3E719F1A24DCAC0055F11E /* PhotoTests.swift in Sources */,
 				EA23BEF71A23BA0A003F9E87 /* UpdateTopPlacesTests.swift in Sources */,
 				EA23BF7F1A24C86C003F9E87 /* DataSourceDelegate.swift in Sources */,
-				EA23BEE61A23B6E9003F9E87 /* WebJSONService.swift in Sources */,
 				EA7F0DC71A091F8300613D80 /* PhotosViewModel.swift in Sources */,
 				EA9517FD1A26280200AEBB31 /* LoadPhotoWithIdTests.swift in Sources */,
 				EAD807921A02C7AA00D82A3C /* TopPlacesViewModel.swift in Sources */,
+				EAAEF49B1A2747E100089E24 /* WebJSONService.swift in Sources */,
 				EAD9BFE31A0B7E380067F75C /* SelectedPhotosHistoryTests.swift in Sources */,
+				EA65F5441A274D5F00884B4C /* Utilities.swift in Sources */,
 				EA23BF7C1A24C6AC003F9E87 /* UpdateTopPlaces.swift in Sources */,
 				EA23BF751A24C13D003F9E87 /* UseCaseFactoryTests.swift in Sources */,
+				EAAEF4921A2747E100089E24 /* Result.swift in Sources */,
 				EA3E719B1A24DAE60055F11E /* UpdatePhotosForPlace.swift in Sources */,
 				EA5ACF1A1A235443002625F2 /* JSONInitializers.swift in Sources */,
+				EA65F5431A274D5F00884B4C /* Factory.swift in Sources */,
 				EA262DB31A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */,
 				EA78337E1A02535F00028F5F /* FlickrApp.swift in Sources */,
 				EAE196231A25CB1300F18827 /* UseCaseFactoryComponentsTests.swift in Sources */,
@@ -618,21 +621,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA23BEED1A23B8F1003F9E87 /* Result.swift in Sources */,
-				EA23BEEB1A23B6FA003F9E87 /* Dictionary.swift in Sources */,
+				EAAEF4961A2747E100089E24 /* Services.swift in Sources */,
+				EAAEF49F1A2747E100089E24 /* Dictionary.swift in Sources */,
+				EAAEF49C1A2747E100089E24 /* WebJSONService.swift in Sources */,
+				EA65F5451A274D7500884B4C /* Utilities.swift in Sources */,
 				EA262DB41A25158C004E0EDD /* LoadPhotoWithId.swift in Sources */,
-				EA23BF731A24A809003F9E87 /* Utilities.swift in Sources */,
-				EA23BEE71A23B6E9003F9E87 /* WebJSONService.swift in Sources */,
-				EA9518011A263C3400AEBB31 /* AsyncUseCase.swift in Sources */,
+				EAAEF4A31A27481500089E24 /* AsyncUseCase.swift in Sources */,
 				EA23BF7B1A24C65E003F9E87 /* UpdateTopPlaces.swift in Sources */,
 				EA5ACF1D1A236A0F002625F2 /* JSONInitializers.swift in Sources */,
 				EA3E71A01A24E5040055F11E /* UpdatePhotosForPlace.swift in Sources */,
-				EA23BEEC1A23B8E8003F9E87 /* Services.swift in Sources */,
-				EA9517FC1A2622F000AEBB31 /* Factory.swift in Sources */,
+				EAAEF4931A2747E100089E24 /* Result.swift in Sources */,
 				EAD807B91A02DDFC00D82A3C /* FlickrApp.swift in Sources */,
-				EA2E76311A25C3790098E4BB /* WebImageService.swift in Sources */,
 				EA262DAC1A25114B004E0EDD /* UseCaseFactory.swift in Sources */,
 				EA7DFCDA1A25D13A00932B57 /* UseCaseFactoryComponents.swift in Sources */,
+				EAAEF4991A2747E100089E24 /* WebImageService.swift in Sources */,
 				EA23BF6B1A248855003F9E87 /* UseCasesIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,12 +644,12 @@
 /* Begin PBXTargetDependency section */
 		EA5E687A1A0223280004CCEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA5E68621A0223270004CCEC /* Top Places - Swift */;
+			target = EA5E68621A0223270004CCEC /* TopPlaces */;
 			targetProxy = EA5E68791A0223280004CCEC /* PBXContainerItemProxy */;
 		};
 		EAD807B01A02DCF000D82A3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA5E68621A0223270004CCEC /* Top Places - Swift */;
+			target = EA5E68621A0223270004CCEC /* TopPlaces */;
 			targetProxy = EAD807AF1A02DCF000D82A3C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -756,7 +758,7 @@
 			baseConfigurationReference = B9E4FFE26562DD3D6BA60B4E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Top Places - Swift/Info.plist";
+				INFOPLIST_FILE = TopPlaces/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -768,7 +770,7 @@
 			baseConfigurationReference = 43EB9A8E5F66CC4E7BFFE2D8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Top Places - Swift/Info.plist";
+				INFOPLIST_FILE = TopPlaces/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -791,12 +793,12 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Top Places - SwiftTests/Info.plist";
+				INFOPLIST_FILE = "TopPlaces-UnitTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Top Places - SwiftTests/Top Places - SwiftTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TopPlaces-UnitTests/TopPlaces-UnitTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TopPlaces.app/TopPlaces";
 			};
 			name = Debug;
 		};
@@ -812,11 +814,11 @@
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
-				INFOPLIST_FILE = "Top Places - SwiftTests/Info.plist";
+				INFOPLIST_FILE = "TopPlaces-UnitTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Top Places - SwiftTests/Top Places - SwiftTests-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
+				SWIFT_OBJC_BRIDGING_HEADER = "TopPlaces-UnitTests/TopPlaces-UnitTests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TopPlaces.app/TopPlaces";
 			};
 			name = Release;
 		};
@@ -834,11 +836,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Top Places - Async Tests/Info.plist";
+				INFOPLIST_FILE = "TopPlaces-IntegrationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TopPlaces.app/TopPlaces";
 			};
 			name = Debug;
 		};
@@ -852,17 +854,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Top Places - Async Tests/Info.plist";
+				INFOPLIST_FILE = "TopPlaces-IntegrationTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Top Places - Swift.app/Top Places - Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TopPlaces.app/TopPlaces";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA5E685E1A0223270004CCEC /* Build configuration list for PBXProject "Top Places - Swift" */ = {
+		EA5E685E1A0223270004CCEC /* Build configuration list for PBXProject "TopPlaces-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA5E68801A0223280004CCEC /* Debug */,
@@ -871,7 +873,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA5E68821A0223280004CCEC /* Build configuration list for PBXNativeTarget "Top Places - Swift" */ = {
+		EA5E68821A0223280004CCEC /* Build configuration list for PBXNativeTarget "TopPlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA5E68831A0223280004CCEC /* Debug */,
